@@ -25,7 +25,7 @@ $nomeUsuario = $session_youtube['nomeUsuario'];
               </a>
             </li>
             <li><a href="javascript:;">Help</a></li>
-            <li><a href="home/sair"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+            <li><a href="<?php echo base_url("home/sair"); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
           </ul>
         </li>
 

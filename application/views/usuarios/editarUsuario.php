@@ -1,191 +1,94 @@
-<div class="row-fluid" style="margin-top:0">
-    <div class="span12">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="icon-user"></i>
-                </span>
-                <h5>Editar Usuário</h5>
-            </div>
-            <div class="widget-content nopadding">
-                <?php if ($custom_error != '') {
-                    echo '<div class="alert alert-danger">' . $custom_error . '</div>';
-                } ?>
-                <form action="<?php echo current_url(); ?>" id="formUsuario" method="post" class="form-horizontal" >
-                    <div class="control-group">
-                        <?php echo form_hidden('idUsuarios',$result->idUsuarios) ?>
-                        <label for="nome" class="control-label">Nome<span class="required">*</span></label>
-                        <div class="controls">
-                            <input id="nome" type="text" name="nome" value="<?php echo $result->nome; ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="rg" class="control-label">RG<span class="required">*</span></label>
-                        <div class="controls">
-                            <input id="rg" type="text" name="rg" value="<?php echo $result->rg; ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="cpf" class="control-label">CPF<span class="required">*</span></label>
-                        <div class="controls">
-                            <input id="cpf" type="text" name="cpf" value="<?php echo $result->cpf; ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="rua" class="control-label">Rua<span class="required">*</span></label>
-                        <div class="controls">
-                            <input id="rua" type="text" name="rua" value="<?php echo $result->rua; ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="numero" class="control-label">Numero<span class="required">*</span></label>
-                        <div class="controls">
-                            <input id="numero" type="text" name="numero" value="<?php echo $result->numero; ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="bairro" class="control-label">Bairro<span class="required">*</span></label>
-                        <div class="controls">
-                            <input id="bairro" type="text" name="bairro" value="<?php echo $result->bairro; ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="cidade" class="control-label">Cidade<span class="required">*</span></label>
-                        <div class="controls">
-                            <input id="cidade" type="text" name="cidade" value="<?php echo $result->cidade; ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="estado" class="control-label">Estado<span class="required">*</span></label>
-                        <div class="controls">
-                            <input id="estado" type="text" name="estado" value="<?php echo $result->estado; ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="email" class="control-label">Email<span class="required">*</span></label>
-                        <div class="controls">
-                            <input id="email" type="text" name="email" value="<?php echo $result->email; ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="senha" class="control-label">Senha</label>
-                        <div class="controls">
-                            <input id="senha" type="password" name="senha" value=""  placeholder="Não preencha se não quiser alterar."  />
-                            <i class="icon-exclamation-sign tip-top" title="Se não quiser alterar a senha, não preencha esse campo."></i>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="telefone" class="control-label">Telefone<span class="required">*</span></label>
-                        <div class="controls">
-                            <input id="telefone" type="text" name="telefone" value="<?php echo $result->telefone; ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="celular" class="control-label">Celular</label>
-                        <div class="controls">
-                            <input id="celular" type="text" name="celular" value="<?php echo $result->celular; ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label  class="control-label">Situação*</label>
-                        <div class="controls">
-                            <select name="situacao" id="situacao">
-                                <?php if($result->situacao == 1){$ativo = 'selected'; $inativo = '';} else{$ativo = ''; $inativo = 'selected';} ?>
-                                <option value="1" <?php echo $ativo; ?>>Ativo</option>
-                                <option value="0" <?php echo $inativo; ?>>Inativo</option>
-                            </select>
-                        </div>
-                    </div>
-
-
-                    <div class="control-group">
-                        <label  class="control-label">Permissões<span class="required">*</span></label>
-                        <div class="controls">
-                            <select name="permissoes_id" id="permissoes_id">
-                                  <?php foreach ($permissoes as $p) {
-                                     if($p->idPermissao == $result->permissoes_id){ $selected = 'selected';}else{$selected = '';}
-                                      echo '<option value="'.$p->idPermissao.'"'.$selected.'>'.$p->nome.'</option>';
-                                  } ?>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-actions">
-                        <div class="span12">
-                            <div class="span6 offset3">
-                                <button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i> Alterar</button>
-                                <a href="<?php echo base_url() ?>index.php/usuarios" id="" class="btn"><i class="icon-arrow-left"></i> Voltar</a>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </form>
-            </div>
-        </div>
+<div class="">
+  <div class="page-title">
+    <div class="title_left">
+      <h3>Cadastro de usuários</h3>
     </div>
+  </div>
+  <div class="clearfix"></div>
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+        <?php if ($custom_error != '') {
+
+            echo $custom_error;
+        } ?>
+        <form role="form" action="<?php echo current_url(); ?>" id="formUsuario" method="POST" class="form-horizontal form-label-left">
+          </p>
+
+          <div class="item form-group">
+            <?php echo form_hidden('idUsuarios',$result->idUsuarios) ?>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nome">Nome <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="nome" name="nome" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Insira o nome" required="required" type="text" value="<?php echo $result->nome; ?>">
+            </div>
+          </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12" placeholder="Insira o email" value="<?php echo $result->email; ?>">
+            </div>
+          </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telefone">Telefone <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" id="telefone" name="telefone" required="required" class="form-control col-md-7 col-xs-12" placeholder="Insira o Telefone" value="<?php echo $result->telefone; ?>" data-inputmask="'mask' : '(99) 9999-9999'">
+            </div>
+          </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="celular">Celular <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" id="celular" name="celular" required="required" class="form-control col-md-7 col-xs-12" placeholder="Insira o Celular" value="<?php echo $result->celular; ?>" data-inputmask="'mask' : '(99) 99999-9999'">
+            </div>
+          </div>
+            <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="login">Login <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="login" name="login" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Insira o Login" required="required" type="text" value="<?php echo $result->login; ?>">
+            </div>
+          </div>
+          <div class="item form-group">
+            <label for="password" class="control-label col-md-3">Senha</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="senha" type="password" name="senha" data-validate-length="6,8" class="form-control col-md-7 col-xs-12" placeholder="Não preencha se não quiser alterar."  /><i class="fa fa-info-circle" title="Se não quiser alterar a senha, não preencha esse campo."></i>
+            </div>
+          </div>
+          <div class="item form-group">
+            <label for="situacao" class="control-label col-md-3">Situação</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <select class="form-control" id="situacao" name="situacao">
+                <?php if($result->situacao == 1){$ativo = 'selected'; $inativo = '';} else{$ativo = ''; $inativo = 'selected';} ?>
+                  <option value="1" <?php echo $ativo; ?>>Ativo</option>
+                  <option value="0" <?php echo $inativo; ?>>Inativo</option>
+              </select>
+            </div>
+          </div>
+          <div class="item form-group">
+            <label for="permissoes_id" class="control-label col-md-3">Permissões</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="form-control" name="permissoes_id" id="permissoes_id">
+                    <?php foreach ($permissoes as $p) {
+                       if($p->idPermissao == $result->permissoes_id){ $selected = 'selected';}else{$selected = '';}
+                        echo '<option value="'.$p->idPermissao.'"'.$selected.'>'.$p->nome.'</option>';
+                    } ?>
+                </select>
+            </div>
+          </div>
+          <div class="ln_solid"></div>
+          <div class="form-group">
+            <div class="col-md-6 col-md-offset-3">
+              <button type="submit" class="btn btn-success">Alterar usuário</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
-
-<script  src="<?php echo base_url()?>assets/js/jquery.validate.js"></script>
-<script type="text/javascript">
-      $(document).ready(function(){
-
-           $('#formUsuario').validate({
-            rules : {
-                  nome:{ required: true},
-                  rg:{ required: true},
-                  cpf:{ required: true},
-                  telefone:{ required: true},
-                  email:{ required: true},
-                  rua:{ required: true},
-                  numero:{ required: true},
-                  bairro:{ required: true},
-                  cidade:{ required: true},
-                  estado:{ required: true},
-                  cep:{ required: true}
-            },
-            messages: {
-                  nome :{ required: 'Campo Requerido.'},
-                  rg:{ required: 'Campo Requerido.'},
-                  cpf:{ required: 'Campo Requerido.'},
-                  telefone:{ required: 'Campo Requerido.'},
-                  email:{ required: 'Campo Requerido.'},
-                  rua:{ required: 'Campo Requerido.'},
-                  numero:{ required: 'Campo Requerido.'},
-                  bairro:{ required: 'Campo Requerido.'},
-                  cidade:{ required: 'Campo Requerido.'},
-                  estado:{ required: 'Campo Requerido.'},
-                  cep:{ required: 'Campo Requerido.'}
-
-            },
-
-            errorClass: "help-inline",
-            errorElement: "span",
-            highlight:function(element, errorClass, validClass) {
-                $(element).parents('.control-group').addClass('error');
-            },
-            unhighlight: function(element, errorClass, validClass) {
-                $(element).parents('.control-group').removeClass('error');
-                $(element).parents('.control-group').addClass('success');
-            }
-           });
-
-      });
-</script>
-
-
+</div>

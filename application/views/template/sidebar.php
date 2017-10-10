@@ -18,7 +18,7 @@
 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
   <div class="menu_section">
     <ul class="nav side-menu">
-    <li><a href="<?php site_url(); ?>"><i class="fa fa-home"></i> Home</a></li>
+    <li><a href="<?php echo base_url("home"); ?>"><i class="fa fa-home"></i> Home</a></li>
       <!-- <li><a><i class="fa fa-user"></i> Usuários <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="cadastrausuario"><i class="fa fa-plus"></i> Cadastrar</a></li>
@@ -60,7 +60,7 @@
       <li><a href="requisicaoajax"><i class="fa fa-circle-o"></i> Requisição Jquery/Ajax</a></li> -->
       <li><a><i class="fa fa-cogs"></i> Configurações <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="usuarios"><i class="fa fa-user"></i> Usuários</a></li>
+          <li><a href="<?php echo base_url("usuarios"); ?>"><i class="fa fa-user"></i> Usuários</a></li>
         </ul>
       </li>
     </ul>
@@ -79,7 +79,7 @@
     <a data-toggle="tooltip" data-placement="top" title="Lock">
       <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
     </a>
-    <a data-toggle="tooltip" data-placement="top" title="Sair" href="home/sair">
+    <a data-toggle="tooltip" data-placement="top" title="Sair" href="<?php echo base_url("home/sair"); ?>">
       <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
     </a>
   </div>

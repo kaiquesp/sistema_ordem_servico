@@ -82,11 +82,11 @@ class Usuarios extends CI_Controller {
         
         if(!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))){
             $this->session->set_flashdata('error','Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('usuarios');
         }
 
         $this->load->library('form_validation');    
-		$this->data['custom_error'] = '';
+		$dados['custom_error'] = '';
         $this->form_validation->set_rules('nome', 'Nome', 'trim|required');
         $this->form_validation->set_rules('email', 'Email', 'trim|required');
         $this->form_validation->set_rules('telefone', 'Telefone', 'trim|required');
@@ -95,7 +95,7 @@ class Usuarios extends CI_Controller {
 
         if ($this->form_validation->run() == false)
         {
-             $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">'.validation_errors().'</div>' : false);
+             $dados['custom_error'] = (validation_errors() ? '<div class="form_error">'.validation_errors().'</div>' : false);
 
         } else
         { 
@@ -103,7 +103,7 @@ class Usuarios extends CI_Controller {
             if ($this->input->post('idUsuarios') == 1 && $this->input->post('situacao') == 0)
             {
                 $this->session->set_flashdata('error','O usuário super admin não pode ser desativado!');
-                redirect(base_url().'index.php/usuarios/editar/'.$this->input->post('idUsuarios'));
+                redirect(base_url().'usuarios/editar/'.$this->input->post('idUsuarios'));
             }
 
             $senha = $this->input->post('senha'); 
@@ -116,17 +116,11 @@ class Usuarios extends CI_Controller {
 
                 $data = array(
                         'nome' => $this->input->post('nome'),
-                        'rg' => $this->input->post('rg'),
-                        'cpf' => $this->input->post('cpf'),
-                        'rua' => $this->input->post('rua'),
-                        'numero' => $this->input->post('numero'),
-                        'bairro' => $this->input->post('bairro'),
-                        'cidade' => $this->input->post('cidade'),
-                        'estado' => $this->input->post('estado'),
                         'email' => $this->input->post('email'),
-                        'senha' => $senha,
                         'telefone' => $this->input->post('telefone'),
                         'celular' => $this->input->post('celular'),
+                        'login' => $this->input->post('login'),
+                        'senha' => $senha,
                         'situacao' => $this->input->post('situacao'),
                         'permissoes_id' => $this->input->post('permissoes_id')
                 );
@@ -136,16 +130,10 @@ class Usuarios extends CI_Controller {
 
                 $data = array(
                         'nome' => $this->input->post('nome'),
-                        'rg' => $this->input->post('rg'),
-                        'cpf' => $this->input->post('cpf'),
-                        'rua' => $this->input->post('rua'),
-                        'numero' => $this->input->post('numero'),
-                        'bairro' => $this->input->post('bairro'),
-                        'cidade' => $this->input->post('cidade'),
-                        'estado' => $this->input->post('estado'),
                         'email' => $this->input->post('email'),
                         'telefone' => $this->input->post('telefone'),
                         'celular' => $this->input->post('celular'),
+                        'login' => $this->input->post('login'),
                         'situacao' => $this->input->post('situacao'),
                         'permissoes_id' => $this->input->post('permissoes_id')
                 );
@@ -155,22 +143,22 @@ class Usuarios extends CI_Controller {
            
 			if ($this->usuarios_model->edit('usuarios',$data,'idUsuarios',$this->input->post('idUsuarios')) == TRUE)
 			{
-                $this->session->set_flashdata('success','Usuário editado com sucesso!');
-				redirect(base_url().'index.php/usuarios/editar/'.$this->input->post('idUsuarios'));
+                $dados['custom_error'] = '<div class="alert alert-success">Usuário editado com sucesso!</div>';
+				/*redirect(base_url().'usuarios/editar/'.$this->input->post('idUsuarios'));*/
 			}
 			else
 			{
-				$this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
+				$dados['custom_error'] = '<div class="alert alert-danger">Ops... Ocorreu um erro, contate o administrador do sistema</div>';
 
 			}
 		}
 
-		$this->data['result'] = $this->usuarios_model->getById($this->uri->segment(3));
+		$dados['result'] = $this->usuarios_model->getById($this->uri->segment(3));
         $this->load->model('permissoes_model');
-        $this->data['permissoes'] = $this->permissoes_model->getActive('permissoes','permissoes.idPermissao,permissoes.nome'); 
+        $dados['permissoes'] = $this->permissoes_model->getActive('permissoes','permissoes.idPermissao,permissoes.nome'); 
 
-		$this->data['view'] = 'usuarios/editarUsuario';
-        $this->load->view('tema/topo',$this->data);
+        $dados['tela'] = 'usuarios/editarUsuario';
+        $this->load->view('view_home', $dados);
 			
       
     }
