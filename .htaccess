@@ -1,0 +1,10 @@
+##### LOCAWEB - NAO REMOVER #####
+AddHandler php7-script .php
+suPHP_ConfigPath /home/oficina18/
+##### LOCAWEB - NAO REMOVER #####
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?/$1 [L]
