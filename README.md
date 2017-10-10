@@ -23,4 +23,4 @@ Sistema Ordem de serviço é um sistema gratuito para controle de ordens de serv
 * MySQL
 
 ### Créditos
-* Ramon Silva - kaiqueexp@gmail.com
+* Kaique Alves - kaiqueexp@gmail.com
