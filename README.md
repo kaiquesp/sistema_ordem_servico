@@ -1,10 +1,6 @@
-![MapOS](https://raw.githubusercontent.com/RamonSilva20/mapos/master/assets/img/logo.png)
+Sistema Ordem de serviço
 
-#### _Versão 3.1.11_ | Nova versão em desenvolvimento - Sugestões no Issue #37
-
-MapOS é um sistema gratuito para de controle de ordens de serviço. 
-Para mais informações visite __[sistemamapos.esy.es](https://www.sistemamapos.esy.es)__ 
-ou acesse a __[demo](https://www.sistemamapos.esy.es/mapos)__.  
+Sistema Ordem de serviço é um sistema gratuito para controle de ordens de serviço. 
 
 ### Instalação
 
@@ -14,15 +10,6 @@ ou acesse a __[demo](https://www.sistemamapos.esy.es/mapos)__.
 4. Crie o banco de dados e execute o arquivo `banco.sql` para criar as tabelas.
 5. Configure os dados de acesso ao banco de dados no arquivo `database.php`.
 6. Acesse sua URL e coloque os dados de acesso: `admin@admin.com` e `123456`.
-
-### Atualização para versão 3.*
-1. Faça backup do banco de dados
-2. Remova a pasta system da instalação atual
-3. Copie os novos arquivos e substitua.
-4. Execute o script update_v2_to_v3 para atualizar o banco de dados (Nenhuma informação será perdida).
-5. Acesse o sistema com o usuário administrador utilizando a senha `123456`.
-6. Será preciso alterar as senhas dos usuários pois o sistema na versão 3 utiliza um novo padrão de criptografia.
-
 
 ### Frameworks/Bibliotecas
 * [bcit-ci/CodeIgniter](https://github.com/bcit-ci/CodeIgniter)
@@ -36,4 +23,4 @@ ou acesse a __[demo](https://www.sistemamapos.esy.es/mapos)__.
 * MySQL
 
 ### Créditos
-* Ramon Silva - silva018-mg@yahoo.com.br
+* Ramon Silva - kaiqueexp@gmail.com
