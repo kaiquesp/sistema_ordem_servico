@@ -1,5 +1,5 @@
 <?php 
-  $session_youtube = $this->session->userdata('logged_in');
+  $session_youtube = $this->session->userdata('logado');
   $nomeUsuario = $session_youtube['nomeUsuario'];
 ?>
 
