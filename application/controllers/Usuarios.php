@@ -31,6 +31,10 @@ class Usuarios extends CI_Controller {
 	}
 
 	function gerenciar(){
+         if(!$this->permission->checkPermission($this->session->userdata('permissao'),'vCliente')){
+           $this->session->set_flashdata('error','Você não tem permissão para visualizar clientes.');
+           redirect(base_url());
+        }
         
         $this->load->model ( 'usuarios_model' );
         $resultadousuario = $this->usuarios_model->get ();

@@ -19,15 +19,8 @@
   <div class="menu_section">
     <ul class="nav side-menu">
     <li><a href="<?php echo base_url("home"); ?>"><i class="fa fa-home"></i> Home</a></li>
-      <!-- <li><a><i class="fa fa-user"></i> Usuários <span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li><a href="cadastrausuario"><i class="fa fa-plus"></i> Cadastrar</a></li>
-          <li><a href="consultausuario"><i class="fa fa-search"></i> Consultar</a></li>
-          <li><a href="listausuario"><i class="fa fa-list-alt"></i> Listar</a></li>
-          <li><a href="index3.html"><i class="fa fa-bar-chart-o"></i> Relatório</a></li>
-        </ul>
-      </li>
-      <li><a><i class="fa fa-users"></i> Clientes <span class="fa fa-chevron-down"></span></a>
+      <li><a href="<?php echo base_url("clientes"); ?>"><i class="fa fa-users"></i> Clientes</a></li>
+      <!-- <li><a><i class="fa fa-users"></i> Clientes <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="cadastrocliente"><i class="fa fa-plus"></i> Cadastro</a></li>
           <li><a href="consultacliente"><i class="fa fa-search"></i> Consulta</a></li>
@@ -60,7 +53,9 @@
       <li><a href="requisicaoajax"><i class="fa fa-circle-o"></i> Requisição Jquery/Ajax</a></li> -->
       <li><a><i class="fa fa-cogs"></i> Configurações <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="<?php echo base_url("usuarios"); ?>"><i class="fa fa-user"></i> Usuários</a></li>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')){ ?>
+            <li><a href="<?php echo base_url("usuarios"); ?>"><i class="fa fa-user"></i> Usuários</a></li>
+          <?php } ?>
         </ul>
       </li>
     </ul>
