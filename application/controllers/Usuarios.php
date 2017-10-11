@@ -165,9 +165,17 @@ class Usuarios extends CI_Controller {
 	
     public function excluir(){
 
-            $ID =  $this->uri->segment(3);
-            $this->usuarios_model->delete('usuarios','idUsuarios',$ID);             
-            redirect(base_url().'index.php/usuarios/gerenciar/');
+        $ID =  $this->uri->segment(3);
+        $delete = $this->usuarios_model->delete('usuarios','idUsuarios',$ID);             
+        
+
+        if($delete){
+            $this->session->set_flashdata('success', '<div class="alert alert-success">Usuário excluído com sucesso.</div>');
+            redirect(base_url().'usuarios/');
+        }else{
+            $this->session->set_flashdata('error', '<div class="alert alert-danger">Não foi possível excluir o usuário.</div>');
+            redirect(base_url().'usuarios/');
+        }
     }
 }
 

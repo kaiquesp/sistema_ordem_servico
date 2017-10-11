@@ -13,6 +13,12 @@
                   echo "<div class='box-header with-border'>".$msg."</div>";
                 } 
                 ?>
+                <?php if ($this->session->flashdata('error') == TRUE): ?>
+                  <p><?php echo $this->session->flashdata('error'); ?></p>
+                <?php endif; ?>
+                <?php if ($this->session->flashdata('success') == TRUE): ?>
+                  <p><?php echo $this->session->flashdata('success'); ?></p>
+                <?php endif; ?>
                 <div class="x_content">
                   <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead>
@@ -36,7 +42,7 @@
                             <td><?php echo $usuarios->login; ?></td>
                             <td><?php echo $usuarios->telefone; ?></td>
                             <td><?php echo $usuarios->permissao; ?></td>
-                            <td><a href="<?php echo base_url().'usuarios/editar/'.$usuarios->idUsuarios; ?>" class="btn btn-info tip-top" title="Editar Usuário"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="<?php echo base_url().'usuarios/editar/'.$usuarios->idUsuarios; ?>" class="btn btn-info tip-top" title="Editar Usuário"><i class="fa fa-edit"></i></a><a href="<?php echo base_url().'usuarios/excluir/'.$usuarios->idUsuarios; ?>" class="btn btn-danger tip-top" title="Excluir Usuário"><i class="fa fa-trash-o"></i></a></td>
                           </tr>
                           <?php 
                         }

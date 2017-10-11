@@ -85,6 +85,7 @@
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
               <button type="submit" class="btn btn-success">Cadastrar usuário</button>
+              <a href="<?php echo base_url("usuarios"); ?>" class="btn btn-danger">Voltar</a>
             </div>
           </div>
         </form>
