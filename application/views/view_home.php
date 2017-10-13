@@ -30,17 +30,15 @@ if ($this->session->userdata('logado')){
     <link href="<?php echo site_url(); ?>assets/css/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo site_url(); ?>assets/css/iCheck/flat/green.css" rel="stylesheet">
-
     <!-- bootstrap-progressbar -->
     <link href="<?php echo site_url(); ?>assets/css/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
     <link href="<?php echo site_url(); ?>assets/css/jqvmap/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo site_url(); ?>assets/css/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
     <!-- Custom Theme Style -->
     <link href="<?php echo site_url(); ?>assets/css/custom.min.css" rel="stylesheet">
-
+    <link href="<?php echo site_url(); ?>assets/css/style.css" rel="stylesheet">
     <!-- Datatables -->
     <link href="<?php echo site_url(); ?>assets/css/datatables.net-bs/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo site_url(); ?>assets/css/datatables.net-buttons-bs/buttons.bootstrap.min.css" rel="stylesheet">
@@ -137,5 +135,6 @@ if ($this->session->userdata('logado')){
         <script src="<?php echo site_url(); ?>assets/js/pdfmake/vfs_fonts.js"></script>
         <!-- jquery.inputmask -->
         <script src="<?php echo site_url(); ?>assets/js/jquery.inputmask/jquery.inputmask.bundle.min.js"></script>
+        <script src="<?php echo site_url(); ?>assets/js/script.js"></script>
     </body>
     </html>

@@ -28,7 +28,7 @@ $config['app_version'] = '3.1.11';
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://japacar.tecnologia.ws/';
+$config['base_url'] = 'https://japacar.tecnologia.ws/';
 
 /*
 |--------------------------------------------------------------------------

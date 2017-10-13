@@ -12,12 +12,12 @@ class Os extends CI_Controller {
         parent::__construct();
         
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-            redirect('mapos/login');
+            redirect('home/login');
         }
 		
 		$this->load->helper(array('form','codegen_helper'));
 		$this->load->model('os_model','',TRUE);
-		$this->data['menuOs'] = 'OS';
+		$dados['menuOs'] = 'OS';
 	}	
 	
 	function index(){
@@ -55,7 +55,7 @@ class Os extends CI_Controller {
             $where_array['ate'] = $ate;
         }
         
-        $config['base_url'] = base_url().'index.php/os/gerenciar/';
+        $config['base_url'] = base_url().'os/gerenciar/';
         $config['total_rows'] = $this->os_model->count('os');
         $config['per_page'] = 10;
         $config['next_link'] = 'Próxima';
@@ -79,10 +79,10 @@ class Os extends CI_Controller {
         	
         $this->pagination->initialize($config); 	
 
-		$this->data['results'] = $this->os_model->getOs('os','idOs,dataInicial,dataFinal,garantia,descricaoProduto,defeito,status,observacoes,laudoTecnico',$where_array,$config['per_page'],$this->uri->segment(3));
+		$dados['results'] = $this->os_model->getOs('os','idOs,dataInicial,dataFinal,garantia,descricaoProduto,defeito,status,observacoes,laudoTecnico',$where_array,$config['per_page'],$this->uri->segment(3));
        
-	    $this->data['view'] = 'os/os';
-       	$this->load->view('tema/topo',$this->data);
+	    $dados['tela'] = 'os/os';
+       	$this->load->view('view_home',$dados);
       
 		
     }
@@ -96,10 +96,10 @@ class Os extends CI_Controller {
         }
 
         $this->load->library('form_validation');
-        $this->data['custom_error'] = '';
+        $dados['custom_error'] = '';
         
         if ($this->form_validation->run('os') == false) {
-           $this->data['custom_error'] = (validation_errors() ? true : false);
+           $dados['custom_error'] = (validation_errors() ? true : false);
         } else {
 
             $dataInicial = $this->input->post('dataInicial');
@@ -142,12 +142,12 @@ class Os extends CI_Controller {
 
             } else {
                 
-                $this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
+                $dados['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
             }
         }
          
-        $this->data['view'] = 'os/adicionarOs';
-        $this->load->view('tema/topo', $this->data);
+        $dados['view'] = 'os/adicionarOs';
+        $this->load->view('view_home', $this->data);
     }
     
     public function adicionarAjax(){
@@ -197,10 +197,10 @@ class Os extends CI_Controller {
         }
 
         $this->load->library('form_validation');
-        $this->data['custom_error'] = '';
+        $dados['custom_error'] = '';
 
         if ($this->form_validation->run('os') == false) {
-            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
+            $dados['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
 
             $dataInicial = $this->input->post('dataInicial');
@@ -235,16 +235,16 @@ class Os extends CI_Controller {
                 $this->session->set_flashdata('success','Os editada com sucesso!');
                 redirect(base_url() . 'index.php/os/editar/'.$this->input->post('idOs'));
             } else {
-                $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
+                $dados['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
             }
         }
 
-        $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
-        $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
-        $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-        $this->data['anexos'] = $this->os_model->getAnexos($this->uri->segment(3));
-        $this->data['view'] = 'os/editarOs';
-        $this->load->view('tema/topo', $this->data);
+        $dados['result'] = $this->os_model->getById($this->uri->segment(3));
+        $dados['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
+        $dados['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
+        $dados['anexos'] = $this->os_model->getAnexos($this->uri->segment(3));
+        $dados['view'] = 'os/editarOs';
+        $this->load->view('view_home', $this->data);
    
     }
 
@@ -260,15 +260,15 @@ class Os extends CI_Controller {
            redirect(base_url());
         }
 
-        $this->data['custom_error'] = '';
+        $dados['custom_error'] = '';
         $this->load->model('mapos_model');
-        $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
-        $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
-        $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $dados['result'] = $this->os_model->getById($this->uri->segment(3));
+        $dados['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
+        $dados['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
+        $dados['emitente'] = $this->mapos_model->getEmitente();
 
-        $this->data['view'] = 'os/visualizarOs';
-        $this->load->view('tema/topo', $this->data);
+        $dados['tela'] = 'os/visualizarOs';
+        $this->load->view('view_home', $dados);
        
     }
 
@@ -284,12 +284,12 @@ class Os extends CI_Controller {
                    redirect(base_url());
                 }
         
-                $this->data['custom_error'] = '';
+                $dados['custom_error'] = '';
                 $this->load->model('mapos_model');
-                $this->data['result'] = $this->os_model->getById($this->uri->segment(3));
-                $this->data['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
-                $this->data['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
-                $this->data['emitente'] = $this->mapos_model->getEmitente();
+                $dados['result'] = $this->os_model->getById($this->uri->segment(3));
+                $dados['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
+                $dados['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
+                $dados['emitente'] = $this->mapos_model->getEmitente();
         
                 $this->load->view('os/imprimirOs', $this->data);
                
@@ -591,11 +591,11 @@ class Os extends CI_Controller {
     public function faturar() {
 
         $this->load->library('form_validation');
-        $this->data['custom_error'] = '';
+        $dados['custom_error'] = '';
  
 
         if ($this->form_validation->run('receita') == false) {
-            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
+            $dados['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
 
 

@@ -57,9 +57,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div>
               <div id="progress-acessar" class='hide progress progress-striped active page-progress-bar'><div class='progress-bar' style='width: 100%'></div></div>
-              
-              <button class="btn btn-default submit" type="submit">Entrar</button>
               <a class="reset_pass" href="#">Esqueceu a senha?</a>
+              <button class="btn btn-default submit" type="submit">Entrar</button>
             </div>
 
             <div class="clearfix"></div>
@@ -71,7 +70,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <script type="text/javascript">
     $(document).ready(function(){
-
       $('#user').focus();
       $("#formLogin").validate({
        rules :{
@@ -86,7 +84,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        var dados = $( form ).serialize();
        $('#btn-acessar').addClass('disabled');
        $('#progress-acessar').removeClass('hide');
-
        $.ajax({
         type: "POST",
         url: "<?php echo base_url();?>home/verificarLogin?ajax=true",
@@ -98,20 +95,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             window.location.href = "<?php echo base_url();?>home";
           }
           else{
-
-
             $('#btn-acessar').removeClass('disabled');
             $('#progress-acessar').addClass('hide');
-
             /*$('#call-modal').trigger('click');*/
             $('#myModal').modal('show');
           }
         }
       });
-
        return false;
      },
-
      errorClass: "help-inline",
      errorElement: "span",
      highlight:function(element, errorClass, validClass) {
@@ -122,9 +114,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $(element).parents('.control-group').addClass('success');
     }
   });
-
     });
-
   </script>
 
   <!-- Modal -->

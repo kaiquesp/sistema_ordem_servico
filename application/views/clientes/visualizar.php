@@ -24,25 +24,177 @@
 
         <div class="" role="tabpanel" data-example-id="togglable-tabs">
           <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Home</a>
+            <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Dados do cliente</a>
             </li>
-            <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Profile</a>
-            </li>
-            <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Profile</a>
+            <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Ordens de serviço</a>
             </li>
           </ul>
           <div id="myTabContent" class="tab-content">
             <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-              <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
-                synth. Cosby sweater eu banh mi, qui irure terr.</p>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_content">
+
+                    <!-- start accordion -->
+                    <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                      <div class="panel">
+                        <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <h4 class="panel-title">Dados Pessoais</h4>
+                        </a>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                          <div class="panel-body">
+                            <table class="table table-bordered">
+                              <tbody>
+                               <tr>
+                                    <td style="text-align: right; width: 30%"><strong>Nome</strong></td>
+                                    <td><?php echo $result->nomeCliente ?></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right"><strong>CNPJ</strong></td>
+                                    <td><?php echo $result->cnpj ?></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right"><strong>CPF</strong></td>
+                                    <td><?php echo $result->cpf ?></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right"><strong>Data de Cadastro</strong></td>
+                                    <td><?php echo date('d/m/Y',  strtotime($result->dataCadastro)) ?></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel">
+                        <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          <h4 class="panel-title">Contatos</h4>
+                        </a>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                          <div class="panel-body">
+                            <table class="table table-bordered">
+                              <tbody>
+                               <tr>
+                                    <td style="text-align: right; width: 30%"><strong>Telefone</strong></td>
+                                    <td><?php echo $result->telefone ?></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right"><strong>Celular</strong></td>
+                                    <td><?php echo $result->celular ?></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right"><strong>Email</strong></td>
+                                    <td><?php echo $result->email ?></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel">
+                        <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          <h4 class="panel-title">Endereço</h4>
+                        </a>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                          <div class="panel-body">
+                            <table class="table table-bordered">
+                              <tbody>
+                               <tr>
+                                    <td style="text-align: right; width: 30%"><strong>Rua</strong></td>
+                                    <td><?php echo $result->rua ?></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right"><strong>Número</strong></td>
+                                    <td><?php echo $result->numero ?></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right"><strong>Bairro</strong></td>
+                                    <td><?php echo $result->bairro ?></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right"><strong>Cidade</strong></td>
+                                    <td><?php echo $result->cidade ?> - <?php echo $result->estado ?></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right"><strong>CEP</strong></td>
+                                    <td><?php echo $result->cep ?></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end of accordion -->
+
+
+                  </div>
+                </div>
+              </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-              <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                booth letterpress, commodo enim craft beer mlkshk aliquip</p>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
-              <p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                booth letterpress, commodo enim craft beer mlkshk </p>
+                <?php if (!$results) { ?>
+                
+                    <table class="table table-bordered ">
+                        <thead>
+                            <tr style="backgroud-color: #2D335B">
+                                <th>#</th>
+                                <th>Data Inicial</th>
+                                <th>Data Final</th>
+                                <th>Descricao</th>
+                                <th>Defeito</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td colspan="5">Nenhuma OS Cadastrada</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+                <?php } else { ?>
+                <table class="table table-bordered ">
+                    <thead>
+                        <tr style="backgroud-color: #2D335B">
+                            <th>#</th>
+                            <th>Data Inicial</th>
+                            <th>Data Final</th>
+                            <th>Descricao</th>
+                            <th>Defeito</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                <?php
+                    foreach ($results as $r) {
+                    $dataInicial = date(('d/m/Y'), strtotime($r->dataInicial));
+                    $dataFinal = date(('d/m/Y'), strtotime($r->dataFinal));
+                    echo '<tr>';
+                        echo '<td>' . $r->idOs . '</td>';
+                        echo '<td>' . $dataInicial . '</td>';
+                        echo '<td>' . $dataFinal . '</td>';
+                        echo '<td>' . $r->descricaoProduto . '</td>';
+                        echo '<td>' . $r->defeito . '</td>';
+
+                        echo '<td>';
+                        if($this->permission->checkPermission($this->session->userdata('permissao'),'vOs')){
+                            echo '<a href="' . base_url() . 'os/visualizar/' . $r->idOs . '" style="margin-right: 1%" class="btn btn-default" title="Ver mais detalhes"><i class="fa fa-eye"></i></a>'; 
+                        }
+                        if($this->permission->checkPermission($this->session->userdata('permissao'),'eOs')){
+                            echo '<a href="' . base_url() . 'os/editar/' . $r->idOs . '" class="btn btn-info tip-top" title="Editar OS"><i class="fa fa-edit"></i></a>'; 
+                        }
+                        
+                        echo  '</td>';
+                        echo '</tr>';
+                        }?>
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <?php  } ?>
             </div>
           </div>
         </div>
