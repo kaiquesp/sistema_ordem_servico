@@ -1,5 +1,5 @@
 <?php 
-$session = $this->session->userdata('logado');
+$session = $this->session->userdata();
 $nome = $session['nome'];
 $foto = $session['foto'];
 ?>
@@ -20,7 +20,9 @@ $foto = $session['foto'];
   <div class="menu_section">
     <ul class="nav side-menu">
     <li><a href="<?php echo base_url("home"); ?>"><i class="fa fa-home"></i> Home</a></li>
-      <li><a href="<?php echo base_url("clientes"); ?>"><i class="fa fa-users"></i> Clientes</a></li>
+      <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vCliente')){ ?>
+        <li><a href="<?php echo base_url("clientes"); ?>"><i class="fa fa-users"></i> Clientes</a></li>
+      <?php } ?>
       <!-- <li><a><i class="fa fa-users"></i> Clientes <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="cadastrocliente"><i class="fa fa-plus"></i> Cadastro</a></li>
@@ -52,6 +54,7 @@ $foto = $session['foto'];
       </li>
       <li><a href="agenda"><i class="fa fa-calendar"></i> Agenda</a></li>
       <li><a href="requisicaoajax"><i class="fa fa-circle-o"></i> Requisição Jquery/Ajax</a></li> -->
+      <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')  || $this->permission->checkPermission($this->session->userdata('permissao'),'cEmitente') || $this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao') || $this->permission->checkPermission($this->session->userdata('permissao'),'cBackup')){ ?>
       <li><a><i class="fa fa-cogs"></i> Configurações <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')){ ?>
@@ -59,6 +62,7 @@ $foto = $session['foto'];
           <?php } ?>
         </ul>
       </li>
+      <?php } ?>
     </ul>
   </div>
   </div>

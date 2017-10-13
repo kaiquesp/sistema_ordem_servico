@@ -117,8 +117,8 @@ class Home extends CI_Controller {
                 $password_stored =  $this->encryption->decrypt($user->senha);
 
                 if($password == $password_stored){
-                    $session_data = array('nome' => $user->nome, 'email' => $user->email, 'id' => $user->idUsuarios,'permissao' => $user->permissoes_id , 'foto' => $user->foto, 'logado' => TRUE);
-                    $this->session->set_userdata('logado',$session_data);
+                    $session_data = array('nome' => $user->nome, 'email' => $user->email, 'id' => $user->idUsuarios,'permissao' => $user->permissoes_id, 'foto' => $user->foto, 'logado' => TRUE);
+                    $this->session->set_userdata($session_data);
                     $json = array('result' => true);
                     echo json_encode($json);
                 }

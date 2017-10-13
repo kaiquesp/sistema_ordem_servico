@@ -1,5 +1,5 @@
 <?php 
-$session = $this->session->userdata('logado');
+$session = $this->session->userdata();
 $nome = $session['nome'];
 $foto = $session['foto'];
 ?>
@@ -26,7 +26,7 @@ $foto = $session['foto'];
               </a>
             </li>
             <li><a href="javascript:;">Help</a></li>
-            <li><a href="<?php echo base_url("home/sair"); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+            <li><a href="<?php echo base_url("home/sair"); ?>"><i class="fa fa-sign-out pull-right"></i> Sair</a></li>
           </ul>
         </li>
 

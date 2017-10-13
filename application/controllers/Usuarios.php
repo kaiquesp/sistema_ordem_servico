@@ -61,7 +61,8 @@ class Usuarios extends CI_Controller {
             $dadosusuario['senha'] = $this->encryption->encrypt($this->input->post('senha'));
             $dadosusuario['situacao'] = $this->input->post('situacao');
             $dadosusuario['permissoes_id'] = $this->input->post('permissoes_id');
-            $dadosusuario['dataCadastro'] = date('Y-m-d');					
+            $dadosusuario['dataCadastro'] = date('Y-m-d');	
+            $dadosusuario['foto'] = '01avatar.png';				
             
             $this->load->model('usuarios_model');
             $resultadousuario = $this->usuarios_model->add($dadosusuario);

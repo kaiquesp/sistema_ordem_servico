@@ -50,7 +50,8 @@ class Usuarios_model extends CI_Model {
                 'senha'         => $dados ['senha'],
                 'situacao'      => $dados ['situacao'],
                 'permissoes_id' => $dados ['permissoes_id'],
-                'dataCadastro'  => $dados ['dataCadastro']
+                'dataCadastro'  => $dados ['dataCadastro'],
+                'foto'          => $dados ['foto']
                 ) );
             return true;
         } else {
