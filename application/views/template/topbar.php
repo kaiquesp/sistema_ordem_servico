@@ -1,6 +1,6 @@
 <?php 
-$session_youtube = $this->session->userdata('logged_in');
-$nomeUsuario = $session_youtube['nomeUsuario'];
+$session = $this->session->userdata('logado');
+$nome = $session['nome'];
 ?>
 <!-- top navigation -->
 <div class="top_nav">
@@ -13,7 +13,7 @@ $nomeUsuario = $session_youtube['nomeUsuario'];
       <ul class="nav navbar-nav navbar-right">
         <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <img src="images/img.jpg" alt=""><?php echo $nomeUsuario; ?>
+            <img src="images/img.jpg" alt=""><?php echo $nome; ?>
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">

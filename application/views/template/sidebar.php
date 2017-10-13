@@ -1,6 +1,6 @@
 <?php 
-  $session_youtube = $this->session->userdata('logado');
-  $nomeUsuario = $session_youtube['nomeUsuario'];
+$session = $this->session->userdata('logado');
+$nome = $session['nome'];
 ?>
 
 <!-- menu profile quick info -->
@@ -10,7 +10,7 @@
   </div>
   <div class="profile_info">
     <span>Bem vindo,</span>
-    <h2><?php echo $nomeUsuario; ?></h2>
+    <h2><?php echo $nome; ?></h2>
   </div>
 </div>
 
