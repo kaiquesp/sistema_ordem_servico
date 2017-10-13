@@ -1,6 +1,7 @@
 <?php 
 $session = $this->session->userdata('logado');
 $nome = $session['nome'];
+$foto = $session['foto'];
 ?>
 <!-- top navigation -->
 <div class="top_nav">
@@ -13,7 +14,7 @@ $nome = $session['nome'];
       <ul class="nav navbar-nav navbar-right">
         <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <img src="images/img.jpg" alt=""><?php echo $nome; ?>
+            <img src="<?php echo site_url().'assets/foto/'.$foto;?>" alt="foto"><?php echo $nome; ?>
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">

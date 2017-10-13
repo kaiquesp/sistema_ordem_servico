@@ -1,12 +1,13 @@
 <?php 
 $session = $this->session->userdata('logado');
 $nome = $session['nome'];
+$foto = $session['foto'];
 ?>
 
 <!-- menu profile quick info -->
 <div class="profile clearfix">
   <div class="profile_pic">
-    <img src="../assetsadm/img/01avatar.png" alt="..." class="img-circle profile_img">
+    <img src="<?php echo site_url().'assets/foto/'.$foto;?>" alt="foto" class="img-circle profile_img">
   </div>
   <div class="profile_info">
     <span>Bem vindo,</span>
