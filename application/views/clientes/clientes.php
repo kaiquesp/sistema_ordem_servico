@@ -44,7 +44,17 @@
                     <td><?php echo $r->cnpj; ?></td>
                     <td><?php echo $r->cpf; ?></td>
                     <td><?php echo $r->telefone; ?></td>
-                    <td><a href="<?php echo base_url().'clientes/visualizar/'.$r->idClientes; ?>" style="margin-right: 1%" class="btn btn-default tip-top" title="Ver mais detalhes"><i class="fa fa-eye"></i></a><a href="<?php echo base_url().'clientes/editar/'.$r->idClientes; ?>" class="btn btn-info tip-top" title="Editar Cliente"><i class="fa fa-edit"></i></a><a href="<?php echo base_url().'clientes/excluir/'.$r->idClientes; ?>" class="btn btn-danger tip-top" title="Excluir Cliente"><i class="fa fa-trash-o"></i></a></td>
+                    <td>
+                    <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vCliente')){ ?>
+                    <a href="<?php echo base_url().'clientes/visualizar/'.$r->idClientes; ?>" style="margin-right: 1%" class="btn btn-default tip-top" title="Ver mais detalhes"><i class="fa fa-eye"></i></a>
+					<?php }?>
+                    <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'eCliente')){ ?>
+                    <a href="<?php echo base_url().'clientes/editar/'.$r->idClientes; ?>" class="btn btn-info tip-top" title="Editar Cliente"><i class="fa fa-edit"></i></a>
+                    <?php }?>
+                    <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'dCliente')){ ?>
+                    <a href="<?php echo base_url().'clientes/excluir/'.$r->idClientes; ?>" class="btn btn-danger tip-top" title="Excluir Cliente"><i class="fa fa-trash-o"></i></a>
+                    <?php }?>
+                    </td>
                   </tr>
                   <?php 
                 }
