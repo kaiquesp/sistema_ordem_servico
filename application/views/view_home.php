@@ -44,6 +44,8 @@ if ($this->session->userdata('logado')){
     <link href="<?php echo site_url(); ?>assets/css/datatables.net-fixedheader-bs/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo site_url(); ?>assets/css/datatables.net-responsive-bs/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo site_url(); ?>assets/css/datatables.net-scroller-bs/scroller.bootstrap.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="<?php echo site_url(); ?>assets/css/switchery/switchery.min.css" rel="stylesheet">
 </head>
 
 <body class="nav-md">
@@ -115,6 +117,8 @@ if ($this->session->userdata('logado')){
 
         <!-- Custom Theme Scripts -->
         <script src="<?php echo site_url(); ?>assets/js/custom.min.js"></script>
+        <!-- Switchery -->
+        <script src="<?php echo site_url(); ?>assets/js/switchery/switchery.min.js"></script>
 
         <!-- Datatables -->
         <script src="<?php echo site_url(); ?>assets/js/datatables.net/jquery.dataTables.min.js"></script>

@@ -8,7 +8,7 @@
     <div class="clearfix"></div>
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
-            <a href="<?php echo base_url();?>permissoes/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Permissão</a>
+        <a href="<?php echo base_url();?>permissoes/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Permissão</a>
         <?php if(isset($msg)){
           echo "<div class='box-header with-border'>".$msg."</div>";
         } 
@@ -20,8 +20,8 @@
           <p><?php echo $this->session->flashdata('success'); ?></p>
         <?php endif; ?>
         <div class="x_content">
-        <?php
-        if(!$results){?>
+          <?php
+          if(!$results){?>
           <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
             <thead>
               <tr>
@@ -37,8 +37,8 @@
               <td colspan="5">Nenhuma permissão encontrada!</td>
             </tbody>
           </table>
-		<?php }else{?>
-			<table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+          <?php }else{?>
+          <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
             <thead>
               <tr>
                 <th>#</th>
@@ -50,23 +50,23 @@
             </thead>
             <tbody>
               <?php foreach ($results as $r) {
-            if($r->situacao == 1){$situacao = 'Ativo';}else{$situacao = 'Inativo';}
-            echo '<tr>';
-            echo '<td>'.$r->idPermissao.'</td>';
-            echo '<td>'.$r->nome.'</td>';
-            echo '<td>'.date('d/m/Y',strtotime($r->data)).'</td>';
-            echo '<td>'.$situacao.'</td>';
-            echo '<td><a href="'.base_url().'index.php/permissoes/editar/'.$r->idPermissao.'" class="btn btn-info tip-top" title="Editar Permissão"><i class="fa fa-edit"></i></a>
-                      <a href="#modal-excluir" role="button" data-toggle="modal" permissao="'.$r->idPermissao.'" class="btn btn-danger tip-top" title="Desativar Permissão"><i class="fa fa-trash-o"></i></a></td>';
-            echo '</tr>';
-        }?>
-        <tr>
-            
-        </tr>
+                if($r->situacao == 1){$situacao = 'Ativo';}else{$situacao = 'Inativo';}
+                echo '<tr>';
+                echo '<td>'.$r->idPermissao.'</td>';
+                echo '<td>'.$r->nome.'</td>';
+                echo '<td>'.date('d/m/Y',strtotime($r->data)).'</td>';
+                echo '<td>'.$situacao.'</td>';
+                echo '<td><a href="'.base_url().'index.php/permissoes/editar/'.$r->idPermissao.'" class="btn btn-info tip-top" title="Editar Permissão"><i class="fa fa-edit"></i></a>
+                      </td>';
+                echo '</tr>';
+              }?>
+              <tr>
+
+              </tr>
 
             </tbody>
           </table>
-		<?php }?>
+          <?php }?>
 
         </div>
       </div>

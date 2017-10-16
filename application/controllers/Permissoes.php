@@ -216,9 +216,11 @@ class Permissoes extends CI_Controller {
     function desativar(){
         
         $id =  $this->input->post('id');
+        var_dump($id);
+        die;
         if ($id == null){
             $this->session->set_flashdata('error','Erro ao tentar desativar permissão.');            
-            redirect(base_url().'index.php/permissoes/gerenciar/');
+            redirect(base_url().'permissoes/gerenciar/');
         }
         $data = array(
           'situacao' => false
@@ -227,11 +229,11 @@ class Permissoes extends CI_Controller {
           $this->session->set_flashdata('success','Permissão desativada com sucesso!');  
         }
         else{
-          $this->session->set_flashdata('error','Erro ao desativar permissão!');  
+          $this->session->set_flashdata('error','Erro ao desativar permissão!', $id);  
         }         
         
                   
-        redirect(base_url().'index.php/permissoes/gerenciar/');
+        redirect(base_url().'permissoes/gerenciar/');
     }
 }
 
