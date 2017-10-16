@@ -37,39 +37,43 @@ class Clientes extends CI_Controller {
            $this->session->set_flashdata('error','Você não tem permissão para adicionar clientes.');
            redirect(base_url());
         }
-        $this->load->library('form_validation');
-        $dados['custom_error'] = '';
-        if ($this->form_validation->run('clientes') == false) {
-            $dados['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
-        } else {
-            $data = array(
-                'nomeCliente' => set_value('nomeCliente'),
-                'documento' => set_value('documento'),
-                'telefone' => set_value('telefone'),
-                'celular' => $this->input->post('celular'),
-                'email' => set_value('email'),
-                'rua' => set_value('rua'),
-                'numero' => set_value('numero'),
-                'bairro' => set_value('bairro'),
-                'cidade' => set_value('cidade'),
-                'estado' => set_value('estado'),
-                'cep' => set_value('cep'),
-                'dataCadastro' => date('Y-m-d')
-            );
-            if ($this->clientes_model->add('clientes', $data) == TRUE) {
-                $this->session->set_flashdata('success','Cliente adicionado com sucesso!');
-                redirect(base_url() . 'index.php/clientes/adicionar/');
-            } else {
-                $dados['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
+
+            if ($this->input->post ()) {
+                $data = array(
+                    'nomeCliente'           => $this->input->post('nomeCliente'),
+                    'nomefantasia'          => $this->input->post('nomefantasia'),
+                    'razaosocial'           => $this->input->post('razaosocial'),
+                    'cnpj'                  => $this->input->post('cnpj'),
+                    'cpf'                   => $this->input->post('cpf'),
+                    'telefone'              => $this->input->post('telefone'),
+                    'celular'               => $this->input->post('celular'),
+                    'email'                 => $this->input->post('email'),
+                    'cep'                   => $this->input->post('cep'),
+                    'rua'                   => $this->input->post('rua'),
+                    'numero'                => $this->input->post('numero'),
+                    'complemento'           => $this->input->post('complemento'),
+                    'bairro'                => $this->input->post('bairro'),
+                    'cidade'                => $this->input->post('cidade'),
+                    'estado'                => $this->input->post('estado'),
+                    'dataCadastro'          => date('Y-m-d')
+                );
+
+
+                if ($this->clientes_model->add('clientes', $data) == TRUE) {
+                    $this->session->set_flashdata('success','Cliente adicionado com sucesso!');
+                    redirect(base_url() . 'clientes/adicionar/');
+                } else {
+                    $dados['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
+                }
             }
-        }
-        $dados['view'] = 'clientes/adicionarCliente';
-        $this->load->view('tema/topo', $this->data);
+        
+        $dados['tela'] = 'clientes/adicionarCliente';
+        $this->load->view('view_home', $dados);
     }
     function editar() {
         if(!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))){
             $this->session->set_flashdata('error','Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('home');
         }
         if(!$this->permission->checkPermission($this->session->userdata('permissao'),'eCliente')){
            $this->session->set_flashdata('error','Você não tem permissão para editar clientes.');
