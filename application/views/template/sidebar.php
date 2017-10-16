@@ -60,6 +60,9 @@ $foto = $session['foto'];
           <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')){ ?>
             <li><a href="<?php echo base_url("usuarios"); ?>"><i class="fa fa-user"></i> Usuários</a></li>
           <?php } ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao')){ ?>
+            <li><a href="<?php echo base_url("permissoes"); ?>"><i class="fa fa-user"></i> Permissoes</a></li>
+          <?php } ?>
         </ul>
       </li>
       <?php } ?>
