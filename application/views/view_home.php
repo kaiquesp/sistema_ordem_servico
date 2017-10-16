@@ -49,7 +49,7 @@ if ($this->session->userdata('logado')){
 <body class="nav-md">
   <div class="container body">
       <div class="main_container">
-          <div class="col-md-3 left_col">
+          <div class="col-md-3 left_col menu_fixed">
               <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
                   <a href="dashboard" class="site_title"><i class="fa fa-paw"></i> <span>Sistema JapaCar</span></a>
@@ -134,5 +134,28 @@ if ($this->session->userdata('logado')){
         <script src="<?php echo site_url(); ?>assets/js/pdfmake/vfs_fonts.js"></script>
         <!-- jquery.inputmask -->
         <script src="<?php echo site_url(); ?>assets/js/jquery.inputmask/jquery.inputmask.bundle.min.js"></script>
+        
+        <script type="text/javascript" src="<?php echo base_url()?>assets/js/validate.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+    $("#marcarTodos").change(function () {
+        $("input:checkbox").prop('checked', $(this).prop("checked"));
+    });   
+
+ 
+    $("#formPermissao").validate({
+        rules :{
+            nome: {required: true}
+        },
+        messages:{
+            nome: {required: 'Campo obrigatório'}
+        }
+    });     
+
+        
+
+    });
+</script>
     </body>
     </html>
