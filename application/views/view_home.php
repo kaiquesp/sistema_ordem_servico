@@ -140,26 +140,26 @@ if ($this->session->userdata('logado')){
         <script src="<?php echo site_url(); ?>assets/js/jquery.inputmask/jquery.inputmask.bundle.min.js"></script>
         
         <script type="text/javascript" src="<?php echo base_url()?>assets/js/validate.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
+        <script type="text/javascript">
+            $(document).ready(function(){
 
-    $("#marcarTodos").change(function () {
-        $("input:checkbox").prop('checked', $(this).prop("checked"));
-    });   
+                $("#marcarTodos").change(function () {
+                    $('.js-switch input[type="checkbox"]').prop('checked', $(this).prop("checked"));
+                });   
 
- 
-    $("#formPermissao").validate({
-        rules :{
-            nome: {required: true}
-        },
-        messages:{
-            nome: {required: 'Campo obrigatório'}
-        }
-    });     
 
-        
+                $("#formPermissao").validate({
+                    rules :{
+                        nome: {required: true}
+                    },
+                    messages:{
+                        nome: {required: 'Campo obrigatório'}
+                    }
+                });     
 
-    });
-</script>
+
+
+            });
+        </script>
     </body>
     </html>

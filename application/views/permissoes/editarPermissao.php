@@ -23,17 +23,26 @@
         <form action="<?php echo base_url();?>permissoes/editar" id="formPermissao" method="post">
            <div class="row">
                 <div class="col-md-4">
-                <label>Nome da Permissão</label>
-                <input name="nome" type="text" id="nome" class="span12" value="<?php echo $result->nome; ?>" />
-                <input type="hidden" name="idPermissao" value="<?php echo $result->idPermissao; ?>">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nome da Permissão <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="nome" name="nome" class="form-control col-md-7 col-xs-12" value="<?php echo $result->nome; ?>">
+                            <input type="hidden" name="idPermissao" value="<?php echo $result->idPermissao; ?>">
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                <label>Situação</label>
-                <select name="situacao" id="situacao" class="span12">
-                    <?php if($result->situacao == 1){$sim = 'selected'; $nao ='';}else{$sim = ''; $nao ='selected';}?>
-                    <option value="1" <?php echo $sim;?>>Ativo</option>
-                    <option value="0" <?php echo $nao;?>>Inativo</option>
-                </select>
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Situação</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <select class="form-control" name="situacao" id="situacao">
+                            <?php if($result->situacao == 1){$sim = 'selected'; $nao ='';}else{$sim = ''; $nao ='selected';}?>
+                            <option value="1" <?php echo $sim;?>>Ativo</option>
+                            <option value="0" <?php echo $nao;?>>Inativo</option>
+                          </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <label>
