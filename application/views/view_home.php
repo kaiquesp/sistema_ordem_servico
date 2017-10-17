@@ -63,16 +63,16 @@ if ($this->session->userdata('logado')){
 
               <br />
 
-            <?php
-                $this->load->view('template/header');
-                $this->load->view('template/sidebar');
-                $this->load->view('template/topbar');           
-            ?>
-                <?php
-                    if ($tela != '') {
-                        $this->load->view($tela);
-                }
-                $this->load->view('template/footer');
+              <?php
+              $this->load->view('template/header');
+              $this->load->view('template/sidebar');
+              $this->load->view('template/topbar');           
+              ?>
+              <?php
+              if ($tela != '') {
+                $this->load->view($tela);
+            }
+            $this->load->view('template/footer');
             ?>
 
         </div>
@@ -161,5 +161,5 @@ if ($this->session->userdata('logado')){
 
             });
         </script>
-    </body>
-    </html>
+  </body>
+  </html>
