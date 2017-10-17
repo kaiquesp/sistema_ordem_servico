@@ -10,12 +10,7 @@
       <div class="x_panel">
         <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'aProduto')){ ?>
         <a href="<?php echo base_url();?>produtos/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Produto</a>
-        <?php } ?>
-        <?php if(isset($msg)){
-          echo "<div class='box-header with-border'>".$msg."</div>";
-        } 
-        ?>
-        
+        <?php } ?>        
         <?php if ($this->session->flashdata('error') == TRUE): ?>
           <div class="alert alert-success alert-dismissible fade in" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
@@ -76,7 +71,7 @@
                                 <form action="<?php echo base_url() ?>clientes/excluir" method="post" >
                                   <div class="modal-body">
                                     <input type="hidden" id="idProduto" name="id" value="<?php echo $r->idClientes; ?>" />
-                                    <h5 style="text-align: center">Deseja realmente excluir este produto <strong><?php echo $r->nomeCliente; ?></strong> ?</h5>
+                                    <h5 style="text-align: center">Deseja realmente excluir o cliente <strong><?php echo $r->nomeCliente; ?></strong> ?</h5>
                                   </div>
                                   <div class="modal-footer">
                                     <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>

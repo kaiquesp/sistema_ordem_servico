@@ -11,15 +11,19 @@
         <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'aProduto')){ ?>
             <a href="<?php echo base_url();?>produtos/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Produto</a>
         <?php } ?>
-        <?php if(isset($msg)){
-          echo "<div class='box-header with-border'>".$msg."</div>";
-        } 
-        ?>
         <?php if ($this->session->flashdata('error') == TRUE): ?>
-          <p><?php echo $this->session->flashdata('error'); ?></p>
+          <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+            </button>
+            <p><?php echo $this->session->flashdata('error'); ?></p>
+          </div>
         <?php endif; ?>
         <?php if ($this->session->flashdata('success') == TRUE): ?>
-          <p><?php echo $this->session->flashdata('success'); ?></p>
+          <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+            </button>
+            <p><?php echo $this->session->flashdata('success'); ?></p>
+          </div>
         <?php endif; ?>
         <div class="x_content">
           <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
@@ -50,32 +54,31 @@
                         echo '<a style="margin-right: 1%" href="'.base_url().'index.php/produtos/editar/'.$r->idProdutos.'" class="btn btn-info" title="Editar Produto"><i class="fa fa-edit"></i></a>'; 
                     }
                     if($this->permission->checkPermission($this->session->userdata('permissao'),'dProduto')){
-                        echo '<a href="#delete-modal" role="button" data-toggle="modal" class="btn btn-danger tip-top" title="Excluir Produto"><i class="fa fa-trash"></i></a>'; 
+                        echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal'.$r->idProdutos.'"><i class="fa fa-trash"></i></button>'; 
 
                     ?>
-                        <!-- Modal -->
-                        <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+                       <div class="modal fade" id="myModal<?php echo $r->idProdutos; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="modalLabel">Excluir Produto</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title text-center" id="myModalLabel">Excluir Produto</h4>
                               </div>
                               <div class="modal-body">
                                 <form action="<?php echo base_url() ?>produtos/excluir" method="post" >
                                   <div class="modal-body">
                                     <input type="hidden" id="idProduto" name="id" value="<?php echo $r->idProdutos; ?>" />
-                                    <h5 style="text-align: center">Deseja realmente excluir este produto <strong><?php echo $r->descricao; ?>?</strong></h5>
+                                    <h5 style="text-align: center">Deseja realmente excluir este produto <strong><?php echo $r->descricao; ?></strong> ?</h5>
                                   </div>
                                   <div class="modal-footer">
                                     <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
                                     <button class="btn btn-danger">Excluir</button>
                                   </div>
-                                  </form>
+                                </form>
                               </div>
                             </div>
                           </div>
-                        </div> <!-- /.modal -->
+                        </div>
                     <?php }?>
                     </td>
                   </tr>
