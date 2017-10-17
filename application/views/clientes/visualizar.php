@@ -1,32 +1,13 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
-      <div class="x_title">
-        <h2><i class="fa fa-bars"></i> Tabs <small>Float left</small></h2>
-        <ul class="nav navbar-right panel_toolbox">
-          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Settings 1</a>
-              </li>
-              <li><a href="#">Settings 2</a>
-              </li>
-            </ul>
-          </li>
-          <li><a class="close-link"><i class="fa fa-close"></i></a>
-          </li>
-        </ul>
-        <div class="clearfix"></div>
-      </div>
       <div class="x_content">
 
 
         <div class="" role="tabpanel" data-example-id="togglable-tabs">
           <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Dados do cliente</a>
+            <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Dados do Cliente</a>
             </li>
-            <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Ordens de serviço</a>
+            <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">OS</a>
             </li>
           </ul>
           <div id="myTabContent" class="tab-content">
@@ -72,7 +53,7 @@
                         </a>
                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                           <div class="panel-body">
-                            <table class="table table-bordered">
+                            <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                               <tbody>
                                <tr>
                                     <td style="text-align: right; width: 30%"><strong>Telefone</strong></td>
@@ -97,7 +78,7 @@
                         </a>
                         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                           <div class="panel-body">
-                            <table class="table table-bordered">
+                            <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                               <tbody>
                                <tr>
                                     <td style="text-align: right; width: 30%"><strong>Rua</strong></td>
@@ -135,7 +116,7 @@
             <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
                 <?php if (!$results) { ?>
                 
-                    <table class="table table-bordered ">
+                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                         <thead>
                             <tr style="backgroud-color: #2D335B">
                                 <th>#</th>
@@ -155,7 +136,7 @@
                     </table>
                 
                 <?php } else { ?>
-                <table class="table table-bordered ">
+                <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead>
                         <tr style="backgroud-color: #2D335B">
                             <th>#</th>
@@ -202,3 +183,5 @@
       </div>
     </div>
   </div>
+    <script type="text/javascript" src="<?php site_url(); ?>assets/js/jquery/jquery-2.2.3.min.js"></script>
+  <script type="text/javascript" src="<?php site_url(); ?>assets/js/datatables.net/jquery.dataTables.min.js"></script>
