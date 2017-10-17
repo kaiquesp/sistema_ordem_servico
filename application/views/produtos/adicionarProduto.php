@@ -1,160 +1,100 @@
-<style>
-/* Hiding the checkbox, but allowing it to be focused */
-.badgebox
-{
-    opacity: 0;
-}
+<div class="">
+  <div class="page-title">
+    <div class="title_left">
+      <h3>Cadastro de usuários</h3>
+    </div>
+  </div>
+  <div class="clearfix"></div>
 
-.badgebox + .badge
-{
-    /* Move the check mark away when unchecked */
-    text-indent: -999999px;
-    /* Makes the badge's width stay the same checked and unchecked */
-	width: 27px;
-}
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+        <?php if ($custom_error != '') {
 
-.badgebox:focus + .badge
-{
-    /* Set something to make the badge looks focused */
-    /* This really depends on the application, in my case it was: */
-    
-    /* Adding a light border */
-    box-shadow: inset 0px 0px 5px;
-    /* Taking the difference out of the padding */
-}
-
-.badgebox:checked + .badge
-{
-    /* Move the check mark back when checked */
-	text-indent: 0;
-}
-</style>
-<div class="row-fluid" style="margin-top:0">
-    <div class="span12">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="icon-align-justify"></i>
-                </span>
-                <h5>Cadastro de Produto</h5>
-            </div>
-            <div class="widget-content nopadding">
-                <?php echo $custom_error; ?>
-                <form action="<?php echo current_url(); ?>" id="formProduto" method="post" class="form-horizontal" >
-                     <div class="control-group">
-                        <label for="descricao" class="control-label">Descrição<span class="required">*</span></label>
-                        <div class="controls">
-                            <input id="descricao" type="text" name="descricao" value="<?php echo set_value('descricao'); ?>"  />
-                        </div>
-                    </div>
-
-
-                    <div class="control-group">
-                        <label class="control-label">Tipo de Movimento</label>
-                        <div class="controls">
-                            <label for="entrada" class="btn btn-default" style="margin-top: 5px;">Entrada 
-                                <input type="checkbox" id="entrada" name="entrada" class="badgebox" value="1" checked>
-                                <span class="badge" >&check;</span>
-                            </label>
-                            <label for="saida" class="btn btn-default" style="margin-top: 5px;">Saída 
-                                <input type="checkbox" id="saida" name="saida" class="badgebox" value="1" checked>
-                                <span class="badge" >&check;</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="precoCompra" class="control-label">Preço de Compra<span class="required">*</span></label>
-                        <div class="controls">
-                            <input id="precoCompra" class="money" type="text" name="precoCompra" value="<?php echo set_value('precoCompra'); ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="precoVenda" class="control-label">Preço de Venda<span class="required">*</span></label>
-                        <div class="controls">
-                            <input id="precoVenda" class="money" type="text" name="precoVenda" value="<?php echo set_value('precoVenda'); ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                    <label for="unidade" class="control-label">Unidade<span class="required">*</span></label>
-                    <div class="controls">
-                        <!--<input id="unidade" type="text" name="unidade" value="<?php echo set_value('unidade'); ?>"  />-->
-                        <select id="unidade" name="unidade">
-                            <option value="UN">Unidade</option>
-                            <option value="KG">Kilograma</option>
-                            <option value="LT">Litro</option>
-                            <option value="CX">Caixa</option>
-                        </select>
-                    </div>
-                    </div>                     
-
-                    <div class="control-group">
-                        <label for="estoque" class="control-label">Estoque<span class="required">*</span></label>
-                        <div class="controls">
-                            <input id="estoque" type="text" name="estoque" value="<?php echo set_value('estoque'); ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="estoqueMinimo" class="control-label">Estoque Mínimo</label>
-                        <div class="controls">
-                            <input id="estoqueMinimo" type="text" name="estoqueMinimo" value="<?php echo set_value('estoqueMinimo'); ?>"  />
-                        </div>
-                    </div>
-
-                    <div class="form-actions">
-                        <div class="span12">
-                            <div class="span6 offset3">
-                                <button type="submit" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar</button>
-                                <a href="<?php echo base_url() ?>index.php/produtos" id="" class="btn"><i class="icon-arrow-left"></i> Voltar</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                </form>
-            </div>
-
-         </div>
-     </div>
-</div>
-
-<script src="<?php echo base_url()?>assets/js/jquery.validate.js"></script>
-<script src="<?php echo base_url();?>assets/js/maskmoney.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $(".money").maskMoney();
-
-        $('#formProduto').validate({
-            rules :{
-                  descricao: { required: true},
-                  unidade: { required: true},
-                  precoCompra: { required: true},
-                  precoVenda: { required: true},
-                  estoque: { required: true}
-            },
-            messages:{
-                  descricao: { required: 'Campo Requerido.'},
-                  unidade: {required: 'Campo Requerido.'},
-                  precoCompra: { required: 'Campo Requerido.'},
-                  precoVenda: { required: 'Campo Requerido.'},
-                  estoque: { required: 'Campo Requerido.'}
-            },
-
-            errorClass: "help-inline",
-            errorElement: "span",
-            highlight:function(element, errorClass, validClass) {
-                $(element).parents('.control-group').addClass('error');
-            },
-            unhighlight: function(element, errorClass, validClass) {
-                $(element).parents('.control-group').removeClass('error');
-                $(element).parents('.control-group').addClass('success');
+            if($custom_error == 'Usuário cadastrado com sucesso'){
+              echo '<div class="alert alert-success">'.$custom_error.'</div>';
+            }else{
+              echo '<div class="alert alert-danger">'.$custom_error.'</div>';
             }
-           });
-    });
+        } ?>
+        <form role="form" action="adicionar" id="formUsuario" method="POST" class="form-horizontal form-label-left">
+          </p>
+
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descricao">Descricao <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="descricao" name="descricao" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Descricao" required="required" type="text" value="<?php echo set_value('descricao'); ?>">
+            </div>
+          </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Tipo de Movimento
+            </label>
+            <div class="controls col-md-6 col-sm-6 col-xs-12">
+                <label for="entrada" class="btn btn-default" style="margin-top: 5px;">Entrada 
+                    <input type="checkbox" id="entrada" name="entrada" class="badgebox" value="1" checked>
+                    <span class="badge" >&check;</span>
+                </label>
+                <label for="saida" class="btn btn-default" style="margin-top: 5px;">Saída 
+                    <input type="checkbox" id="saida" name="saida" class="badgebox" value="1" checked>
+                    <span class="badge" >&check;</span>
+                </label>
+            </div>
+          </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="precoCompra">Preço da compra <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="precoCompra" name="precoCompra" class="form-control col-md-7 col-xs-12 format_value" placeholder="Preço da compra" required="required" type="text" style="background-repeat: repeat; background-image: none; background-position: 0% 0%;" value="<?php echo set_value('precoCompra'); ?>">
+            </div>
+          </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="precoVenda">Preço de venda <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="precoVenda" name="precoVenda" class="form-control col-md-7 col-xs-12 format_value" placeholder="Preço da venda" required="required" type="text" style="background-repeat: repeat; background-image: none; background-position: 0% 0%;" value="<?php echo set_value('precoVenda'); ?>">
+            </div>
+          </div>
+            <div class="item form-group">
+            <label for="unidade" class="control-label col-md-3">Unidade</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select class="form-control" name="unidade" id="unidade">
+                    <option value="Unidade">Unidade</option>
+                    <option value="Kilograma">Kilograma</option>
+                    <option value="Litro">Litro</option>
+                    <option value="Caixa">Caixa</option>
+                </select>
+            </div>
+          </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="estoque">Estoque <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="estoque" name="estoque" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Estoque" required="required" type="text" value="<?php echo set_value('estoque'); ?>">
+            </div>
+          </div>
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="estoqueMinimo">Estoque Mínimo <span class="required"></span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="estoqueMinimo" name="estoqueMinimo" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Insira o nome" type="text" value="<?php echo set_value('estoqueMinimo'); ?>">
+            </div>
+          </div>
+          <div class="ln_solid"></div>
+          <div class="form-group">
+            <div class="col-md-6 col-md-offset-3">
+              <button type="submit" class="btn btn-success">Cadastrar usuário</button>
+              <a href="<?php echo base_url("usuarios"); ?>" class="btn btn-danger">Voltar</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script src="<?php site_url(); ?>assets/js/jquery.maskMoney/jquery.maskMoney.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(".format_value").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
 </script>
-
-
-
