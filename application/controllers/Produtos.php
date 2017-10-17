@@ -3,8 +3,8 @@
 class Produtos extends CI_Controller {
     
     /**
-     * author: Ramon Silva 
-     * email: silva018-mg@yahoo.com.br
+     * author: Kaique Alves
+     * email: kaiqueexp@gmail.com
      * 
      */
     
@@ -16,7 +16,7 @@ class Produtos extends CI_Controller {
 
         $this->load->helper(array('form', 'codegen_helper'));
         $this->load->model('produtos_model', '', TRUE);
-        $this->data['menuProdutos'] = 'Produtos';
+        $dados['menuProdutos'] = 'Produtos';
     }
 
     function index(){
@@ -58,10 +58,10 @@ class Produtos extends CI_Controller {
         
         $this->pagination->initialize($config); 	
 
-	    $this->data['results'] = $this->produtos_model->get('produtos','idProdutos,descricao,unidade,precoCompra,precoVenda,estoque,estoqueMinimo','',$config['per_page'],$this->uri->segment(3));
+	    $dados['results'] = $this->produtos_model->get('produtos','idProdutos,descricao,unidade,precoCompra,precoVenda,estoque,estoqueMinimo','',$config['per_page'],$this->uri->segment(3));
        
-	    $this->data['view'] = 'produtos/produtos';
-       	$this->load->view('tema/topo',$this->data);
+	    $dados['tela'] = 'produtos/produtos';
+       	$this->load->view('view_home',$dados);
        
 		
     }
@@ -74,10 +74,10 @@ class Produtos extends CI_Controller {
         }
 
         $this->load->library('form_validation');
-        $this->data['custom_error'] = '';
+        $dados['custom_error'] = '';
 
         if ($this->form_validation->run('produtos') == false) {
-            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
+            $dados['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
             $precoCompra = $this->input->post('precoCompra');
             $precoCompra = str_replace(",","", $precoCompra);
@@ -98,10 +98,10 @@ class Produtos extends CI_Controller {
                 $this->session->set_flashdata('success','Produto adicionado com sucesso!');
                 redirect(base_url() . 'index.php/produtos/adicionar/');
             } else {
-                $this->data['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
+                $dados['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
             }
         }
-        $this->data['view'] = 'produtos/adicionarProduto';
+        $dados['view'] = 'produtos/adicionarProduto';
         $this->load->view('tema/topo', $this->data);
      
     }
@@ -118,10 +118,10 @@ class Produtos extends CI_Controller {
            redirect(base_url());
         }
         $this->load->library('form_validation');
-        $this->data['custom_error'] = '';
+        $dados['custom_error'] = '';
 
         if ($this->form_validation->run('produtos') == false) {
-            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
+            $dados['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
             $precoCompra = $this->input->post('precoCompra');
             $precoCompra = str_replace(",","", $precoCompra);
@@ -142,13 +142,13 @@ class Produtos extends CI_Controller {
                 $this->session->set_flashdata('success','Produto editado com sucesso!');
                 redirect(base_url() . 'index.php/produtos/editar/'.$this->input->post('idProdutos'));
             } else {
-                $this->data['custom_error'] = '<div class="form_error"><p>An Error Occured</p></div>';
+                $dados['custom_error'] = '<div class="form_error"><p>An Error Occured</p></div>';
             }
         }
 
-        $this->data['result'] = $this->produtos_model->getById($this->uri->segment(3));
+        $dados['result'] = $this->produtos_model->getById($this->uri->segment(3));
 
-        $this->data['view'] = 'produtos/editarProduto';
+        $dados['view'] = 'produtos/editarProduto';
         $this->load->view('tema/topo', $this->data);
      
     }
@@ -166,14 +166,14 @@ class Produtos extends CI_Controller {
            redirect(base_url());
         }
 
-        $this->data['result'] = $this->produtos_model->getById($this->uri->segment(3));
+        $dados['result'] = $this->produtos_model->getById($this->uri->segment(3));
 
-        if($this->data['result'] == null){
+        if($dados['result'] == null){
             $this->session->set_flashdata('error','Produto não encontrado.');
             redirect(base_url() . 'index.php/produtos/editar/'.$this->input->post('idProdutos'));
         }
 
-        $this->data['view'] = 'produtos/visualizarProduto';
+        $dados['view'] = 'produtos/visualizarProduto';
         $this->load->view('tema/topo', $this->data);
      
     }
@@ -190,7 +190,7 @@ class Produtos extends CI_Controller {
         if ($id == null){
 
             $this->session->set_flashdata('error','Erro ao tentar excluir produto.');            
-            redirect(base_url().'index.php/produtos/gerenciar/');
+            redirect(base_url().'produtos/gerenciar/');
         }
 
         $this->db->where('produtos_id', $id);
@@ -204,7 +204,7 @@ class Produtos extends CI_Controller {
         
 
         $this->session->set_flashdata('success','Produto excluido com sucesso!');            
-        redirect(base_url().'index.php/produtos/gerenciar/');
+        redirect(base_url().'produtos/gerenciar/');
     }
 }
 
