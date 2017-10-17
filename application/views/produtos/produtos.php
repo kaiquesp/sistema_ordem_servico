@@ -50,7 +50,7 @@
                         echo '<a style="margin-right: 1%" href="'.base_url().'index.php/produtos/editar/'.$r->idProdutos.'" class="btn btn-info" title="Editar Produto"><i class="fa fa-edit"></i></a>'; 
                     }
                     if($this->permission->checkPermission($this->session->userdata('permissao'),'dProduto')){
-                        echo '<a href="#delete-modal" role="button" data-toggle="modal" produto="'.$r->idProdutos.'" class="btn btn-danger tip-top" title="Excluir Produto"><i class="fa fa-trash"></i></a>'; 
+                        echo '<a href="#delete-modal" role="button" data-toggle="modal" class="btn btn-danger tip-top" title="Excluir Produto"><i class="fa fa-trash"></i></a>'; 
 
                     ?>
                         <!-- Modal -->
@@ -65,7 +65,7 @@
                                 <form action="<?php echo base_url() ?>produtos/excluir" method="post" >
                                   <div class="modal-body">
                                     <input type="hidden" id="idProduto" name="id" value="<?php echo $r->idProdutos; ?>" />
-                                    <h5 style="text-align: center">Deseja realmente excluir este produto?</h5>
+                                    <h5 style="text-align: center">Deseja realmente excluir este produto <strong><?php echo $r->descricao; ?>?</strong></h5>
                                   </div>
                                   <div class="modal-footer">
                                     <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
