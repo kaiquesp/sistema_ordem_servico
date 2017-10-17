@@ -1,3 +1,14 @@
+          <div>
+            <?php if ($this->session->flashdata('error') == TRUE): ?>
+                <br><br><br><br>
+                <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                    </button>
+                    <p><?php echo $this->session->flashdata('error'); ?></p>
+                  </div>
+            <?php endif; ?>
+          </div>
+
           <!-- top tiles -->
           <div class="row tile_count">
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
