@@ -1,16 +1,11 @@
-<div class="accordion" id="collapse-group">
-    <div class="accordion-group widget-box">
-        <div class="accordion-heading">
-            <div class="widget-title">
-                <a data-parent="#collapse-group" href="#collapseGOne" data-toggle="collapse">
-                    <span class="icon"><i class="icon-list"></i></span><h5>Dados do Produto</h5>
-                </a>
-            </div>
-        </div>
-        <div class="collapse in accordion-body">
-            <div class="widget-content">
-                <table class="table table-bordered">
-                    <tbody>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="title_left">
+        <h3>Dados do Produto</h3>
+      </div>
+    <div class="x_panel">
+        <div class="x_content">
+            <table class="table table-bordered">
+                  <tbody>
                         <tr>
                             <td style="text-align: right; width: 30%"><strong>Descrição</strong></td>
                             <td><?php echo $result->descricao ?></td>
@@ -35,11 +30,10 @@
                             <td style="text-align: right"><strong>Estoque Mínimo</strong></td>
                             <td><?php echo $result->estoqueMinimo; ?></td>
                         </tr>
-                  
-                    </tbody>
-                </table>
-            </div>
+                  </tbody>
+            </table>
         </div>
-    </div>
+  </div>
 </div>
-
+<script type="text/javascript" src="<?php site_url(); ?>assets/js/jquery/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="<?php site_url(); ?>assets/js/datatables.net/jquery.dataTables.min.js"></script>

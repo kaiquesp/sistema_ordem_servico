@@ -136,10 +136,6 @@ if ($this->session->userdata('logado')){
         <script src="<?php echo site_url(); ?>assets/js/jszip/jszip.min.js"></script>
         <script src="<?php echo site_url(); ?>assets/js/pdfmake/pdfmake.min.js"></script>
         <script src="<?php echo site_url(); ?>assets/js/pdfmake/vfs_fonts.js"></script>
-        <!-- PNotify -->
-        <script src="../vendors/pnotify/dist/pnotify.js"></script>
-        <script src="../vendors/pnotify/dist/pnotify.buttons.js"></script>
-        <script src="../vendors/pnotify/dist/pnotify.nonblock.js"></script>
         <!-- jquery.inputmask -->
         <script src="<?php echo site_url(); ?>assets/js/jquery.inputmask/jquery.inputmask.bundle.min.js"></script>
         

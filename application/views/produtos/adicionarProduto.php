@@ -71,21 +71,21 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="estoque">Estoque <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="estoque" name="estoque" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Estoque" required="required" type="text" value="<?php echo set_value('estoque'); ?>">
+              <input id="estoque" name="estoque" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Ex. 50" required="required" type="text" value="<?php echo set_value('estoque'); ?>">
             </div>
           </div>
           <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="estoqueMinimo">Estoque Mínimo <span class="required"></span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="estoqueMinimo" name="estoqueMinimo" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Insira o nome" type="text" value="<?php echo set_value('estoqueMinimo'); ?>">
+              <input id="estoqueMinimo" name="estoqueMinimo" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Ex. 5" type="text" value="<?php echo set_value('estoqueMinimo'); ?>">
             </div>
           </div>
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
               <button type="submit" class="btn btn-success">Cadastrar usuário</button>
-              <a href="<?php echo base_url("usuarios"); ?>" class="btn btn-danger">Voltar</a>
+              <a href="<?php echo base_url("produtos"); ?>" class="btn btn-danger">Voltar</a>
             </div>
           </div>
         </form>
@@ -94,7 +94,8 @@
   </div>
 </div>
 </div>
-<script src="<?php site_url(); ?>assets/js/jquery.maskMoney/jquery.maskMoney.js" type="text/javascript"></script>
+<script src="<?php site_url(); ?>../assets/js/jquery/jquery-2.2.3.min.js" type="text/javascript"></script>
+<script src="<?php site_url(); ?>../assets/js/jquery.maskMoney/jquery.maskMoney.js" type="text/javascript"></script>
 <script type="text/javascript">
   $(".format_value").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
 </script>

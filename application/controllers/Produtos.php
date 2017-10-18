@@ -160,7 +160,7 @@ class Produtos extends CI_Controller {
         
         if(!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))){
             $this->session->set_flashdata('error','Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('produtos');
         }
         
         if(!$this->permission->checkPermission($this->session->userdata('permissao'),'vProduto')){
@@ -175,8 +175,8 @@ class Produtos extends CI_Controller {
             redirect(base_url() . 'index.php/produtos/editar/'.$this->input->post('idProdutos'));
         }
 
-        $dados['view'] = 'produtos/visualizarProduto';
-        $this->load->view('tema/topo', $this->data);
+        $dados['tela'] = 'produtos/visualizarProduto';
+        $this->load->view('view_home', $dados);
      
     }
 	

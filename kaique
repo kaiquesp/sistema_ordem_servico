@@ -1,0 +1,215 @@
+commit a7ee9f93af3e6e75c7714eefcd5e200ab920481d
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Wed Oct 18 13:27:30 2017 -0200
+
+    Melhoria login
+
+commit bea140f22fbb834a66423588325dd79b4dda0b74
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Wed Oct 18 13:26:53 2017 -0200
+
+    Melhoria página de login
+
+commit 96467ad67b7c2c7810a2940d4eba3df4f728da08
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Tue Oct 17 16:22:32 2017 -0200
+
+    Ajuste
+
+commit 4592c4cdde375fbe31f2ca82305bf16ab72c4750
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Tue Oct 17 16:17:14 2017 -0200
+
+    Ajuste javascript do projeto
+
+commit 7d42cba7b6eb6083d0543d0d13fc1db112495602
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Tue Oct 17 16:16:51 2017 -0200
+
+    Mensagem de erro
+
+commit 3e0ff07534d96929edce37496a65a552bb707386
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Tue Oct 17 16:16:31 2017 -0200
+
+    Visualizar Clientes
+
+commit ae47e41d2ccf5f68947b3b0ee046b5deadfb5072
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Tue Oct 17 16:16:05 2017 -0200
+
+    Editar Clientes
+
+commit df7df12887f75ce627d9583b63aaed913a9547ec
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Tue Oct 17 16:15:20 2017 -0200
+
+    Adicionar Produtos
+
+commit 6a31d9618fbc496adfefde4d1ca95693b91789ef
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Tue Oct 17 16:14:16 2017 -0200
+
+    Exclusão de produtos
+
+commit 19b44d83bef668d24e81db2fe836c9b0bda86c77
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Tue Oct 17 16:11:59 2017 -0200
+
+    Alterar Clientes
+
+commit dbf5da571a46326e8a2286e33b5f8519e9f9d86b
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Tue Oct 17 11:13:42 2017 -0200
+
+    Ajuste Exclusão de produtos
+
+commit 11fdff9667193d1a261314748b30718590cb5c38
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Tue Oct 17 09:12:05 2017 -0200
+
+    Modal de exclusão de produtos
+
+commit 7f65f6a89a5b6469237d8b64380e1bb4c2a93802
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Mon Oct 16 14:24:21 2017 -0200
+
+    Atualização permissão
+
+commit 0bc244a98eacf9b6ecd0e6f561f15771c4a7ae7c
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Mon Oct 16 14:04:37 2017 -0200
+
+    Ajuste permissão
+
+commit 69d77623869b2f0dfdd4b28ed6f7f6930f19fe0b
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Mon Oct 16 13:22:20 2017 -0200
+
+    Ajuste adicionar clientes
+
+commit 839433b552b057b01cafdc7de603e2dcc7c648c8
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Mon Oct 16 08:35:40 2017 -0200
+
+    atualização
+
+commit 920e5a27ef41773640cf4123403e3d548f9d997a
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Mon Oct 16 08:35:08 2017 -0200
+
+    Ajustes
+
+commit 137897c5500c27c94a511919bcd63f1f0cb8fcbb
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Mon Oct 16 08:34:34 2017 -0200
+
+    Adicionando menu Permissões Sidebar
+
+commit 087b9f6c4c010d25f3bb179b9b80a7616797d692
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Mon Oct 16 08:33:47 2017 -0200
+
+    Visualizar permissões
+
+commit 895a6cee6cb99f718a09781ead06541e09b65ca7
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Mon Oct 16 08:33:20 2017 -0200
+
+    Editar Permissões
+
+commit 23f29b2f7d1461661aa2d6b5c69bdd38b24f5a7c
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Mon Oct 16 08:32:36 2017 -0200
+
+    Visualizar ordem de serviço
+
+commit 36f6a88e11f2e7f3d6055047c6cf9e1a52a40382
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Mon Oct 16 08:31:49 2017 -0200
+
+    Ajuste Dashboard
+
+commit 8927870fece2d9af42f1337394172d024af4851b
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Mon Oct 16 08:31:16 2017 -0200
+
+    Mostrar permissões
+
+commit 9f5f4a3faadd1882bbe377db66630b501b9370de
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Mon Oct 16 08:29:54 2017 -0200
+
+    Correção clientes
+
+commit 80ff702ffde0eab4c5f71afe98a887d72a965595
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Fri Oct 13 15:45:33 2017 -0300
+
+    Ajuste de permissão e foto padrao usuario
+
+commit 812ceaf60e13599d67b33c20502e27a8a2b995d8
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Fri Oct 13 15:22:47 2017 -0300
+
+    mostrar foto do usuário
+
+commit d4899e0e02d261394cd693487066760db4aab7f1
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Fri Oct 13 15:04:00 2017 -0300
+
+    Mostrar nome do usuário ao logar
+
+commit 951f35274713fbde84de6708c1a192500bc369b5
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Fri Oct 13 14:54:27 2017 -0300
+
+    atualização
+
+commit 86f15a46b3cfe7e9e2ba74dc408f2f1ecf8cb4b8
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Wed Oct 11 15:09:16 2017 -0300
+
+    Clientes
+
+commit 5e864573bef447dba62ab2fa172a6e87a9570b06
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Wed Oct 11 11:43:37 2017 -0300
+
+    Exclusão de usuário
+
+commit c22445b1155f9062b5379b9e3397a2c44215d7c1
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Wed Oct 11 10:33:07 2017 -0300
+
+    Ajuste de retorno de login
+
+commit e65a4805b173c35a037649b801836497707800b4
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Tue Oct 10 16:17:52 2017 -0300
+
+    Editar e listar usuários
+
+commit 88eebf38992261730571fb1dd2476584c88297ae
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Tue Oct 10 14:28:42 2017 -0300
+
+    atualização
+
+commit 5c7338a52c28280c2de9d143c698b1ed2d9780d4
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Tue Oct 10 14:27:52 2017 -0300
+
+    atualização
+
+commit 064de1c11f8a09f9a5a127b06600a691eed402f7
+Author: Kaique Alves <kaiqueexp@gmail.com>
+Date:   Tue Oct 10 14:14:17 2017 -0300
+
+    Cadastro de usuários
+
+commit 84c46c9f77133d0c23ce74c23c2cd29efcdcfc0d
+Author: kaiquesp <kaiqueexp@gmail.com>
+Date:   Tue Oct 10 14:07:10 2017 -0300
+
+    Initial commit
