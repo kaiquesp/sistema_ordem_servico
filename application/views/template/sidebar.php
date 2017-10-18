@@ -26,6 +26,9 @@ $foto = $session['foto'];
       <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vProduto')){ ?>
        <li><a href="<?php echo base_url("produtos"); ?>"><i class="fa fa-barcode"></i> Produtos</a></li>
       <?php } ?>
+      <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vServico')){ ?>
+       <li><a href="<?php echo base_url("servicos"); ?>"><i class="fa fa-wrench"></i> Serviços</a></li>
+      <?php } ?>
       <!-- <li><a><i class="fa fa-users"></i> Clientes <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="cadastrocliente"><i class="fa fa-plus"></i> Cadastro</a></li>
