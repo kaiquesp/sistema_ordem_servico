@@ -23,13 +23,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <!-- Custom Theme Style -->
   <link href="<?php echo base_url();?>assets/css/custom.min.css" rel="stylesheet">
+  <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
+
+  <link href="<?php echo base_url();?>assets/css/pnotify/pnotify.css" rel="stylesheet">
+  <link href="<?php echo base_url();?>assets/css/pnotify/pnotify.buttons.css" rel="stylesheet">
+  <link href="<?php echo base_url();?>assets/css/pnotify/pnotify.nonblock.css" rel="stylesheet">
 
   <script src="<?php echo base_url();?>assets/js/jquery/jquery-2.2.3.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/bootstrap/bootstrap.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/custom.min.js"></script>
-  
+
   <script src="<?php echo base_url();?>assets/js/validate.js"></script>
   <script src="<?php echo base_url();?>assets/js/jquery.validate.js"></script>
+
+  <!-- PNotify -->
+  <script src="<?php site_url(); ?>assets/js/pnotify/pnotify.js"></script>
+  <script src="<?php site_url(); ?>assets/js/pnotify/pnotify.buttons.js"></script>
+  <script src="<?php site_url(); ?>assets/js/pnotify/pnotify.nonblock.js"></script>
 </head>
 
 <body class="login">
@@ -38,6 +48,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <a class="hiddenanchor" id="signin"></a>
 
     <div class="login_wrapper">
+      <div class="log">
+        <a class="logo" href="/"><h1 class="text-center">Sistema JapaCar</h1></a>
+      </div>
       <div class="animate form login_form">
         <section class="login_content">
           <?php if($this->session->flashdata('error') != null){?>
@@ -47,8 +60,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
           <?php }?>
           <form  class="form-vertical" id="formLogin" method="post" action="">
-
-            <h1>Sistema JapaCar</h1>
             <div>
               <input type="text" id="user" name="user" class="form-control" placeholder="Username" required="" />
             </div>
@@ -58,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div>
               <div id="progress-acessar" class='hide progress progress-striped active page-progress-bar'><div class='progress-bar' style='width: 100%'></div></div>
               <a class="reset_pass" href="#">Esqueceu a senha?</a>
-              <button class="btn btn-default submit" type="submit">Entrar</button>
+              <button class="btn btn-primario submit" id="btn-acessar" type="submit">Entrar</button>
             </div>
 
             <div class="clearfix"></div>
@@ -92,13 +103,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         success: function(data)
         {
           if(data.result == true){
+
             window.location.href = "<?php echo base_url();?>home";
           }
           else{
             $('#btn-acessar').removeClass('disabled');
             $('#progress-acessar').addClass('hide');
             /*$('#call-modal').trigger('click');*/
-            $('#myModal').modal('show');
+            /*$('#myModal').modal('show');*/
+
+            var permanotice, tooltip, _alert;
+            $(function() {
+              new PNotify({
+                title: "Sistema JapaCar",
+                type: "error",
+                styling: 'bootstrap3',
+                text: "Login ou senha incorretos",
+                nonblock: {
+                  nonblock: false
+                },
+                before_close: function(PNotify) {
+                        // You can access the notice's options with this. It is read only.
+                        //PNotify.options.text;
+
+                        // You can change the notice's options after the timer like this:
+                        PNotify.update({
+                          title: PNotify.options.title + " - Enjoy your Stay",
+                          before_close: null
+                        });
+                        PNotify.queueRemove();
+                        return false;
+                      }
+                    });
+
+            });
           }
         }
       });
@@ -118,23 +156,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </script>
 
   <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Falha no Login</h4>
-      </div>
-      <div class="modal-body">
-       <p style="">Os dados de acesso estão incorretos, por favor tente novamente!</p>
-      </div>
-      <div class="modal-footer">
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Falha no Login</h4>
+        </div>
+        <div class="modal-body">
+         <p>Login ou senha incorretos!</p>
+       </div>
+       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
 </div>
-
 
 </body>
 </html>
