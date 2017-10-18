@@ -112,7 +112,7 @@ class Produtos extends CI_Controller {
 
         if(!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))){
             $this->session->set_flashdata('error','Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('produtos');
         }
 
         if(!$this->permission->checkPermission($this->session->userdata('permissao'),'eProduto')){
@@ -142,7 +142,7 @@ class Produtos extends CI_Controller {
 
             if ($this->produtos_model->edit('produtos', $data, 'idProdutos', $this->input->post('idProdutos')) == TRUE) {
                 $this->session->set_flashdata('success','Produto editado com sucesso!');
-                redirect(base_url() . 'index.php/produtos/editar/'.$this->input->post('idProdutos'));
+                redirect(base_url() . 'produtos/editar/'.$this->input->post('idProdutos'));
             } else {
                 $dados['custom_error'] = '<div class="form_error"><p>An Error Occured</p></div>';
             }
@@ -150,8 +150,8 @@ class Produtos extends CI_Controller {
 
         $dados['result'] = $this->produtos_model->getById($this->uri->segment(3));
 
-        $dados['view'] = 'produtos/editarProduto';
-        $this->load->view('tema/topo', $this->data);
+        $dados['tela'] = 'produtos/editarProduto';
+        $this->load->view('view_home', $dados);
      
     }
 
