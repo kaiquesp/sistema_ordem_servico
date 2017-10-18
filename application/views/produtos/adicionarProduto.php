@@ -94,8 +94,3 @@
   </div>
 </div>
 </div>
-<script src="<?php site_url(); ?>../assets/js/jquery/jquery-2.2.3.min.js" type="text/javascript"></script>
-<script src="<?php site_url(); ?>../assets/js/jquery.maskMoney/jquery.maskMoney.js" type="text/javascript"></script>
-<script type="text/javascript">
-  $(".format_value").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
-</script>

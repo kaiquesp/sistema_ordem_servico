@@ -161,5 +161,10 @@ if ($this->session->userdata('logado')){
 
             });
         </script>
+
+        <script src="<?php echo site_url(); ?>assets/js/jquery.maskMoney/jquery.maskMoney.js" type="text/javascript"></script>
+        <script type="text/javascript">
+          $(".format_value").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+      </script>
   </body>
   </html>
