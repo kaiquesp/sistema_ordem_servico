@@ -1,7 +1,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3>Lista de Serviços</h3>
+        <h3>Lista Ordem de Serviços</h3>
       </div>
     </div>
 
@@ -77,10 +77,10 @@
                     <td>
                     <?php
                     if($this->permission->checkPermission($this->session->userdata('permissao'),'eOs')){
-                        echo '<a style="margin-right: 1%" href="'.base_url().'os/editar/'.$r->idOs.'" class="btn btn-info" title="Editar Produto"><i class="fa fa-edit"></i></a>'; 
+                        echo '<a style="margin-right: 1%" href="'.base_url().'os/editar/'.$r->idOs.'" class="btn btn-info" title="Editar Ordem de serviço"><i class="fa fa-edit"></i></a>'; 
                     }
                     if($this->permission->checkPermission($this->session->userdata('permissao'),'dOs')){
-                        echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal'.$r->idOs.'"><i class="fa fa-trash"></i></button>'; 
+                        echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal'.$r->idOs.'" title="Excluir Ordem de serviço"><i class="fa fa-trash"></i></button>'; 
 
                     ?>
                        <div class="modal fade" id="myModal<?php echo $r->idOs; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
