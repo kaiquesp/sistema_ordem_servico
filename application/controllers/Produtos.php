@@ -11,7 +11,7 @@ class Produtos extends CI_Controller {
     function __construct() {
         parent::__construct();
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-            redirect('mapos/login');
+            redirect('login');
         }
 
         $this->load->helper(array('form', 'codegen_helper'));
