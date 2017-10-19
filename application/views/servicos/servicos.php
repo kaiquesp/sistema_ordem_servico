@@ -47,13 +47,11 @@
                     <td><?php echo number_format($r->preco,2,',','.') ?></td>
                     <td><?php echo $r->descricao; ?></td>
                     <td>
-                    <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vProduto')){
-                        echo '<a style="margin-right: 1%" href="'.base_url().'index.php/produtos/visualizar/'.$r->idServicos.'" class="btn btn-default" title="Visualizar Produto"><i class="fa fa-eye"></i></a>  '; 
+                    <?php
+                    if($this->permission->checkPermission($this->session->userdata('permissao'),'eServico')){
+                        echo '<a style="margin-right: 1%" href="'.base_url().'servicos/editar/'.$r->idServicos.'" class="btn btn-info" title="Editar Produto"><i class="fa fa-edit"></i></a>'; 
                     }
-                    if($this->permission->checkPermission($this->session->userdata('permissao'),'eProduto')){
-                        echo '<a style="margin-right: 1%" href="'.base_url().'index.php/produtos/editar/'.$r->idServicos.'" class="btn btn-info" title="Editar Produto"><i class="fa fa-edit"></i></a>'; 
-                    }
-                    if($this->permission->checkPermission($this->session->userdata('permissao'),'dProduto')){
+                    if($this->permission->checkPermission($this->session->userdata('permissao'),'dServico')){
                         echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal'.$r->idServicos.'"><i class="fa fa-trash"></i></button>'; 
 
                     ?>
@@ -68,7 +66,7 @@
                                 <form action="<?php echo base_url() ?>servicos/excluir" method="post" >
                                   <div class="modal-body">
                                     <input type="hidden" name="id" value="<?php echo $r->idServicos; ?>" />
-                                    <h5 style="text-align: center">Deseja realmente excluir este produto <strong><?php echo $r->descricao; ?></strong> ?</h5>
+                                    <h5 style="text-align: center">Deseja realmente excluir <strong><?php echo $r->nome; ?></strong> ?</h5>
                                   </div>
                                   <div class="modal-footer">
                                     <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>

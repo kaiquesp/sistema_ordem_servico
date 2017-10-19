@@ -4,8 +4,8 @@ class Servicos extends CI_Controller {
     
 
     /**
-     * author: Ramon Silva 
-     * email: silva018-mg@yahoo.com.br
+     * author: Kaique Alves
+     * email: kaiqueexp@gmail.com
      * 
      */
     
@@ -51,8 +51,10 @@ class Servicos extends CI_Controller {
         if ($this->form_validation->run('servicos') == false) {
             $dados['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
-            $preco = $this->input->post('preco');
-            $preco = str_replace(",","", $preco);
+            $source = array('.', ',');
+            $replace = array('', '.');
+
+            $preco = str_replace($source, $replace, $this->input->post('preco'));
 
             $data = array(
                 'nome' => set_value('nome'),
@@ -64,7 +66,7 @@ class Servicos extends CI_Controller {
                 $this->session->set_flashdata('success', 'Serviço adicionado com sucesso!');
                 redirect(base_url() . 'servicos/adicionar/');
             } else {
-                $dados['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
+                $this->session->set_flashdata('error', 'Falha ao adicionar serviço, tente novamente mais tarde!');
             }
         }
         $dados['tela'] = 'servicos/adicionarServico';
@@ -83,8 +85,10 @@ class Servicos extends CI_Controller {
         if ($this->form_validation->run('servicos') == false) {
             $dados['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
-            $preco = $this->input->post('preco');
-            $preco = str_replace(",","", $preco);
+            $source = array('.', ',');
+            $replace = array('', '.');
+
+            $preco = str_replace($source, $replace, $this->input->post('preco'));
             $data = array(
                 'nome' => $this->input->post('nome'),
                 'descricao' => $this->input->post('descricao'),
@@ -93,7 +97,7 @@ class Servicos extends CI_Controller {
 
             if ($this->servicos_model->edit('servicos', $data, 'idServicos', $this->input->post('idServicos')) == TRUE) {
                 $this->session->set_flashdata('success', 'Serviço editado com sucesso!');
-                redirect(base_url() . 'index.php/servicos/editar/'.$this->input->post('idServicos'));
+                redirect(base_url() . 'servicos/editar/'.$this->input->post('idServicos'));
             } else {
                 $dados['custom_error'] = '<div class="form_error"><p>Ocorreu um errro.</p></div>';
             }
@@ -101,8 +105,8 @@ class Servicos extends CI_Controller {
 
         $dados['result'] = $this->servicos_model->getById($this->uri->segment(3));
 
-        $dados['view'] = 'servicos/editarServico';
-        $this->load->view('tema/topo', $this->data);
+        $dados['tela'] = 'servicos/editarServico';
+        $this->load->view('view_home', $dados);
 
     }
 	
@@ -118,7 +122,7 @@ class Servicos extends CI_Controller {
         if ($id == null){
 
             $this->session->set_flashdata('error','Erro ao tentar excluir serviço.');            
-            redirect(base_url().'index.php/servicos/gerenciar/');
+            redirect(base_url().'servicos/gerenciar/');
         }
 
         $this->db->where('servicos_id', $id);
