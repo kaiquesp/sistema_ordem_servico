@@ -233,7 +233,7 @@ class Os extends CI_Controller {
 
             if ($this->os_model->edit('os', $data, 'idOs', $this->input->post('idOs')) == TRUE) {
                 $this->session->set_flashdata('success','Os editada com sucesso!');
-                redirect(base_url() . 'index.php/os/editar/'.$this->input->post('idOs'));
+                redirect(base_url() . 'os/editar/'.$this->input->post('idOs'));
             } else {
                 $dados['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
             }
@@ -306,7 +306,7 @@ class Os extends CI_Controller {
         if ($id == null){
 
             $this->session->set_flashdata('error','Erro ao tentar excluir OS.');            
-            redirect(base_url().'index.php/os/gerenciar/');
+            redirect(base_url().'os/gerenciar/');
         }
 
         $this->db->where('os_id', $id);
@@ -322,7 +322,7 @@ class Os extends CI_Controller {
         
 
         $this->session->set_flashdata('success','OS excluída com sucesso!');            
-        redirect(base_url().'index.php/os/gerenciar/');
+        redirect(base_url().'os/gerenciar/');
 
 
         
