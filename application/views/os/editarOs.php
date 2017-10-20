@@ -384,6 +384,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <label for="cliente">Valor*</label>
+                        <input type="hidden" id="tipo" name="tipo" value="receita" />
                         <input class="form-control col-md-12 col-xs-12 format_value" id="valor" type="text" name="valor" value="<?php echo number_format($total,2); ?>" />
                     </div>
                     <div class="col-md-4">
@@ -419,8 +420,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default">Cancelar</button>
-                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true" id="btn-cancelar-faturar">Faturar</button>
+                
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true" id="btn-cancelar-faturar">Cancelar</button>
+                <button class="btn btn-primary">Faturar</button>
             </div>
         </form>
       </div>

@@ -225,7 +225,6 @@ if ($this->session->userdata('logado')){
                       success: function(data)
                       {
                         if(data.result == true){
-                            alert('ok');
                             window.location.reload(true);
                         }
                         else{
