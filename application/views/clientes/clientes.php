@@ -9,7 +9,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'aProduto')){ ?>
-        <a href="<?php echo base_url();?>produtos/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Produto</a>
+        <a href="<?php echo base_url();?>clientes/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Produto</a>
         <?php } ?>        
         <?php if ($this->session->flashdata('error') == TRUE): ?>
           <div class="alert alert-success alert-dismissible fade in" role="alert">

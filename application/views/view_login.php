@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <!-- Custom Theme Style -->
   <link href="<?php echo base_url();?>assets/css/custom.min.css" rel="stylesheet">
-  <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
+  <link href="<?php echo base_url();?>assets/css/login.css" rel="stylesheet">
 
   <link href="<?php echo base_url();?>assets/css/pnotify/pnotify.css" rel="stylesheet">
   <link href="<?php echo base_url();?>assets/css/pnotify/pnotify.buttons.css" rel="stylesheet">
@@ -103,7 +103,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         success: function(data)
         {
           if(data.result == true){
-
             window.location.href = "<?php echo base_url();?>home";
           }
           else{
@@ -111,7 +110,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $('#progress-acessar').addClass('hide');
             /*$('#call-modal').trigger('click');*/
             /*$('#myModal').modal('show');*/
-
             var permanotice, tooltip, _alert;
             $(function() {
               new PNotify({
@@ -125,7 +123,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 before_close: function(PNotify) {
                         // You can access the notice's options with this. It is read only.
                         //PNotify.options.text;
-
                         // You can change the notice's options after the timer like this:
                         PNotify.update({
                           title: PNotify.options.title + " - Enjoy your Stay",
@@ -135,7 +132,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         return false;
                       }
                     });
-
             });
           }
         }

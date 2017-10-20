@@ -12,7 +12,7 @@ class Os extends CI_Controller {
         parent::__construct();
         
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-            redirect('home/login');
+            redirect('login');
         }
 		
 		$this->load->helper(array('form','codegen_helper'));
@@ -188,7 +188,7 @@ class Os extends CI_Controller {
 
         if(!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))){
             $this->session->set_flashdata('error','Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('os');
         }
 
         if(!$this->permission->checkPermission($this->session->userdata('permissao'),'eOs')){
@@ -243,8 +243,8 @@ class Os extends CI_Controller {
         $dados['produtos'] = $this->os_model->getProdutos($this->uri->segment(3));
         $dados['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
         $dados['anexos'] = $this->os_model->getAnexos($this->uri->segment(3));
-        $dados['view'] = 'os/editarOs';
-        $this->load->view('view_home', $this->data);
+        $dados['tela'] = 'os/editarOs';
+        $this->load->view('view_home', $dados);
    
     }
 
