@@ -3,8 +3,8 @@
 class Os extends CI_Controller {
     
     /**
-     * author: Ramon Silva 
-     * email: silva018-mg@yahoo.com.br
+     * author: Kaique Alves
+     * email: kaiqueexp@gmail.com
      * 
      */
 
@@ -12,6 +12,7 @@ class Os extends CI_Controller {
         parent::__construct();
         
         if( (!session_id()) || (!$this->session->userdata('logado'))){
+			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 		
@@ -146,8 +147,8 @@ class Os extends CI_Controller {
             }
         }
          
-        $dados['view'] = 'os/adicionarOs';
-        $this->load->view('view_home', $this->data);
+        $dados['tela'] = 'os/adicionarOs';
+        $this->load->view('view_home', $dados);
     }
     
     public function adicionarAjax(){
@@ -276,7 +277,7 @@ class Os extends CI_Controller {
         
                 if(!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))){
                     $this->session->set_flashdata('error','Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-                    redirect('mapos');
+                    redirect('home');
                 }
         
                 if(!$this->permission->checkPermission($this->session->userdata('permissao'),'vOs')){
@@ -291,7 +292,7 @@ class Os extends CI_Controller {
                 $dados['servicos'] = $this->os_model->getServicos($this->uri->segment(3));
                 $dados['emitente'] = $this->mapos_model->getEmitente();
         
-                $this->load->view('os/imprimirOs', $this->data);
+                $this->load->view('os/imprimirOs', $dados);
                
             }
 	
