@@ -9,7 +9,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'aProduto')){ ?>
-            <a href="<?php echo base_url();?>servicos/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Ordem Serviço</a>
+            <a href="<?php echo base_url();?>os/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Ordem Serviço</a>
         <?php } ?>
         <?php if ($this->session->flashdata('error') == TRUE): ?>
           <div class="alert alert-success alert-dismissible fade in" role="alert">
@@ -76,14 +76,18 @@
                     <td><span class="badge" style="background-color: <?php echo $cor; ?>; border-color: <?php echo $cor; ?>;"><?php echo $r->status; ?></span> </td>
                     <td>
                     <?php
-                    if($this->permission->checkPermission($this->session->userdata('permissao'),'eOs')){
-                        echo '<a style="margin-right: 1%" href="'.base_url().'os/editar/'.$r->idOs.'" class="btn btn-info" title="Editar Ordem de serviço"><i class="fa fa-edit"></i></a>'; 
-                    }
-                    if($this->permission->checkPermission($this->session->userdata('permissao'),'dOs')){
-                        echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal'.$r->idOs.'" title="Excluir Ordem de serviço"><i class="fa fa-trash"></i></button>'; 
-
+                     if($this->permission->checkPermission($this->session->userdata('permissao'),'vOs')){
+                echo '<a style="margin-right: 1%" href="'.base_url().'os/visualizar/'.$r->idOs.'" class="btn btn-default" title="Ver mais detalhes"><i class="fa fa-eye"></i></a>'; 
+                echo '<a style="margin-right: 1%" href="'.base_url().'os/imprimir/'.$r->idOs.'" target="_blank" class="btn btn-dark" title="Imprimir"><i class="fa fa-print"></i></a>'; 
+            }
+            if($this->permission->checkPermission($this->session->userdata('permissao'),'eOs')){
+                echo '<a style="margin-right: 1%" href="'.base_url().'os/editar/'.$r->idOs.'" class="btn btn-info" title="Editar OS"><i class="fa fa-pencil"></i></a>'; 
+            }
+            if($this->permission->checkPermission($this->session->userdata('permissao'),'dOs')){
+                echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-excluir'.$r->idOs.'"><i class="fa fa-trash"></i></button>'; 
+            
                     ?>
-                       <div class="modal fade" id="myModal<?php echo $r->idOs; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                       <div class="modal fade" id="modal-excluir<?php echo $r->idOs; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -91,7 +95,7 @@
                                 <h4 class="modal-title text-center" id="myModalLabel">Excluir Produto</h4>
                               </div>
                               <div class="modal-body">
-                                <form action="<?php echo base_url() ?>servicos/excluir" method="post" >
+                                <form action="<?php echo base_url() ?>os/excluir" method="post" >
                                   <div class="modal-body">
                                     <input type="hidden" name="id" value="<?php echo $r->idOs; ?>" />
                                     <h5 style="text-align: center">Deseja realmente excluir a ordem de serviço <strong><?php echo $r->idOs; ?></strong> ?</h5>
