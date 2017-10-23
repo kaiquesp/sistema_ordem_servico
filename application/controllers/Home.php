@@ -17,6 +17,7 @@ class Home extends CI_Controller {
 
     public function index() {
         if( (!session_id()) || (!$this->session->userdata('logado'))){
+			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -31,6 +32,7 @@ class Home extends CI_Controller {
 
     public function minhaConta() {
         if( (!session_id()) || (!$this->session->userdata('logado'))){
+			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -42,6 +44,7 @@ class Home extends CI_Controller {
 
     public function alterarSenha() {
         if( (!session_id()) || (!$this->session->userdata('logado'))){
+			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -64,6 +67,7 @@ class Home extends CI_Controller {
 
     public function pesquisar() {
         if( (!session_id()) || (!$this->session->userdata('logado'))){
+			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
         
@@ -139,6 +143,7 @@ class Home extends CI_Controller {
     public function backup(){
 
         if( (!session_id()) || (!$this->session->userdata('logado'))){
+			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -169,6 +174,7 @@ class Home extends CI_Controller {
     public function emitente(){   
 
         if( (!session_id()) || (!$this->session->userdata('logado'))){
+			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -177,16 +183,16 @@ class Home extends CI_Controller {
            redirect(base_url());
         }
 
-        $data['menuConfiguracoes'] = 'Configuracoes';
-        $data['dados'] = $this->mapos_model->getEmitente();
-        $data['view'] = 'emitente';
-        $this->load->view('tema/topo',$data);
-        $this->load->view('tema/rodape');
+        $dados['menuConfiguracoes'] = 'Configuracoes';
+        $dados['dados'] = $this->mapos_model->getEmitente();
+        $dados['tela'] = 'home/emitente';
+        $this->load->view('view_home',$dados);
     }
 
     function do_upload(){
 
         if( (!session_id()) || (!$this->session->userdata('logado'))){
+			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -228,6 +234,7 @@ class Home extends CI_Controller {
     public function cadastrarEmitente() {
 
         if( (!session_id()) || (!$this->session->userdata('logado'))){
+			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -254,7 +261,7 @@ class Home extends CI_Controller {
         if ($this->form_validation->run() == false) {
             
             $this->session->set_flashdata('error','Campos obrigatórios não foram preenchidos.');
-            redirect(base_url().'index.php/emitente');
+            redirect(base_url().'emitente');
             
         } 
         else {
@@ -277,11 +284,11 @@ class Home extends CI_Controller {
             if($retorno){
 
                 $this->session->set_flashdata('success','As informações foram inseridas com sucesso.');
-                redirect(base_url().'index.php/emitente');
+                redirect(base_url().'home/emitente');
             }
             else{
                 $this->session->set_flashdata('error','Ocorreu um erro ao tentar inserir as informações.');
-                redirect(base_url().'index.php/emitente');
+                redirect(base_url().'home/emitente');
             }
             
         }
@@ -291,6 +298,7 @@ class Home extends CI_Controller {
     public function editarEmitente() {
 
         if( (!session_id()) || (!$this->session->userdata('logado'))){
+			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -317,7 +325,7 @@ class Home extends CI_Controller {
         if ($this->form_validation->run() == false) {
             
             $this->session->set_flashdata('error','Campos obrigatórios não foram preenchidos.');
-            redirect(base_url().'index.php/emitente');
+            redirect(base_url().'home/emitente');
             
         } 
         else {
@@ -339,11 +347,11 @@ class Home extends CI_Controller {
             if($retorno){
 
                 $this->session->set_flashdata('success','As informações foram alteradas com sucesso.');
-                redirect(base_url().'index.php/emitente');
+                redirect(base_url().'home/emitente');
             }
             else{
                 $this->session->set_flashdata('error','Ocorreu um erro ao tentar alterar as informações.');
-                redirect(base_url().'index.php/emitente');
+                redirect(base_url().'home/emitente');
             }
             
         }
@@ -353,6 +361,7 @@ class Home extends CI_Controller {
     public function editarLogo(){
         
         if( (!session_id()) || (!$this->session->userdata('logado'))){
+			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -364,7 +373,7 @@ class Home extends CI_Controller {
         $id = $this->input->post('id');
         if($id == null || !is_numeric($id)){
            $this->session->set_flashdata('error','Ocorreu um erro ao tentar alterar a logomarca.');
-           redirect(base_url().'index.php/emitente'); 
+           redirect(base_url().'home/emitente'); 
         }
         $this->load->helper('file');
         delete_files(FCPATH .'assets/uploads/');
@@ -376,11 +385,11 @@ class Home extends CI_Controller {
         if($retorno){
 
             $this->session->set_flashdata('success','As informações foram alteradas com sucesso.');
-            redirect(base_url().'index.php/emitente');
+            redirect(base_url().'home/emitente');
         }
         else{
             $this->session->set_flashdata('error','Ocorreu um erro ao tentar alterar as informações.');
-            redirect(base_url().'index.php/emitente');
+            redirect(base_url().'home/emitente');
         }
 
     }
