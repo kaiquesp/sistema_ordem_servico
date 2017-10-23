@@ -13,6 +13,7 @@ class Usuarios extends CI_Controller {
 
         parent::__construct();
         if( (!session_id()) || (!$this->session->userdata('logado'))){
+			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
         if(!$this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')){
