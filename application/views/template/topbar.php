@@ -19,13 +19,13 @@ $foto = $session['foto'];
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
             <li><a href="perfil"> Perfil</a></li>
-            <li>
+            <!--<li>
               <a href="javascript:;">
                 <span class="badge bg-red pull-right">50%</span>
                 <span>Settings</span>
               </a>
             </li>
-            <li><a href="javascript:;">Help</a></li>
+            <li><a href="javascript:;">Help</a></li>-->
             <li><a href="<?php echo base_url("home/sair"); ?>"><i class="fa fa-sign-out pull-right"></i> Sair</a></li>
           </ul>
         </li>
