@@ -11,6 +11,7 @@ class Produtos extends CI_Controller {
     function __construct() {
         parent::__construct();
         if( (!session_id()) || (!$this->session->userdata('logado'))){
+			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
