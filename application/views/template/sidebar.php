@@ -32,6 +32,12 @@ $foto = $session['foto'];
       <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vOs')){ ?>
        <li><a href="<?php echo base_url("os"); ?>"><i class="fa fa-wrench"></i> Ordem de serviço</a></li>
       <?php } ?>
+      <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vVenda')){ ?>
+       <li><a href="<?php echo base_url("vendas"); ?>"><i class="fa fa-shopping-cart"></i> Vendas</a></li>
+      <?php } ?>
+      <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vArquivo')){ ?>
+       <li><a href="<?php echo base_url("arquivos"); ?>"><i class="fa fa-shopping-cart"></i> Arquivos</a></li>
+      <?php } ?>
       <!-- <li><a><i class="fa fa-users"></i> Clientes <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="cadastrocliente"><i class="fa fa-plus"></i> Cadastro</a></li>
