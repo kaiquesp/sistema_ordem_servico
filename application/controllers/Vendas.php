@@ -4,8 +4,8 @@ class Vendas extends CI_Controller {
     
 
     /**
-     * author: Ramon Silva 
-     * email: silva018-mg@yahoo.com.br
+     * author: Kaique Alves
+     * email: kaiqueexp@gmail.com
      * 
      */
     
@@ -13,12 +13,12 @@ class Vendas extends CI_Controller {
         parent::__construct();
         
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-            redirect('mapos/login');
+            redirect('login');
         }
 		
 		$this->load->helper(array('form','codegen_helper'));
 		$this->load->model('vendas_model','',TRUE);
-		$this->data['menuVendas'] = 'Vendas';
+		$dados['menuVendas'] = 'Vendas';
 	}	
 	
 	function index(){
@@ -32,37 +32,10 @@ class Vendas extends CI_Controller {
            redirect(base_url());
         }
 
-        $this->load->library('pagination');
-        
-        
-        $config['base_url'] = base_url().'index.php/vendas/gerenciar/';
-        $config['total_rows'] = $this->vendas_model->count('vendas');
-        $config['per_page'] = 10;
-        $config['next_link'] = 'Próxima';
-        $config['prev_link'] = 'Anterior';
-        $config['full_tag_open'] = '<div class="pagination alternate"><ul>';
-        $config['full_tag_close'] = '</ul></div>';
-        $config['num_tag_open'] = '<li>';
-        $config['num_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li><a style="color: #2D335B"><b>';
-        $config['cur_tag_close'] = '</b></a></li>';
-        $config['prev_tag_open'] = '<li>';
-        $config['prev_tag_close'] = '</li>';
-        $config['next_tag_open'] = '<li>';
-        $config['next_tag_close'] = '</li>';
-        $config['first_link'] = 'Primeira';
-        $config['last_link'] = 'Última';
-        $config['first_tag_open'] = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li>';
-        $config['last_tag_close'] = '</li>';
-        	
-        $this->pagination->initialize($config); 	
-
-		$this->data['results'] = $this->vendas_model->get('vendas','*','',$config['per_page'],$this->uri->segment(3));
+		$dados['results'] = $this->vendas_model->get('vendas','*',$this->uri->segment(3));
        
-	    $this->data['view'] = 'vendas/vendas';
-       	$this->load->view('tema/topo',$this->data);
+	    $dados['tela'] = 'vendas/vendas';
+       	$this->load->view('view_home',$dados);
       
 		
     }
@@ -75,10 +48,10 @@ class Vendas extends CI_Controller {
         }
 
         $this->load->library('form_validation');
-        $this->data['custom_error'] = '';
+        $dados['custom_error'] = '';
         
         if ($this->form_validation->run('vendas') == false) {
-           $this->data['custom_error'] = (validation_errors() ? true : false);
+           $dados['custom_error'] = (validation_errors() ? true : false);
         } else {
 
             $dataVenda = $this->input->post('dataVenda');
@@ -106,12 +79,12 @@ class Vendas extends CI_Controller {
 
             } else {
                 
-                $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
+                $dados['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
             }
         }
          
-        $this->data['view'] = 'vendas/adicionarVenda';
-        $this->load->view('tema/topo', $this->data);
+        $dados['tela'] = 'vendas/adicionarVenda';
+        $this->load->view('view_home', $dados);
     }
     
 
@@ -120,7 +93,7 @@ class Vendas extends CI_Controller {
 
         if(!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))){
             $this->session->set_flashdata('error','Item não pode ser encontrado, parâmetro não foi passado corretamente.');
-            redirect('mapos');
+            redirect('home');
         }
 
         if(!$this->permission->checkPermission($this->session->userdata('permissao'),'eVenda')){
@@ -129,10 +102,10 @@ class Vendas extends CI_Controller {
         }
 
         $this->load->library('form_validation');
-        $this->data['custom_error'] = '';
+        $dados['custom_error'] = '';
 
         if ($this->form_validation->run('vendas') == false) {
-            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
+            $dados['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
 
             $dataVenda = $this->input->post('dataVenda');
@@ -155,16 +128,16 @@ class Vendas extends CI_Controller {
 
             if ($this->vendas_model->edit('vendas', $data, 'idVendas', $this->input->post('idVendas')) == TRUE) {
                 $this->session->set_flashdata('success','Venda editada com sucesso!');
-                redirect(base_url() . 'index.php/vendas/editar/'.$this->input->post('idVendas'));
+                redirect(base_url() . 'vendas/editar/'.$this->input->post('idVendas'));
             } else {
-                $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
+                $dados['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';
             }
         }
 
-        $this->data['result'] = $this->vendas_model->getById($this->uri->segment(3));
-        $this->data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
-        $this->data['view'] = 'vendas/editarVenda';
-        $this->load->view('tema/topo', $this->data);
+        $dados['result'] = $this->vendas_model->getById($this->uri->segment(3));
+        $dados['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
+        $dados['tela'] = 'vendas/editarVenda';
+        $this->load->view('view_home', $dados);
    
     }
 
@@ -180,14 +153,14 @@ class Vendas extends CI_Controller {
           redirect(base_url());
         }
 
-        $this->data['custom_error'] = '';
+        $dados['custom_error'] = '';
         $this->load->model('mapos_model');
-        $this->data['result'] = $this->vendas_model->getById($this->uri->segment(3));
-        $this->data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $dados['result'] = $this->vendas_model->getById($this->uri->segment(3));
+        $dados['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
+        $dados['emitente'] = $this->mapos_model->getEmitente();
         
-        $this->data['view'] = 'vendas/visualizarVenda';
-        $this->load->view('tema/topo', $this->data);
+        $dados['tela'] = 'vendas/visualizarVenda';
+        $this->load->view('view_home', $dados);
        
     }
 
@@ -203,11 +176,11 @@ class Vendas extends CI_Controller {
             redirect(base_url());
         }
 
-        $this->data['custom_error'] = '';
+        $dados['custom_error'] = '';
         $this->load->model('mapos_model');
-        $this->data['result'] = $this->vendas_model->getById($this->uri->segment(3));
-        $this->data['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
-        $this->data['emitente'] = $this->mapos_model->getEmitente();
+        $dados['result'] = $this->vendas_model->getById($this->uri->segment(3));
+        $dados['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
+        $dados['emitente'] = $this->mapos_model->getEmitente();
         
         $this->load->view('vendas/imprimirVenda', $this->data);
         
@@ -224,7 +197,7 @@ class Vendas extends CI_Controller {
         if ($id == null){
 
             $this->session->set_flashdata('error','Erro ao tentar excluir venda.');            
-            redirect(base_url().'index.php/vendas/gerenciar/');
+            redirect(base_url().'vendas/gerenciar/');
         }
 
         $this->db->where('vendas_id', $id);
@@ -234,7 +207,7 @@ class Vendas extends CI_Controller {
         $this->db->delete('vendas');           
 
         $this->session->set_flashdata('success','Venda excluída com sucesso!');            
-        redirect(base_url().'index.php/vendas/gerenciar/');
+        redirect(base_url().'vendas/gerenciar/');
 
     }
 
@@ -344,11 +317,11 @@ class Vendas extends CI_Controller {
             }
 
         $this->load->library('form_validation');
-        $this->data['custom_error'] = '';
+        $dados['custom_error'] = '';
  
 
         if ($this->form_validation->run('receita') == false) {
-            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
+            $dados['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
 
 
