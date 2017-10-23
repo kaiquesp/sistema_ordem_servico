@@ -17,16 +17,16 @@
       <div class="x_content">
 
             <input class="input-tab" id="tab1" type="radio" name="tabs" checked>
-            <label class="lbl" for="tab1">Dt. da OS</label>
+            <label class="lbl" for="tab1"><i class="fa fa-list-alt"></i> Detalhes da OS</label>
             
             <input class="input-tab" id="tab2" type="radio" name="tabs">
-            <label class="lbl" for="tab2">Produtos</label>
+            <label class="lbl" for="tab2"><i class="fa fa-barcode"></i> Produtos</label>
             
             <input class="input-tab" id="tab3" type="radio" name="tabs">
-            <label class="lbl" for="tab3">Serviços</label>
+            <label class="lbl" for="tab3"><i class="fa fa-wrench"></i> Serviços</label>
             
             <input class="input-tab" id="tab4" type="radio" name="tabs">
-            <label class="lbl" for="tab4">Anexos</label>
+            <label class="lbl" for="tab4"><i class="fa fa-file-text-o"></i> Anexos</label>
             
             <!-- Detalhes -->
             <section id="content1" class="sessao">
@@ -81,7 +81,7 @@
                             <div class="item form-group">
                                 <label class="control-label" for="nome">Data Inicial <span class="required">*</span>
                                 </label>
-                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="">
                                     <fieldset>
                                       <div class="control-group">
                                         <div class="controls">
@@ -100,7 +100,7 @@
                             <div class="item form-group">
                                 <label class="control-label" for="nome">Data Final <span class="required">*</span>
                                 </label>
-                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="">
                                    <fieldset>
                                       <div class="control-group">
                                         <div class="controls">
@@ -132,7 +132,7 @@
                                 <label class="control-label" for="descricaoProduto">Descrição Produto/Serviço <span class="required">*</span>
                                 </label>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <textarea id="descricaoProduto" required="required" class="form-control" name="descricaoProduto" rows="4"><?php echo $result->descricaoProduto?></textarea>
+                                    <textarea id="descricaoProduto" required class="form-control" name="descricaoProduto" rows="4"><?php echo $result->descricaoProduto?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                                 <label class="control-label" for="defeito">Defeito <span class="required">*</span>
                                 </label>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                  <textarea id="defeito" required="required" class="form-control" name="defeito" rows="4"><?php echo $result->defeito?></textarea>
+                                  <textarea id="defeito" required class="form-control" name="defeito" rows="4"><?php echo $result->defeito?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +153,7 @@
                                 <label class="control-label" for="observacoes">Observações <span class="required">*</span>
                                 </label>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <textarea id="observacoes" required="required" class="form-control" name="observacoes" rows="4"><?php echo $result->observacoes ?></textarea>
+                                    <textarea id="observacoes" required class="form-control" name="observacoes" rows="4"><?php echo $result->observacoes ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                                 <label class="control-label" for="laudoTecnico">Laudo Técnico <span class="required">*</span>
                                 </label>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                  <textarea id="laudoTecnico" required="required" class="form-control" name="laudoTecnico" rows="4"><?php echo $result->laudoTecnico ?></textarea>
+                                  <textarea id="laudoTecnico" required class="form-control" name="laudoTecnico" rows="4"><?php echo $result->laudoTecnico ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -186,57 +186,59 @@
             <!-- Produtos -->
             <section class="sessao" id="content2">
                 <div class="span12 well" style="padding: 1%; margin-left: 0">
-                                <form id="formProdutos" action="<?php echo base_url() ?>index.php/os/adicionarProduto" method="post">
-                                    <div class="span8">
-                                        <input type="hidden" name="idProduto" id="idProduto" />
-                                        <input type="hidden" name="idOsProduto" id="idOsProduto" value="<?php echo $result->idOs?>" />
-                                        <input type="hidden" name="estoque" id="estoque" value=""/>
-                                        <input type="hidden" name="preco" id="preco" value=""/>
-                                        <label for="">Produto</label>
-                                        <input type="text" class="span12" name="produto" id="produto" placeholder="Digite o nome do produto" />
-                                    </div>
-                                    <div class="span2">
-                                        <label for="">Quantidade</label>
-                                        <input type="text" placeholder="Quantidade" id="quantidade" name="quantidade" class="span12" />
-                                    </div>
-                                    <div class="span2">
-                                        <label for="">.</label>
-                                        <button class="btn btn-success span12" id="btnAdicionarProduto"><i class="icon-white icon-plus"></i> Adicionar</button>
-                                    </div>
-                                </form>
-                            </div>
+                    <form id="formProdutosOs" action="<?php echo base_url() ?>os/adicionarProduto" method="post">
+                        <div class="row">
+                        	<div class="col-md-8">
+	                            <input type="hidden" name="idProduto" id="idProduto" />
+	                            <input type="hidden" name="idOsProduto" id="idOsProduto" value="<?php echo $result->idOs?>" />
+	                            <input type="hidden" name="estoque" id="estoque" value=""/>
+	                            <input type="hidden" name="preco" id="preco" value=""/>
+	                            <label for="">Produto</label>
+	                            <input type="text" class="form-control" name="produto" id="produto" placeholder="Digite o nome do produto" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label for="">Quantidade</label>
+	                            <input type="text" placeholder="Quantidade" id="quantidade" name="quantidade" class="form-control" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label for=""></label><br>
+	                            <button class="btn btn-success form-control" id="btnAdicionarProduto"><i class="fa fa-plus"></i> Adicionar</button>
+	                        </div>
+                        </div>
+                    </form>
+                </div>
 
-                            <div class="span12" id="divProdutos" style="margin-left: 0">
-                                <table class="table table-bordered" id="tblProdutos">
-                                    <thead>
-                                        <tr>
-                                            <th>Produto</th>
-                                            <th>Quantidade</th>
-                                            <th>Ações</th>
-                                            <th>Sub-total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $total = 0;
-                                        foreach ($produtos as $p) {
-                                            
-                                            $total = $total + $p->subTotal;
-                                            echo '<tr>';
-                                            echo '<td>'.$p->descricao.'</td>';
-                                            echo '<td>'.$p->quantidade.'</td>';
-                                            echo '<td><a href="" idAcao="'.$p->idProdutos_os.'" prodAcao="'.$p->idProdutos.'" quantAcao="'.$p->quantidade.'" title="Excluir Produto" class="btn btn-danger"><i class="icon-remove icon-white"></i></a></td>';
-                                            echo '<td>R$ '.number_format($p->subTotal,2,',','.').'</td>';
-                                            echo '</tr>';
-                                        }?>
-                                       
-                                        <tr>
-                                            <td colspan="3" style="text-align: right"><strong>Total:</strong></td>
-                                            <td><strong>R$ <?php echo number_format($total,2,',','.');?><input type="hidden" id="total-venda" value="<?php echo number_format($total,2); ?>"></strong></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                <div class="span12" id="divProdutosOS" style="margin-left: 0">
+                    <table class="table table-bordered" id="tblProdutos">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Quantidade</th>
+                                <th>Ações</th>
+                                <th>Sub-total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $total = 0;
+                            foreach ($produtos as $p) {
+                                
+                                $total = $total + $p->subTotal;
+                                echo '<tr>';
+                                echo '<td>'.$p->descricao.'</td>';
+                                echo '<td>'.$p->quantidade.'</td>';
+                                echo '<td><a href="" id="btnOsExcluirProduto" idAcao="'.$p->idProdutos_os.'" prodAcao="'.$p->idProdutos.'" quantAcao="'.$p->quantidade.'" title="Excluir Produto" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>';
+                                echo '<td>R$ '.number_format($p->subTotal,2,',','.').'</td>';
+                                echo '</tr>';
+                            }?>
+                           
+                            <tr>
+                                <td colspan="3" style="text-align: right"><strong>Total:</strong></td>
+                                <td><strong>R$ <?php echo number_format($total,2,',','.');?><input type="hidden" id="total-venda" value="<?php echo number_format($total,2); ?>"></strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
             
             <!-- Serviços -->
@@ -244,17 +246,20 @@
                 <div class="span12" style="padding: 1%; margin-left: 0">
                     <div class="span12 well" style="padding: 1%; margin-left: 0">
                         <form id="formServicos" action="<?php echo base_url() ?>index.php/os/adicionarServico" method="post">
-                        <div class="span10">
-                            <input type="hidden" name="idServico" id="idServico" />
-                            <input type="hidden" name="idOsServico" id="idOsServico" value="<?php echo $result->idOs?>" />
-                            <input type="hidden" name="precoServico" id="precoServico" value=""/>
-                            <label for="">Serviço</label>
-                            <input type="text" class="span12" name="servico" id="servico" placeholder="Digite o nome do serviço" />
-                        </div>
-                        <div class="span2">
-                            <label for="">.</label>
-                            <button class="btn btn-success span12"><i class="icon-white icon-plus"></i> Adicionar</button>
-                        </div>
+                        	<label for="">Serviço</label>
+	                        <div class="row">
+	                        	<div class="col-md-10">
+		                            <input type="hidden" name="idServico" id="idServico" />
+		                            <input type="hidden" name="idOsServico" id="idOsServico" value="<?php echo $result->idOs?>" />
+		                            <input type="hidden" name="precoServico" id="precoServico" value=""/>
+		                            
+		                            <input type="text" class="span12 form-control" name="servico" id="servico" placeholder="Digite o nome do serviço" />
+		                        </div>
+		                        <div class="col-md2">
+		                        	<label></label>
+		                        	<button class="btn btn-success span12"><i class="fa fa-plus"></i> Adicionar</button>
+		                        </div>
+	                        </div>
                         </form>
                     </div>
                     <div class="span12" id="divServicos" style="margin-left: 0">
@@ -274,7 +279,7 @@
                                 $total = $total + $preco;
                                 echo '<tr>';
                                 echo '<td>'.$s->nome.'</td>';
-                                echo '<td><span idAcao="'.$s->idServicos_os.'" title="Excluir Serviço" class="btn btn-danger"><i class="icon-remove icon-white"></i></span></td>';
+                                echo '<td><span idAcao="'.$s->idServicos_os.'" title="Excluir Serviço" class="btn btn-danger"><i class="fa fa-trash"></i></span></td>';
                                 echo '<td>R$ '.number_format($s->preco,2,',','.').'</td>';
                                 echo '</tr>';
                             }?>
@@ -295,15 +300,16 @@
                <div class="span12" style="padding: 1%; margin-left: 0">
                     <div class="span12 well" style="padding: 1%; margin-left: 0" id="form-anexos">
                         <form id="formAnexos" enctype="multipart/form-data" action="javascript:;" accept-charset="utf-8"s method="post">
-                        <div class="span10">
-                    
-                            <input type="hidden" name="idOsServico" id="idOsServico" value="<?php echo $result->idOs?>" />
-                            <label for="">Anexo</label>
-                            <input type="file" class="span12" name="userfile[]" multiple="multiple" size="20" />
-                        </div>
-                        <div class="span2">
-                            <label for="">.</label>
-                            <button class="btn btn-success span12"><i class="icon-white icon-plus"></i> Anexar</button>
+                        	<label for="">Anexo</label>
+                        <div class="row">
+                        	<div class="col-md-10">
+	                            <input type="hidden" name="idOsServico" id="idOsServico" value="<?php echo $result->idOs; ?>" />
+	                            <input type="file" class="span12" name="userfile[]" multiple size="20" />
+	                        </div>
+	                        <div class="col-md-2">
+	                            <label for=""></label>
+	                            <button class="btn btn-success span12"><i class="fa fa-plus"></i> Anexar</button>
+	                        </div>
                         </div>
                         </form>
                     </div>
@@ -312,6 +318,7 @@
                         <?php 
                         $cont = 1;
                         $flag = 5;
+                        echo '<div class="row">';
                         foreach ($anexos as $a) {
 
                             if($a->thumb == null){
@@ -322,16 +329,19 @@
                                 $thumb = base_url().'assets/anexos/thumbs/'.$a->thumb;
                                 $link = $a->url.$a->anexo;
                             }
-
+                            
                             if($cont == $flag){
-                               echo '<div style="margin-left: 0" class="span3"><a href="#modal-anexo" imagem="'.$a->idAnexos.'" link="'.$link.'" role="button" class="btn anexo" data-toggle="modal"><img src="'.$thumb.'" alt=""></a></div>'; 
+                               echo '<div class="row"><div style="margin-left: 0" class="col-md-3"><a href="#modal-anexo" imagem="'.$a->idAnexos.'" link="'.$link.'" role="button" class="btn anexo" data-toggle="modal"><img src="'.$thumb.'" alt="" class="img-responsive"></a></div>'; 
                                $flag += 4;
                             }
                             else{
-                               echo '<div class="span3"><a href="#modal-anexo" imagem="'.$a->idAnexos.'" link="'.$link.'" role="button" class="btn anexo" data-toggle="modal"><img src="'.$thumb.'" alt=""></a></div>'; 
+                               echo '<div class="col-md-3"><a href="#modal-anexo" imagem="'.$a->idAnexos.'" link="'.$link.'" role="button" class="btn anexo" data-toggle="modal"><img src="'.$thumb.'" alt="" class="img-responsive"></a></div>'; 
                             }
                             $cont ++;
-                        } ?>
+                            
+                        } 
+                        echo '</div>';
+                        ?>
                     </div>
 
                 </div>
@@ -340,6 +350,44 @@
         </div>
   </div>
 </div>
+
+<!-- Modal visualizar anexo -->
+
+<div class="modal fade" id="modal-anexo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <?php if ($this->session->flashdata('error') == TRUE): ?>
+          <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+            </button>
+            <p><?php echo $this->session->flashdata('error'); ?></p>
+          </div>
+        <?php endif; ?>
+        <?php if ($this->session->flashdata('success') == TRUE): ?>
+          <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+            </button>
+            <p><?php echo $this->session->flashdata('success'); ?></p>
+          </div>
+        <?php endif; ?>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel">Excluir Produto</h4>
+      </div>
+      <div class="modal-body">
+      		<div class="span12" id="div-visualizar-anexo" style="text-align: center">
+                <div class='progress progress-info progress-striped active'><div class='bar' style='width: 100%'></div></div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal" aria-hidden="true"><i class="fa fa-sign-out"></i> Fechar</button>
+        <a href="" id-imagem="" class="btn btn-dark" id="download"><i class="fa fa-download"></i> Download</a>
+        <a href="" link="" class="btn btn-danger" id="excluir-anexo"><i class="fa fa-trash"></i> Excluir Anexo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <div class="modal fade" id="modal-faturar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
