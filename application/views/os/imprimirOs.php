@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<title>Map OS</title>
+<title>JapaCar</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
@@ -48,24 +48,16 @@
                         <tbody>
                             <tr>
                                 <td style="width: 50%; padding-left: 0">
-                                    <ul>
-                                        <li>
-                                            <span><h5>Cliente</h5>
-                                            <span><?php echo $result->nomeCliente?></span><br/>
-                                            <span><?php echo $result->rua?>, <?php echo $result->numero?>, <?php echo $result->bairro?></span><br/>
-                                            <span><?php echo $result->cidade?> - <?php echo $result->estado?></span>
-                                        </li>
-                                    </ul>
+                                    <span><h5>Cliente</h5>
+                                    <span><?php echo $result->nomeCliente?></span><br/>
+                                    <span><?php echo $result->rua?>, <?php echo $result->numero?>, <?php echo $result->bairro?></span><br/>
+                                    <span><?php echo $result->cidade?> - <?php echo $result->estado?></span>
                                 </td>
                                 <td style="width: 50%; padding-left: 0">
-                                    <ul>
-                                        <li>
-                                            <span><h5>Responsável</h5></span>
-                                            <span><?php echo $result->nome?></span> <br/>
-                                            <span>Telefone: <?php echo $result->telefone?></span><br/>
-                                            <span>Email: <?php echo $result->email?></span>
-                                        </li>
-                                    </ul>
+                                    <span><h5>Responsável</h5></span>
+                                    <span><?php echo $result->nome?></span> <br/>
+                                    <span>Telefone: <?php echo $result->telefone?></span><br/>
+                                    <span>Email: <?php echo $result->email?></span>
                                 </td>
                             </tr>
                         </tbody>
