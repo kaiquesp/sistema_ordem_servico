@@ -39,10 +39,10 @@
   margin-right: 10px;
 }
 
-.lbl[for*='1']:before { content: '\f2bc'; }
+/*.lbl[for*='1']:before { content: '\f2bc'; }
 .lbl[for*='2']:before { content: '\f0ca'; }
 .lbl[for*='3']:before { content: '\f02f'; }
-.lbl[for*='4']:before { content: '\f1a9'; }
+.lbl[for*='4']:before { content: '\f1a9'; }*/
 
 .lbl:hover {
   color: #888;
