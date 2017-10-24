@@ -3,8 +3,8 @@
 class Financeiro extends CI_Controller {
 
     /**
-     * author: Ramon Silva 
-     * email: silva018-mg@yahoo.com.br
+     * author: Kaique Alves
+     * email: kaiqueexp@gmail.com
      * 
      */
 
@@ -12,7 +12,7 @@ class Financeiro extends CI_Controller {
 	{
 		parent::__construct();
 		if( (!session_id()) || (!$this->session->userdata('logado'))){
-            redirect('mapos/login');
+            redirect('login');
         }
         $this->load->model('financeiro_model','',TRUE);
         $this->data['menuFinanceiro'] = 'financeiro';
@@ -191,10 +191,10 @@ class Financeiro extends CI_Controller {
 
         $this->pagination->initialize($config); 	
 
-		$this->data['results'] = $this->financeiro_model->get('lancamentos','idLancamentos,descricao,valor,data_vencimento,data_pagamento,baixado,cliente_fornecedor,tipo,forma_pgto',$where,$config['per_page'],$this->input->get('per_page'));
+		$dados['results'] = $this->financeiro_model->get('lancamentos','idLancamentos,descricao,valor,data_vencimento,data_pagamento,baixado,cliente_fornecedor,tipo,forma_pgto',$where,$config['per_page'],$this->input->get('per_page'));
        
-	    $this->data['view'] = 'financeiro/lancamentos';
-       	$this->load->view('tema/topo',$this->data);
+	    $dados['tela'] = 'financeiro/lancamentos';
+       	$this->load->view('view_home',$dados);
 	}
 
 
