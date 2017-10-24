@@ -3,8 +3,8 @@
 class Arquivos extends CI_Controller {
 
     /**
-     * author: Ramon Silva 
-     * email: silva018-mg@yahoo.com.br
+     * author: Kaique Alves 
+     * email: kaiqueexp@gmail.com
      * 
      */
 
@@ -12,12 +12,12 @@ class Arquivos extends CI_Controller {
 		parent::__construct();
 
 		if( (!session_id()) || (!$this->session->userdata('logado'))){
-            redirect('mapos/login');
+            redirect('login');
         }
 
         $this->load->helper(array('codegen_helper'));
         $this->load->model('arquivos_model','',TRUE);
-        $this->data['menuArquivos'] = 'Arquivos';
+        $dados['menuArquivos'] = 'Arquivos';
 	}
 
     public function index(){
@@ -29,65 +29,13 @@ class Arquivos extends CI_Controller {
            $this->session->set_flashdata('error','Você não tem permissão para visualizar arquivos.');
            redirect(base_url());
         }
-
-		$this->load->library('pagination');
-
-        $pesquisa = $this->input->get('pesquisa');
-        $de = $this->input->get('data');
-        $ate = $this->input->get('data2');
-
-        if($pesquisa == null && $de == null && $ate == null){
-
+ 
             
-                   
-            $config['base_url'] = base_url().'index.php/arquivos/gerenciar';
-            $config['total_rows'] = $this->arquivos_model->count('documentos');
-            $config['per_page'] = 10;
-            $config['next_link'] = 'Próxima';
-            $config['prev_link'] = 'Anterior';
-            $config['full_tag_open'] = '<div class="pagination alternate"><ul>';
-            $config['full_tag_close'] = '</ul></div>';
-            $config['num_tag_open'] = '<li>';
-            $config['num_tag_close'] = '</li>';
-            $config['cur_tag_open'] = '<li><a style="color: #2D335B"><b>';
-            $config['cur_tag_close'] = '</b></a></li>';
-            $config['prev_tag_open'] = '<li>';
-            $config['prev_tag_close'] = '</li>';
-            $config['next_tag_open'] = '<li>';
-            $config['next_tag_close'] = '</li>';
-            $config['first_link'] = 'Primeira';
-            $config['last_link'] = 'Última';
-            $config['first_tag_open'] = '<li>';
-            $config['first_tag_close'] = '</li>';
-            $config['last_tag_open'] = '<li>';
-            $config['last_tag_close'] = '</li>';
-            
-            $this->pagination->initialize($config);     
-            
-            $this->data['results'] = $this->arquivos_model->get('documentos','idDocumentos,documento,descricao,file,path,url,cadastro,categoria,tamanho,tipo','',$config['per_page'],$this->uri->segment(3));
-        
-        }
-        else{
+            $dados['results'] = $this->arquivos_model->get('documentos','idDocumentos,documento,descricao,file,path,url,cadastro,categoria,tamanho,tipo',$this->uri->segment(3));
+  
 
-            if($de != null){
-
-                $de = explode('/', $de);
-                $de = $de[2].'-'.$de[1].'-'.$de[0];
-
-                if($ate != null){
-                    $ate = explode('/', $ate);
-                    $ate = $ate[2].'-'.$ate[1].'-'.$ate[0]; 
-                }
-                else{
-                    $ate = $de;
-                }
-            }
-
-            $this->data['results'] = $this->arquivos_model->search($pesquisa, $de, $ate);
-        }
-
-       	$this->data['view'] = 'arquivos/arquivos';
-		$this->load->view('tema/topo',$this->data);
+       	$dados['tela'] = 'arquivos/arquivos';
+		$this->load->view('view_home',$dados);
 	}
 
 
@@ -99,13 +47,13 @@ class Arquivos extends CI_Controller {
         }
 
         $this->load->library('form_validation');
-        $this->data['custom_error'] = '';
+        $dados['custom_error'] = '';
 
         $this->form_validation->set_rules('nome', '', 'trim|required');
 
 
         if ($this->form_validation->run() == false) {
-            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
+            $dados['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
 
         	$arquivo = $this->do_upload();
@@ -139,14 +87,14 @@ class Arquivos extends CI_Controller {
 
             if ($this->arquivos_model->add('documentos', $data) == TRUE) {
                 $this->session->set_flashdata('success','Arquivo adicionado com sucesso!');
-                redirect(base_url() . 'index.php/arquivos/adicionar/');
+                redirect(base_url() . 'arquivos/adicionar/');
             } else {
-                $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
+                $dados['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
             }
         }
 
-        $this->data['view'] = 'arquivos/adicionarArquivo';
-        $this->load->view('tema/topo', $this->data);
+        $dados['tela'] = 'arquivos/adicionarArquivo';
+        $this->load->view('view_home', $dados);
 
     }
 
@@ -163,11 +111,11 @@ class Arquivos extends CI_Controller {
         }
 
         $this->load->library('form_validation');
-        $this->data['custom_error'] = '';
+        $dados['custom_error'] = '';
 
         $this->form_validation->set_rules('nome', '', 'trim|required');
         if ($this->form_validation->run() == false) {
-            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
+            $dados['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
 
             $data = $this->input->post('data');
@@ -187,16 +135,16 @@ class Arquivos extends CI_Controller {
 
             if ($this->arquivos_model->edit('documentos', $data, 'idDocumentos', $this->input->post('idDocumentos')) == TRUE) {
                 $this->session->set_flashdata('success','Alterações efetuadas com sucesso!');
-                redirect(base_url() . 'index.php/arquivos/editar/'.$this->input->post('idDocumentos'));
+                redirect(base_url() . 'arquivos/editar/'.$this->input->post('idDocumentos'));
             } else {
-                $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
+                $dados['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
             }
         }
 
 
-        $this->data['result'] = $this->arquivos_model->getById($this->uri->segment(3));
-        $this->data['view'] = 'arquivos/editarArquivo';
-        $this->load->view('tema/topo', $this->data);
+        $dados['result'] = $this->arquivos_model->getById($this->uri->segment(3));
+        $dados['tela'] = 'arquivos/editarArquivo';
+        $this->load->view('view_home', $dados);
 
     }
 
@@ -210,7 +158,7 @@ class Arquivos extends CI_Controller {
 
     	if($id == null || !is_numeric($id)){
     		$this->session->set_flashdata('error','Erro! O arquivo não pode ser localizado.');
-            redirect(base_url() . 'index.php/arquivos/');
+            redirect(base_url() . 'arquivos/');
     	}
 
     	$file = $this->arquivos_model->getById($id);
@@ -234,7 +182,7 @@ class Arquivos extends CI_Controller {
     	$id = $this->input->post('id');
     	if($id == null || !is_numeric($id)){
     		$this->session->set_flashdata('error','Erro! O arquivo não pode ser localizado.');
-            redirect(base_url() . 'index.php/arquivos/');
+            redirect(base_url() . 'arquivos/');
     	}
 
     	$file = $this->arquivos_model->getById($id);
@@ -247,12 +195,12 @@ class Arquivos extends CI_Controller {
 	    	unlink($path);
 
 	    	$this->session->set_flashdata('success','Arquivo excluido com sucesso!');
-	        redirect(base_url() . 'index.php/arquivos/');
+	        redirect(base_url() . 'arquivos/');
         }
         else{
 
         	$this->session->set_flashdata('error','Ocorreu um erro ao tentar excluir o arquivo.');
-            redirect(base_url() . 'index.php/arquivos/');
+            redirect(base_url() . 'arquivos/');
         }
 
 
@@ -288,7 +236,7 @@ class Arquivos extends CI_Controller {
 			$error = array('error' => $this->upload->display_errors());
 
 			$this->session->set_flashdata('error','Erro ao fazer upload do arquivo, verifique se a extensão do arquivo é permitida.');
-            redirect(base_url() . 'index.php/arquivos/adicionar/');
+            redirect(base_url() . 'arquivos/adicionar/');
 		}
 		else
 		{
