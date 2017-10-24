@@ -342,9 +342,14 @@ class Vendas extends CI_Controller {
                $vencimento = date('Y/m/d'); 
             }
 
+            $source = array('.', ',');
+            $replace = array('', '.');
+
+            $valor = str_replace($source, $replace, $this->input->post('valor'));
+
             $data = array(
                 'descricao' => set_value('descricao'),
-                'valor' => $this->input->post('valor'),
+                'valor' => $valor,
                 'clientes_id' => $this->input->post('clientes_id'),
                 'data_vencimento' => $vencimento,
                 'data_pagamento' => $recebimento,
