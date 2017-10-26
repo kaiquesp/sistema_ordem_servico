@@ -235,11 +235,10 @@ class Financeiro extends CI_Controller {
                $vencimento = date('Y/m/d'); 
             }
 
-            $valor = $this->input->post('valor');
-
-            if(!validate_money($valor)){
-                $valor = str_replace(array(',','.'), array('',''), $valor);
-            }
+            $source = array('.', ',');
+            $replace = array('', '.');
+			
+			$valor = str_replace(",","", $this->input->post('valor'));
 
             $data = array(
                 'descricao' => set_value('descricao'),
@@ -301,11 +300,10 @@ class Financeiro extends CI_Controller {
                $vencimento = date('Y/m/d'); 
             }
 
-            $valor = $this->input->post('valor');
+            $source = array('.', ',');
+            $replace = array('', '.');
 
-            if(!validate_money($valor)){
-                $valor = str_replace(array(',','.'), array('',''), $valor);
-            }
+            $valor = str_replace(",","", $this->input->post('valor'));
 
             $data = array(
                 'descricao' => set_value('descricao'),
@@ -369,9 +367,12 @@ class Financeiro extends CI_Controller {
                $vencimento = date('Y/m/d'); 
             }
 
+
+            $valor = str_replace(",","", $this->input->post('valor'));
+
             $data = array(
                 'descricao' => $this->input->post('descricao'),
-                'valor' => $this->input->post('valor'),
+                'valor' => $valor,
                 'data_vencimento' => $vencimento,
                 'data_pagamento' => $pagamento,
                 'baixado' => $this->input->post('pago') ? : 0,
@@ -381,7 +382,7 @@ class Financeiro extends CI_Controller {
             );
 
             if ($this->financeiro_model->edit('lancamentos',$data,'idLancamentos',$this->input->post('id')) == TRUE) {
-                $this->session->set_flashdata('success','lançamento editado com sucesso!');
+                $this->session->set_flashdata('success', 'Lancamento editado com sucesso!');
                 redirect($urlAtual);
             } else {
                 $this->session->set_flashdata('error','Ocorreu um erro ao tentar editar lançamento!');
@@ -415,23 +416,18 @@ class Financeiro extends CI_Controller {
 
     	$id = $this->input->post('id');
 
-    	if($id == null || ! is_numeric($id)){
-    		$json = array('result'=>  false);
-    		echo json_encode($json);
-    	}
-    	else{
+    	if ($id == null){
 
-    		$result = $this->financeiro_model->delete('lancamentos','idLancamentos',$id); 
-    		if($result){
-    			$json = array('result'=>  true);
-    			echo json_encode($json);
-    		}
-    		else{
-    			$json = array('result'=>  false);
-    			echo json_encode($json);
-    		}
-    		
-    	}
+            $this->session->set_flashdata('error','Erro ao tentar excluir produto.');            
+            redirect(base_url().'financeiro/lancamentos/');
+        }
+
+       
+        $this->financeiro_model->delete('lancamentos','idLancamentos',$id);             
+        
+
+        $this->session->set_flashdata('success','lançamentos excluido com sucesso!');            
+        redirect(base_url().'financeiro/lancamentos/');
     }
 
 
