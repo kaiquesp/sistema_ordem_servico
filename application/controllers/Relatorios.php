@@ -35,7 +35,7 @@ class Relatorios extends CI_Controller{
            $this->session->set_flashdata('error','Você não tem permissão para gerar relatórios de produtos.');
            redirect(base_url());
         }
-        $dados['view'] = 'relatorios/rel_produtos';
+        $dados['tela'] = 'relatorios/rel_produtos';
        	$this->load->view('view_home',$dados);
 
     }
