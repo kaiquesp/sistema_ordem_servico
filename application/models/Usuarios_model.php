@@ -11,6 +11,13 @@ class Usuarios_model extends CI_Model {
     function __construct() {
         parent::__construct();
     }
+	
+	public function check_dados($mail,$usuario) {
+		$this->db->select('email','login');
+		$this->db->where('email', $mail);
+        $this->db->where('login', $usuario);
+        return $this->db->get('usuarios')->row();
+    }
 
     
 

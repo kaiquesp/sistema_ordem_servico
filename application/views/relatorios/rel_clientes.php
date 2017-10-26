@@ -1,47 +1,64 @@
-<div class="row-fluid" style="margin-top: 0">
-    <div class="span4">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="icon-list-alt"></i>
-                </span>
-                <h5>Relatórios Rápidos</h5>
-            </div>
-            <div class="widget-content">
-                <ul class="site-stats">
-                    <li><a href="<?php echo base_url()?>index.php/relatorios/clientesRapid" target="_blank"><i class="icon-user"></i> <small>Todos os Clientes</small></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="span8">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="icon-list-alt"></i>
-                </span>
-                <h5>Relatórios Customizáveis</h5>
-            </div>
-            <div class="widget-content">
-                <div class="span12 well">
-                    <form target="_blank" action="<?php echo base_url()?>index.php/relatorios/clientesCustom" method="get">
-                    <div class="span4">
-                        <label for="">Cadastrado de:</label>
-                        <input type="date" name="dataInicial" class="span12" />
+  <div class="">
+    <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-3 col-sm-5 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Relatórios Rápidos</h2>
+                      <div class="clearfix"></div>
+                    </div>     
+                    <?php if ($this->session->flashdata('error') == TRUE): ?>
+                      <div class="alert alert-success alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                        </button>
+                        <p><?php echo $this->session->flashdata('error'); ?></p>
+                      </div>
+                    <?php endif; ?>
+                    <?php if ($this->session->flashdata('success') == TRUE): ?>
+                      <div class="alert alert-success alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                        </button>
+                        <p><?php echo $this->session->flashdata('success'); ?></p>
+                      </div>
+                    <?php endif; ?>
+                    <div class="x_content">
+                        <div class="botão col-md-offset-3">
+                            <a class="btn btn-app col-centered" style="width: 50%;">
+                                <i class="fa fa-user"></i> Todos os clientes
+                            </a>
+                        </div>
                     </div>
-                    <div class="span4">
-                        <label for="">até:</label>
-                        <input type="date" name="dataFinal" class="span12" />
-                    </div>
-                    <div class="span4">
-                        <label for="">.</label>
-                        <button class="btn btn-inverse span12"><i class="icon-print icon-white"></i> Imprimir</button>
-                    </div>
-                    </form>
                 </div>
-                .
+            </div>
+
+            <div class="col-md-9 col-sm-7 col-xs-12">
+                <div class="x_panel"> 
+                    <div class="x_title">
+                      <h2>Relatórios Customizáveis</h2>
+                      <div class="clearfix"></div>
+                    </div>    
+                    <?php if ($this->session->flashdata('error') == TRUE): ?>
+                      <div class="alert alert-success alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                        </button>
+                        <p><?php echo $this->session->flashdata('error'); ?></p>
+                      </div>
+                    <?php endif; ?>
+                    <?php if ($this->session->flashdata('success') == TRUE): ?>
+                      <div class="alert alert-success alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                        </button>
+                        <p><?php echo $this->session->flashdata('success'); ?></p>
+                      </div>
+                    <?php endif; ?>
+                    <div class="x_content">
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
+

@@ -4,19 +4,19 @@ class Relatorios extends CI_Controller{
 
 
     /**
-     * author: Ramon Silva 
-     * email: silva018-mg@yahoo.com.br
+     * author: Kaique Alves
+     * email: kaiqueexp@gmail.com
      * 
      */
     
     public function __construct() {
         parent::__construct();
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-            redirect('mapos/login');
+            redirect('login');
         }
         
         $this->load->model('Relatorios_model','',TRUE);
-        $this->data['menuRelatorios'] = 'Relatórios';
+        $dados['menuRelatorios'] = 'Relatórios';
 
     }
 
@@ -26,8 +26,8 @@ class Relatorios extends CI_Controller{
            $this->session->set_flashdata('error','Você não tem permissão para gerar relatórios de clientes.');
            redirect(base_url());
         }
-        $this->data['view'] = 'relatorios/rel_clientes';
-       	$this->load->view('tema/topo',$this->data);
+        $dados['tela'] = 'relatorios/rel_clientes';
+       	$this->load->view('view_home',$dados);
     }
 
     public function produtos(){
@@ -35,8 +35,8 @@ class Relatorios extends CI_Controller{
            $this->session->set_flashdata('error','Você não tem permissão para gerar relatórios de produtos.');
            redirect(base_url());
         }
-        $this->data['view'] = 'relatorios/rel_produtos';
-       	$this->load->view('tema/topo',$this->data);
+        $dados['view'] = 'relatorios/rel_produtos';
+       	$this->load->view('view_home',$dados);
 
     }
 
@@ -124,8 +124,8 @@ class Relatorios extends CI_Controller{
            $this->session->set_flashdata('error','Você não tem permissão para gerar relatórios de serviços.');
            redirect(base_url());
         }
-        $this->data['view'] = 'relatorios/rel_servicos';
-       	$this->load->view('tema/topo',$this->data);
+        $dados['view'] = 'relatorios/rel_servicos';
+       	$this->load->view('view_home',$dados);
 
     }
 
@@ -164,8 +164,8 @@ class Relatorios extends CI_Controller{
            $this->session->set_flashdata('error','Você não tem permissão para gerar relatórios de OS.');
            redirect(base_url());
         }
-        $this->data['view'] = 'relatorios/rel_os';
-       	$this->load->view('tema/topo',$this->data);
+        $dados['view'] = 'relatorios/rel_os';
+       	$this->load->view('view_home',$dados);
     }
 
     public function osRapid(){
@@ -208,8 +208,8 @@ class Relatorios extends CI_Controller{
            redirect(base_url());
         }
 
-        $this->data['view'] = 'relatorios/rel_financeiro';
-        $this->load->view('tema/topo',$this->data);
+        $dados['view'] = 'relatorios/rel_financeiro';
+        $this->load->view('view_home',$dados);
     
     }
 
@@ -255,8 +255,8 @@ class Relatorios extends CI_Controller{
            redirect(base_url());
         }
 
-        $this->data['view'] = 'relatorios/rel_vendas';
-        $this->load->view('tema/topo',$this->data);
+        $dados['view'] = 'relatorios/rel_vendas';
+        $this->load->view('view_home',$dados);
     }
 
     public function vendasRapid(){

@@ -30,7 +30,7 @@ $foto = $session['foto'];
        <li><a href="<?php echo base_url("servicos"); ?>"><i class="fa fa-wrench"></i> Serviços</a></li>
       <?php } ?>
       <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vOs')){ ?>
-       <li><a href="<?php echo base_url("os"); ?>"><i class="fa fa-wrench"></i> Ordem de serviço</a></li>
+       <li><a href="<?php echo base_url("os"); ?>"><i class="fa fa-tags"></i> Ordem de serviço</a></li>
       <?php } ?>
       <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vVenda')){ ?>
        <li><a href="<?php echo base_url("vendas"); ?>"><i class="fa fa-shopping-cart"></i> Vendas</a></li>
@@ -38,37 +38,39 @@ $foto = $session['foto'];
       <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vArquivo')){ ?>
        <li><a href="<?php echo base_url("arquivos"); ?>"><i class="fa fa-shopping-cart"></i> Arquivos</a></li>
       <?php } ?>
-      <!-- <li><a><i class="fa fa-users"></i> Clientes <span class="fa fa-chevron-down"></span></a>
+      <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vLancamento')){ ?>
+          <li><a><i class="fa fa-money"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')){ ?>
+                <li><a href="<?php echo base_url("financeiro/lancamentos"); ?>"><i class="fa fa-arrows-v"></i> Lancamentos</a></li>
+              <?php } ?>
+            </ul>
+          </li>
+      <?php } ?>  
+      <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')  || $this->permission->checkPermission($this->session->userdata('permissao'),'cEmitente') || $this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao') || $this->permission->checkPermission($this->session->userdata('permissao'),'cBackup')){ ?>
+      <li><a><i class="fa fa-list-alt"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="cadastrocliente"><i class="fa fa-plus"></i> Cadastro</a></li>
-          <li><a href="consultacliente"><i class="fa fa-search"></i> Consulta</a></li>
-          <li><a href="listacliente"><i class="fa fa-list-alt"></i> Listar</a></li>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')){ ?>
+            <li><a href="<?php echo base_url("relatorios/clientes"); ?>"><i class="fa fa-users"></i> Clientes</a></li>
+          <?php } ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao')){ ?>
+            <li><a href="<?php echo base_url("relatorios/produtos"); ?>"><i class="fa fa-barcode"></i> Produtos</a></li>
+          <?php } ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')){ ?>
+            <li><a href="<?php echo base_url("relatorios/servicos"); ?>"><i class="fa fa-wrench"></i> Serviços</a></li>
+          <?php } ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao')){ ?>
+            <li><a href="<?php echo base_url("relatorios/os"); ?>"><i class="fa fa-tags"></i> Ordens de Serviço</a></li>
+          <?php } ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')){ ?>
+            <li><a href="<?php echo base_url("relatorios/vendas"); ?>"><i class="fa fa-shopping-cart"></i> Vendas</a></li>
+          <?php } ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao')){ ?>
+            <li><a href="<?php echo base_url("relatorios/financeiro"); ?>"><i class="fa fa-money"></i> Financeiro</a></li>
+          <?php } ?>
         </ul>
       </li>
-      <li><a><i class="fa fa-shopping-cart"></i> Produtos <span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li><a href="cadastraproduto"><i class="fa fa-plus"></i> Cadastro</a></li>
-          <li><a href="consultaproduto"><i class="fa fa-search"></i> Consulta</a></li>
-          <li><a href="listaproduto"><i class="fa fa-list-alt"></i> Listar</a></li>
-        </ul>
-      </li>
-      <li><a><i class="fa fa-check-square-o"></i> Pedidos <span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li><a href="novopedido"><i class="fa fa-plus"></i> Novo Pedido</a></li>
-          <li><a href="alterarpedido"><i class="fa fa-search"></i> Alterar Pedidos</a></li>
-          <li><a href="consultarpedido"><i class="fa fa-list-alt"></i> Consultar Pedidos</a></li>
-          <li><a href="emissaopedido"><i class="fa fa-list-alt"></i> Emissão de Pedidos</a></li>
-        </ul>
-      </li>
-      <li><a><i class="fa fa-area-chart"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li><a href="relatorioclientes"><i class="fa fa-plus"></i> Clientes</a></li>
-          <li><a href="relatorioprodutos"><i class="fa fa-search"></i> Produtos</a></li>
-          <li><a href="relatoriopedidos"><i class="fa fa-list-alt"></i> Pedidos</a></li>
-        </ul>
-      </li>
-      <li><a href="agenda"><i class="fa fa-calendar"></i> Agenda</a></li>
-      <li><a href="requisicaoajax"><i class="fa fa-circle-o"></i> Requisição Jquery/Ajax</a></li> -->
+      <?php } ?>  
       <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')  || $this->permission->checkPermission($this->session->userdata('permissao'),'cEmitente') || $this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao') || $this->permission->checkPermission($this->session->userdata('permissao'),'cBackup')){ ?>
       <li><a><i class="fa fa-cogs"></i> Configurações <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
@@ -76,8 +78,14 @@ $foto = $session['foto'];
             <li><a href="<?php echo base_url("usuarios"); ?>"><i class="fa fa-user"></i> Usuários</a></li>
           <?php } ?>
           <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao')){ ?>
-            <li><a href="<?php echo base_url("permissoes"); ?>"><i class="fa fa-user"></i> Permissoes</a></li>
+            <li><a href="<?php echo base_url("home/emitente"); ?>"><i class="fa fa-male"></i> Emitente</a></li>
           <?php } ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao')){ ?>
+            <li><a href="<?php echo base_url("permissoes"); ?>"><i class="fa fa-lock"></i> Permissoes</a></li>
+          <?php } ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cBackup')){ ?>
+                <li><a href="<?php echo base_url("home/backup"); ?>"><i class="fa fa-download"></i> Backup</a></li>
+            <?php } ?>
         </ul>
       </li>
       <?php } ?>

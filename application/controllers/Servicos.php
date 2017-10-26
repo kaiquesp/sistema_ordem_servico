@@ -52,10 +52,7 @@ class Servicos extends CI_Controller {
         if ($this->form_validation->run('servicos') == false) {
             $dados['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
-            $source = array('.', ',');
-            $replace = array('', '.');
-
-            $preco = str_replace($source, $replace, $this->input->post('preco'));
+			$preco = str_replace(",","", $this->input->post('preco'));
 
             $data = array(
                 'nome' => set_value('nome'),
@@ -86,10 +83,8 @@ class Servicos extends CI_Controller {
         if ($this->form_validation->run('servicos') == false) {
             $dados['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
-            $source = array('.', ',');
-            $replace = array('', '.');
-
-            $preco = str_replace($source, $replace, $this->input->post('preco'));
+            $preco = str_replace(",","", $this->input->post('preco'));
+			
             $data = array(
                 'nome' => $this->input->post('nome'),
                 'descricao' => $this->input->post('descricao'),
@@ -133,7 +128,7 @@ class Servicos extends CI_Controller {
         
 
         $this->session->set_flashdata('success','Serviço excluido com sucesso!');            
-        redirect(base_url().'index.php/servicos/gerenciar/');
+        redirect(base_url().'servicos/gerenciar/');
     }
 }
 

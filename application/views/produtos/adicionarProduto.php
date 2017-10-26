@@ -10,14 +10,20 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <div class="x_content">
-        <?php if ($custom_error != '') {
-
-            if($custom_error == 'Usuário cadastrado com sucesso'){
-              echo '<div class="alert alert-success">'.$custom_error.'</div>';
-            }else{
-              echo '<div class="alert alert-danger">'.$custom_error.'</div>';
-            }
-        } ?>
+        <?php if ($this->session->flashdata('error') == TRUE): ?>
+          <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+            </button>
+            <p><?php echo $this->session->flashdata('error'); ?></p>
+          </div>
+        <?php endif; ?>
+        <?php if ($this->session->flashdata('success') == TRUE): ?>
+          <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+            </button>
+            <p><?php echo $this->session->flashdata('success'); ?></p>
+          </div>
+        <?php endif; ?>
         <form role="form" action="adicionar" id="formUsuario" method="POST" class="form-horizontal form-label-left">
           </p>
 
@@ -84,7 +90,7 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
-              <button type="submit" class="btn btn-success">Cadastrar usuário</button>
+              <button type="submit" class="btn btn-success">Cadastrar Produto</button>
               <a href="<?php echo base_url("produtos"); ?>" class="btn btn-danger">Voltar</a>
             </div>
           </div>

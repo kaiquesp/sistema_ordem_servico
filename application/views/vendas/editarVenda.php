@@ -46,8 +46,8 @@
                     <div class="span8 offset2" style="text-align: center">
                       <?php if($result->faturado == 0){ ?>
                       <a href="#modal-faturar" id="btn-faturar" role="button" data-toggle="modal" class="btn btn-success"><i class="fa fa-file"></i> Faturar</a>
-                      <?php } ?>
                       <button class="btn btn-primary" id="btnContinuar"><i class="fa fa-check"></i> Alterar</button>
+                      <?php } ?>
                       <a href="<?php echo base_url() ?>vendas/visualizar/<?php echo $result->idVendas; ?>" class="btn btn-dark"><i class="fa fa-eye"></i> Visualizar Venda</a> <a href="<?php echo base_url() ?>vendas" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a> </div>
                     </div>
                   </form>
@@ -146,7 +146,7 @@
               <div class="span4" style="margin-left: 0">  
                 <label for="valor">Valor*</label>
                 <input type="hidden" id="tipo" name="tipo" value="receita" /> 
-                <input class="form-control money" id="valor" type="text" name="valor" value="<?php echo number_format($total,2); ?> "  />
+                <input class="form-control format_value" id="valor" type="text" name="valor" value="<?php echo number_format($total,2,',','.'); ?> "  />
               </div>
               <div class="span4" >
                 <label for="vencimento">Data Vencimento*</label>
