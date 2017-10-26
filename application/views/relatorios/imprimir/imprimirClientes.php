@@ -1,5 +1,5 @@
   <head>
-    <title>MAPOS</title>
+    <title>JapaCar</title>
     <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
@@ -29,7 +29,7 @@
                       <thead>
                           <tr>
                               <th style="font-size: 1.2em; padding: 5px;">Nome</th>
-                              <th style="font-size: 1.2em; padding: 5px;">Documento</th>
+                              <th style="font-size: 1.2em; padding: 5px;">CPF/CNPJ</th>
                               <th style="font-size: 1.2em; padding: 5px;">Telefone</th>
                               <th style="font-size: 1.2em; padding: 5px;">Email</th>
                               <th style="font-size: 1.2em; padding: 5px;">Cadastro</th>
@@ -41,7 +41,11 @@
                               $dataCadastro = date('d/m/Y', strtotime($c->dataCadastro));
                               echo '<tr>';
                               echo '<td>' . $c->nomeCliente . '</td>';
-                              echo '<td>' . $c->documento . '</td>';
+                              if(isset($c->cnpj)){
+                                echo '<td>' .$c->cnpj.'</td>';
+                              }elseif(isset($c->cpf)){
+                                  echo '<td>' .$c->cpf.'</td>';
+                              }
                               echo '<td>' . $c->telefone . '</td>';
                               echo '<td>' . $c->email . '</td>';
                               echo '<td>' . $dataCadastro . '</td>';

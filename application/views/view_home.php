@@ -46,7 +46,7 @@ if ($this->session->userdata('logado')){
   <!-- Switchery -->
   <link href="<?php echo site_url(); ?>assets/css/switchery/switchery.min.css" rel="stylesheet">
   <link href="<?php echo site_url(); ?>assets/css/style.css" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="<?php echo base_url();?>assets/css/smoothness/jquery-ui-1.9.2.custom.css" /> -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/smoothness/jquery-ui-1.9.2.custom.css" />
 </head>
 
 <body class="nav-md">
@@ -271,7 +271,7 @@ if ($this->session->userdata('logado')){
       </script> 
       <script src="<?php echo site_url(); ?>assets/js/jquery.maskMoney/jquery.maskMoney.js" type="text/javascript"></script> 
       <script type="text/javascript">
-        $(".format_value").maskMoney({prefix:'R$ ', allowNegative: true, decimal:'.', affixesStay: false});
+        $(".format_value").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'', decimal:'.', affixesStay: false});
       </script> 
       <script type="text/javascript">
         $(document).ready(function(){

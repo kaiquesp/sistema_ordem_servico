@@ -22,8 +22,8 @@
                       </div>
                     <?php endif; ?>
                     <div class="x_content">
-                        <div class="botão col-md-offset-3">
-                            <a class="btn btn-app col-centered" style="width: 50%;">
+                        <div class="col-md-offset-3 col-sm-offset-3 col-xs-offset-3">
+                            <a href="<?php echo base_url()?>relatorios/clientesRapid" class="btn btn-app col-centered"  target="_blank">
                                 <i class="fa fa-user"></i> Todos os clientes
                             </a>
                         </div>
@@ -52,7 +52,24 @@
                       </div>
                     <?php endif; ?>
                     <div class="x_content">
-
+                        <div class="row">
+                            <form target="_blank" action="<?php echo base_url()?>relatorios/clientesCustom" method="get">
+                                <div class="well well-lg">
+                                    <div class="col-md-4 col-xs-12">
+                                        <label for="">Cadastrado de:</label>
+                                        <input type="date" name="dataInicial" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4 col-xs-12">
+                                        <label for="">até:</label>
+                                        <input type="date" name="dataFinal" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4 col-xs-12">
+                                        <br>
+                                        <button class="btn btn-dark"><i class="fa fa-print"></i> Imprimir</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
