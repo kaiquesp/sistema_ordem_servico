@@ -155,6 +155,22 @@
                   <hr />
                     
              <h4 style="text-align: right">Valor Total: R$ <?php echo number_format($totalProdutos + $totalServico,2,',','.');?></h4>
+
+            <br /><br />
+             <div class="row">
+                <div align="center">
+                    <div class="col-md-6">
+                        ______________________________________________
+                        <p class="text-center">Assinatura do responsável</p>
+                    </div>
+                </div>
+                <div align="center">
+                    <div class="col-md-6">
+                        ______________________________________________
+                        <p class="text-center">Assinatura do cliente</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

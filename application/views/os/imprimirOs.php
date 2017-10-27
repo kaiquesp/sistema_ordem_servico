@@ -25,7 +25,7 @@
         <div class="invoice-content">
                 <div class="invoice-head" style="margin-bottom: 0">
 
-                    <table class="table">
+                    <table class="table table-responsive">
                         <tbody>
                             <?php if($emitente == null) {?>
                                         
@@ -34,7 +34,7 @@
                             </tr>
                             <?php } else {?>
                             <tr>
-                                <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?> "></td>
+                                <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?>" class="img-responsive"></td>
                                 <td> <span style="font-size: 20px; "> <?php echo $emitente[0]->nome; ?></span> </br><span><?php echo $emitente[0]->cnpj; ?> </br> <?php echo $emitente[0]->rua.', '.$emitente[0]->numero.' - '.$emitente[0]->bairro.' - '.$emitente[0]->cidade.' - '.$emitente[0]->uf; ?> </span> </br> <span> E-mail: <?php echo $emitente[0]->email.' - Fone: '.$emitente[0]->telefone; ?></span></td>
                                 <td style="width: 18%; text-align: center">#Protocolo: <span ><?php echo $result->idOs?></span></br> </br> <span>Emissão: <?php echo date('d/m/Y')?></span></td>
                             </tr>
@@ -44,7 +44,7 @@
                     </table>
 
             
-                    <table class="table" style="margin-top: 0">
+                    <table class="table table-responsive" style="margin-top: 0">
                         <tbody>
                             <tr>
                                 <td style="width: 50%; padding-left: 0">
@@ -161,6 +161,21 @@
                     
                         <h4 style="text-align: right">Valor Total: R$ <?php echo number_format($totalProdutos + $totalServico,2,',','.');?></h4>
 
+                        <br /><br />
+                        <div class="row">
+                            <div align="center">
+                                <div class="col-md-6">
+                                    ______________________________________________
+                                    <p class="text-center">Assinatura do responsável</p>
+                                </div>
+                            </div>
+                            <div align="center">
+                                <div class="col-md-6">
+                                    ______________________________________________
+                                    <p class="text-center">Assinatura do cliente</p>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>                
       </div>
