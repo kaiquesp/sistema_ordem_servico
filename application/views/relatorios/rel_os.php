@@ -1,112 +1,64 @@
-<div class="row-fluid" style="margin-top: 0">
-    <div class="span4">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="icon-list-alt"></i>
-                </span>
-                <h5>Relatórios Rápidos</h5>
-            </div>
-            <div class="widget-content">
-                <ul class="site-stats">
-                    <li><a target="_blank" href="<?php echo base_url()?>index.php/relatorios/osRapid"><i class="icon-tags"></i> <small>Todas as OS</small></a></li>
-                    
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="span8">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="icon-list-alt"></i>
-                </span>
-                <h5>Relatórios Customizáveis</h5>
-            </div>
-            <div class="widget-content">
-                <div class="span12 well">
-
-                    <form target="_blank" action="<?php echo base_url() ?>index.php/relatorios/osCustom" method="get">
-                        <div class="span12 well">
-                            <div class="span6">
-                                <label for="">Data de:</label>
-                                <input type="date" name="dataInicial" class="span12" />
-                            </div>
-                            <div class="span6">
-                                <label for="">até:</label>
-                                <input type="date"  name="dataFinal" class="span12" />
+  <div class="">
+    <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-4 col-sm-5 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Relatórios Rápidos</h2>
+                      <div class="clearfix"></div>
+                    </div>     
+                    <div class="x_content">
+                        <div class="row">
+                            <div align="center">
+                                <a href="<?php echo base_url()?>relatorios/osRapid" class="btn btn-app col-centered"  target="_blank">
+                                    <i class="fa fa-tags"></i> Todos os clientes
+                                </a>
                             </div>
                         </div>
-                        <div class="span12 well" style="margin-left: 0">
-                            <div class="span6">
-                                <label for="">Cliente:</label>
-                                <input type="text"  id="cliente" class="span12" />
-                                <input type="hidden" name="cliente" id="clienteHide" />
-
-                            </div>
-                            <div class="span6">
-                                <label for="">Responsável:</label>
-                                <input type="text" id="tecnico"   class="span12" />
-                                <input type="hidden" name="responsavel" id="responsavelHide" />
-                            </div>
-                        </div>
-                        <div class="span12 well" style="margin-left: 0">
-                            <div class="span6">
-                                <label for="">Status:</label>
-                                <select name="status" id="" class="span12">
-                                    <option value=""></option>
-                                    <option value="Orçamento">Orçamento</option>
-                                    <option value="Aberto">Aberto</option>
-                                    <option value="Em Andamento">Em Andamento</option>
-                                    <option value="Finalizado">Finalizado</option>
-                                    <option value="Cancelado">Cancelado</option>
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <div class="span12" style="margin-left: 0; text-align: center">
-                            <input type="reset" class="btn" value="Limpar" />
-                            <button class="btn btn-inverse"><i class="icon-print icon-white"></i> Imprimir</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-                .
+            </div>
+
+            <div class="col-md-8 col-sm-7 col-xs-12">
+                <div class="x_panel"> 
+                    <div class="x_title">
+                      <h2>Relatórios Customizáveis</h2>
+                      <div class="clearfix"></div>
+                    </div>    
+                    <div class="x_content">
+                        <form target="_blank" action="<?php echo base_url()?>relatorios/osCustom" method="get">
+                            <div class="row well well-lg">
+                                <div class="col-md-6 col-xs-12">
+                                    <label for="">Data de:</label>
+                                    <input type="date" name="dataInicial" class="form-control" />
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <label for="">até:</label>
+                                    <input type="date"  name="dataFinal" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row well well-lg">
+                                <div class="col-md-6 col-xs-12">
+                                   <label for="">Estoque de:</label>
+                                    <input type="text" name="estoqueInicial" class="form-control format_value" />
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <label for="">até:</label>
+                                    <input type="text" name="estoqueFinal" class="form-control format_value" />
+                                </div>
+                            </div>
+                            <div class="col-md-offset-5 col-xs-offset-3 col-sm-offset-3">
+                                <br>
+                                <button type="reset" class="btn btn-default"><i class="fa fa-eraser"></i> Limpar</button>
+                                <button class="btn btn-dark"><i class="fa fa-print"></i> Imprimir</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<link rel="stylesheet" href="<?php echo base_url();?>assets/js/jquery-ui/css/smoothness/jquery-ui-1.9.2.custom.css" />
-<script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-ui/js/jquery-ui-1.9.2.custom.js"></script>
-<script src="<?php echo base_url();?>assets/js/maskmoney.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $(".money").maskMoney();
-        
-        $("#cliente").autocomplete({
-            source: "<?php echo base_url(); ?>index.php/os/autoCompleteCliente",
-            minLength: 2,
-            select: function( event, ui ) {
-
-                 $("#clienteHide").val(ui.item.id);
 
 
-            }
-      });
-
-      $("#tecnico").autocomplete({
-            source: "<?php echo base_url(); ?>index.php/os/autoCompleteUsuario",
-            minLength: 2,
-            select: function( event, ui ) {
-
-                 $("#responsavelHide").val(ui.item.id);
-
-
-            }
-      });
-
-    });
-</script>
