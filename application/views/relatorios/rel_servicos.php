@@ -1,61 +1,54 @@
-<div class="row-fluid" style="margin-top: 0">
-    <div class="span4">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="icon-list-alt"></i>
-                </span>
-                <h5>Relatórios Rápidos</h5>
-            </div>
-            <div class="widget-content">
-                <ul class="site-stats">
-                    <li><a target="_blank" href="<?php echo base_url()?>index.php/relatorios/servicosRapid"><i class="icon-wrench"></i> <small>Todos os Serviços</small></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="span8">
-        <div class="widget-box">
-            <div class="widget-title">
-                <span class="icon">
-                    <i class="icon-list-alt"></i>
-                </span>
-                <h5>Relatórios Customizáveis</h5>
-            </div>
-            <div class="widget-content">
-                <div class="span12 well">
-                    
-                    <form target="_blank" action="<?php echo base_url() ?>index.php/relatorios/servicosCustom" method="get">
-                        <div class="span12 well">
-                            <div class="span6">
-                                <label for="">Preço de:</label>
-                                <input type="text" name="precoInicial" class="span12 money" />
-                            </div>
-                            <div class="span6">
-                                <label for="">até:</label>
-                                <input type="text"  name="precoFinal" class="span12 money" />
+  <div class="">
+    <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-4 col-sm-5 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Relatórios Rápidos</h2>
+                      <div class="clearfix"></div>
+                    </div>     
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12 col-sm-12" align="center">
+                                <a href="<?php echo base_url()?>relatorios/servicosRapid" class="btn btn-app" target="_blank">
+                                    <i class="fa fa-barcode"></i> Todos os serviços
+                                </a>
                             </div>
                         </div>
- 
-                        <div class="span12" style="margin-left: 0; text-align: center">
-                            <input type="reset" class="btn" value="Limpar" />
-                            <button class="btn btn-inverse"><i class="icon-print icon-white"></i> Imprimir</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-                .
+            </div>
+
+            <div class="col-md-8 col-sm-7 col-xs-12">
+                <div class="x_panel"> 
+                    <div class="x_title">
+                      <h2>Relatórios Customizáveis</h2>
+                      <div class="clearfix"></div>
+                    </div>    
+                    <div class="x_content">
+                            <form target="_blank" action="<?php echo base_url()?>relatorios/servicosCustom" method="get">
+                                <div class="row well well-lg">
+                                    <div class="col-md-6 col-xs-12">
+                                        <label for="">Preço de Venda de:</label>
+                                        <input type="text" name="precoInicial" class="form-control format_value" />
+                                    </div>
+                                    <div class="col-md-6 col-xs-12">
+                                        <label for="">até:</label>
+                                        <input type="text"  name="precoFinal" class="form-control format_value" />
+                                    </div>
+                                </div>
+                                <div class="col-md-offset-5 col-xs-offset-3 col-sm-offset-3">
+                                    <br>
+                                    <button type="reset" class="btn btn-default"><i class="fa fa-eraser"></i> Limpar</button>
+                                    <button class="btn btn-dark"><i class="fa fa-print"></i> Imprimir</button>
+                                </div>
+                            </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 
-<script src="<?php echo base_url();?>assets/js/maskmoney.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $(".money").maskMoney();
 
-
-    });
-</script>
