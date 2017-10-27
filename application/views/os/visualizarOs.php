@@ -159,13 +159,13 @@
             <br /><br />
              <div class="row">
                 <div align="center">
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
                         ______________________________________________
                         <p class="text-center">Assinatura do responsável</p>
                     </div>
                 </div>
                 <div align="center">
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
                         ______________________________________________
                         <p class="text-center">Assinatura do cliente</p>
                     </div>
