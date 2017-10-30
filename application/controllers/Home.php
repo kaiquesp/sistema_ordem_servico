@@ -21,12 +21,11 @@ class Home extends CI_Controller {
             redirect('login');
         }
 
-        $this->data['ordens'] = $this->mapos_model->getOsAbertas();
-        $this->data['produtos'] = $this->mapos_model->getProdutosMinimo();
-        $this->data['os'] = $this->mapos_model->getOsEstatisticas();
-        $this->data['estatisticas_financeiro'] = $this->mapos_model->getEstatisticasFinanceiro();
-        $this->data['menuPainel'] = 'Painel';
-        $this->load->view('view_home');
+        $dados['ordens'] = $this->mapos_model->getOsAbertas();
+        $dados['produtos'] = $this->mapos_model->getProdutosMinimo();
+        $dados['os'] = $this->mapos_model->getOsEstatisticas();
+        $dados['estatisticas_financeiro'] = $this->mapos_model->getEstatisticasFinanceiro();
+        $this->load->view('view_home', $dados);
       
     }
 

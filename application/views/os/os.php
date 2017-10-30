@@ -77,14 +77,16 @@
                     <td>
                     <?php
                      if($this->permission->checkPermission($this->session->userdata('permissao'),'vOs')){
-                echo '<a style="margin-right: 1%" href="'.base_url().'os/visualizar/'.$r->idOs.'" class="btn btn-default" title="Ver mais detalhes"><i class="fa fa-eye"></i></a>'; 
-                echo '<a style="margin-right: 1%" href="'.base_url().'os/imprimir/'.$r->idOs.'" target="_blank" class="btn btn-dark" title="Imprimir"><i class="fa fa-print"></i></a>'; 
-            }
-            if($this->permission->checkPermission($this->session->userdata('permissao'),'eOs')){
-                echo '<a style="margin-right: 1%" href="'.base_url().'os/editar/'.$r->idOs.'" class="btn btn-info" title="Editar OS"><i class="fa fa-pencil"></i></a>'; 
-            }
-            if($this->permission->checkPermission($this->session->userdata('permissao'),'dOs')){
-                echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-excluir'.$r->idOs.'"><i class="fa fa-trash"></i></button>'; 
+                      echo '<a style="margin-right: 1%" href="'.base_url().'os/visualizar/'.$r->idOs.'" class="btn btn-default" title="Ver mais detalhes"><i class="fa fa-eye"></i></a>'; 
+                      echo '<a style="margin-right: 1%" href="'.base_url().'os/imprimir/'.$r->idOs.'" target="_blank" class="btn btn-dark" title="Imprimir"><i class="fa fa-print"></i></a>'; 
+                      }
+                      if(($r->status == "Aberto") || ($r->status == "Em Andamento") || ($r->status == "Orçamento")){
+                        if($this->permission->checkPermission($this->session->userdata('permissao'),'eOs')){
+                          echo '<a style="margin-right: 1%" href="'.base_url().'os/editar/'.$r->idOs.'" class="btn btn-info" title="Editar OS"><i class="fa fa-pencil"></i></a>'; 
+                        }
+                      }
+                      if($this->permission->checkPermission($this->session->userdata('permissao'),'dOs')){
+                          echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-excluir'.$r->idOs.'"><i class="fa fa-trash"></i></button>'; 
             
                     ?>
                        <div class="modal fade" id="modal-excluir<?php echo $r->idOs; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

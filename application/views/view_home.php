@@ -8,6 +8,8 @@ if ($this->session->userdata('logado')){
   } else {
     $tela = 'home/view_dashboard.php';
   }
+
+
 }
 ?>
 
@@ -47,6 +49,7 @@ if ($this->session->userdata('logado')){
   <link href="<?php echo site_url(); ?>assets/css/switchery/switchery.min.css" rel="stylesheet">
   <link href="<?php echo site_url(); ?>assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/smoothness/jquery-ui-1.9.2.custom.css" />
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/js/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 </head>
 
 <body class="nav-md">
@@ -139,7 +142,270 @@ if ($this->session->userdata('logado')){
         <script src="<?php echo base_url()?>assets/js/devbridge-autocomplete/jquery.autocomplete.min.js"></script> 
         <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-ui/jquery-ui-1.9.2.custom.js"></script> 
         <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery.validate.js"></script> 
+
+        <!-- bootstrap-wysiwyg -->
+        <script src="<?php echo base_url()?>assets/js/bootstrap-wysiwyg.min.js"></script>
+        <script src="<?php echo base_url()?>assets/js/jquery.hotkeys.js"></script>
+        <script src="<?php echo base_url()?>assets/js/prettify.js"></script>
+		    <script src="<?php echo base_url()?>assets/js/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+        <script src="<?php echo base_url()?>assets/js/echarts/echarts.min.js"></script>
+    	 <script src="<?php echo base_url()?>assets/js/echarts/world.js"></script>
+
+        <?php if(isset($estatisticas_financeiro) && $estatisticas_financeiro != null) { 
+         if($estatisticas_financeiro->total_receita != null || $estatisticas_financeiro->total_despesa != null || $estatisticas_financeiro->total_receita_pendente != null || $estatisticas_financeiro->total_despesa_pendente != null){
+        ?>
         <script type="text/javascript">
+         //echart Pie Collapse
+
+         if ($('#echart_f_realizado').length ){ 
+            
+            var echartPieCollapse = echarts.init(document.getElementById('echart_f_realizado'));
+            
+            echartPieCollapse.setOption({
+            tooltip: {
+              trigger: 'item',
+              formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+              x: 'center',
+              y: 'bottom',
+              data: ['Total Despesas', 'Total Receitas']
+            },
+            toolbox: {
+              show: true,
+              feature: {
+              magicType: {
+                show: true,
+                type: ['pie', 'funnel']
+              },
+              restore: {
+                show: true,
+                title: "Atualizar"
+              },
+              saveAsImage: {
+                show: true,
+                title: "Salvar Imagem"
+              }
+              }
+            },
+            calculable: true,
+            series: [{
+              name: 'Financeiro Realizado',
+              type: 'pie',
+              radius: [25, 90],
+              center: ['50%', 170],
+              roseType: 'area',
+              x: '50%',
+              max: 20,
+              sort: 'ascending',
+              data: [{
+              value: <?php echo ($estatisticas_financeiro->total_despesa != null ) ?  $estatisticas_financeiro->total_despesa : '0.00'; ?>,
+              name: 'Total Despesas'
+              }, {
+              value: <?php echo ($estatisticas_financeiro->total_receita != null ) ?  $estatisticas_financeiro->total_receita : '0.00'; ?>,
+              name: 'Total Receitas'
+              }]
+            }]
+            });
+
+          } 
+        
+          if ($('#echart_f_pendente').length ){ 
+            
+            var echartPieCollapse = echarts.init(document.getElementById('echart_f_pendente'));
+            
+            echartPieCollapse.setOption({
+            tooltip: {
+              trigger: 'item',
+              formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+              x: 'center',
+              y: 'bottom',
+              data: ['Total Despesas', 'Total Receitas']
+            },
+            toolbox: {
+              show: true,
+              feature: {
+              magicType: {
+                show: true,
+                type: ['pie', 'funnel']
+              },
+              restore: {
+                show: true,
+                title: "Restore"
+              },
+              saveAsImage: {
+                show: true,
+                title: "Save Image"
+              }
+              }
+            },
+            calculable: true,
+            series: [{
+              name: 'Financeiro Pendentes',
+              type: 'pie',
+              radius: [25, 90],
+              center: ['50%', 170],
+              roseType: 'area',
+              x: '50%',
+              max: 40,
+              sort: 'ascending',
+              data: [{
+              value: <?php echo ($estatisticas_financeiro->total_despesa_pendente != null ) ?  $estatisticas_financeiro->total_despesa_pendente : '0.00'; ?>,
+              name: 'Total Despesas'
+              }, {
+              value: <?php echo ($estatisticas_financeiro->total_receita_pendente != null ) ?  $estatisticas_financeiro->total_receita_pendente : '0.00'; ?>,
+              name: 'Total Receitas'
+              }]
+            }]
+            });
+
+          } 
+          
+
+          if ($('#echart_f_previsto').length ){ 
+            
+            var echartPieCollapse = echarts.init(document.getElementById('echart_f_previsto'));
+            
+            echartPieCollapse.setOption({
+            tooltip: {
+              trigger: 'item',
+              formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+              x: 'center',
+              y: 'bottom',
+              data: ['Total a Entrar', 'Total em caixa']
+            },
+            toolbox: {
+              show: true,
+              feature: {
+              magicType: {
+                show: true,
+                type: ['pie', 'funnel']
+              },
+              restore: {
+                show: true,
+                title: "Restore"
+              },
+              saveAsImage: {
+                show: true,
+                title: "Save Image"
+              }
+              }
+            },
+            calculable: true,
+            series: [{
+              name: 'Financeiro Pendentes',
+              type: 'pie',
+              radius: [25, 90],
+              center: ['50%', 170],
+              roseType: 'area',
+              x: '50%',
+              max: 40,
+              sort: 'ascending',
+              data: [{
+              value: <?php echo ($estatisticas_financeiro->total_receita_pendente - $estatisticas_financeiro->total_despesa_pendente); ?>,
+              name: 'Total a Entrar'
+              }, {
+              value: <?php echo ($estatisticas_financeiro->total_receita - $estatisticas_financeiro->total_despesa); ?>,
+              name: 'Total em caixa'
+              }]
+            }]
+            });
+
+          } 
+
+          <?php if($os != null) {?>
+            
+
+          if ($('#oshome').length ){ 
+            
+            var echartPieCollapse = echarts.init(document.getElementById('oshome'));
+            
+            echartPieCollapse.setOption({
+            tooltip: {
+              trigger: 'item',
+              formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+              x: 'center',
+              y: 'bottom',
+              data: ['Orçamento', 'Aberto','Faturado','Em andamento','Finalizado','Cancelado']
+            },
+            toolbox: {
+              show: true,
+              feature: {
+              magicType: {
+                show: true,
+                type: ['pie', 'funnel']
+              },
+              restore: {
+                show: true,
+                title: "Restore"
+              },
+              saveAsImage: {
+                show: true,
+                title: "Save Image"
+              }
+              }
+            },
+            calculable: true,
+            series: [{
+              name: 'Ordem de serviços',
+              type: 'pie',
+              radius: [25, 90],
+              center: ['50%', 170],
+              roseType: 'area',
+              x: '50%',
+              max: 40,
+              sort: 'ascending',
+              data: [{
+              <?php foreach ($os as $o) { ?>
+              value: <?php echo $o->orcamento; ?>,
+              <?php }?>
+              name: 'Orçamento'
+              }, {
+              <?php foreach ($os as $o) { ?>
+              value: <?php echo $o->aberto; ?>,
+              <?php }?>
+              name: 'Aberto'
+              }, {
+              <?php foreach ($os as $o) { ?>
+              value: <?php echo $o->faturado; ?>,
+              <?php }?>
+              name: 'Faturado'
+              }, {
+              <?php foreach ($os as $o) { ?>
+              value: <?php echo $o->andamento; ?>,
+              <?php }?>
+              name: 'Em andamento'
+              }, {
+              <?php foreach ($os as $o) { ?>
+              value: <?php echo $o->finalizado; ?>,
+              <?php }?>
+              name: 'Finalizado'
+              }, {
+              <?php foreach ($os as $o) { ?>
+              value: <?php echo $o->cancelado; ?>,
+              <?php }?>
+              name: 'Cancelado'
+              }]
+            }]
+            });
+
+          } 
+
+        
+          <?php } ?>
+          
+       </script>
+
+       <?php } } ?>
+        <script type="text/javascript">
+		
+		$('.textarea').wysihtml5()
 
           $(document).ready(function(){
 
@@ -830,6 +1096,34 @@ $(".datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' });
 
   });
 
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        $("#cliente").autocomplete({
+            source: "<?php echo base_url(); ?>os/autoCompleteCliente",
+            minLength: 2,
+            select: function( event, ui ) {
+
+                 $("#clienteHide").val(ui.item.id);
+
+
+            }
+      });
+
+      $("#tecnico").autocomplete({
+            source: "<?php echo base_url(); ?>os/autoCompleteUsuario",
+            minLength: 2,
+            select: function( event, ui ) {
+
+                 $("#responsavelHide").val(ui.item.id);
+
+
+            }
+      });
+
+    });
 </script>
 </body>
 </html>

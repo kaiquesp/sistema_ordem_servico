@@ -132,7 +132,7 @@
                                 <label class="control-label" for="descricaoProduto">Descrição Produto/Serviço <span class="required">*</span>
                                 </label>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <textarea id="descricaoProduto" required class="form-control" name="descricaoProduto" rows="4"><?php echo $result->descricaoProduto?></textarea>
+                                    <textarea class="textarea" name="descricaoProduto" placeholder="Digite o texto aqui" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo $result->descricaoProduto; ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -140,8 +140,8 @@
                             <div class="item form-group">
                                 <label class="control-label" for="defeito">Defeito <span class="required">*</span>
                                 </label>
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                  <textarea id="defeito" required class="form-control" name="defeito" rows="4"><?php echo $result->defeito?></textarea>
+                                  <textarea class="textarea" name="defeito" placeholder="Digite o texto aqui"
+                          style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo $result->defeito?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +153,8 @@
                                 <label class="control-label" for="observacoes">Observações <span class="required">*</span>
                                 </label>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <textarea id="observacoes" required class="form-control" name="observacoes" rows="4"><?php echo $result->observacoes ?></textarea>
+                                    <textarea class="textarea" name="observacoes" placeholder="Digite o texto aqui"
+                          style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo $result->observacoes ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +163,8 @@
                                 <label class="control-label" for="laudoTecnico">Laudo Técnico <span class="required">*</span>
                                 </label>
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                  <textarea id="laudoTecnico" required class="form-control" name="laudoTecnico" rows="4"><?php echo $result->laudoTecnico ?></textarea>
+                                  <textarea class="textarea" name="laudoTecnico" placeholder="Digite o texto aqui"
+                          style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo $result->laudoTecnico ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -477,4 +479,3 @@
     </div>
   </div>
 </div>
-

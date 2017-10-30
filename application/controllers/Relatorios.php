@@ -124,7 +124,7 @@ class Relatorios extends CI_Controller{
            $this->session->set_flashdata('error','Você não tem permissão para gerar relatórios de serviços.');
            redirect(base_url());
         }
-        $dados['view'] = 'relatorios/rel_servicos';
+        $dados['tela'] = 'relatorios/rel_servicos';
        	$this->load->view('view_home',$dados);
 
     }
@@ -164,7 +164,7 @@ class Relatorios extends CI_Controller{
            $this->session->set_flashdata('error','Você não tem permissão para gerar relatórios de OS.');
            redirect(base_url());
         }
-        $dados['view'] = 'relatorios/rel_os';
+        $dados['tela'] = 'relatorios/rel_os';
        	$this->load->view('view_home',$dados);
     }
 
@@ -208,7 +208,7 @@ class Relatorios extends CI_Controller{
            redirect(base_url());
         }
 
-        $dados['view'] = 'relatorios/rel_financeiro';
+        $dados['tela'] = 'relatorios/rel_financeiro';
         $this->load->view('view_home',$dados);
     
     }
@@ -255,7 +255,7 @@ class Relatorios extends CI_Controller{
            redirect(base_url());
         }
 
-        $dados['view'] = 'relatorios/rel_vendas';
+        $dados['tela'] = 'relatorios/rel_vendas';
         $this->load->view('view_home',$dados);
     }
 

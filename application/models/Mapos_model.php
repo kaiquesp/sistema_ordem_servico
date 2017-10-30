@@ -138,7 +138,14 @@ class Mapos_model extends CI_Model {
     }
 
     function getOsEstatisticas(){
-        $sql = "SELECT status, COUNT(status) as total FROM os GROUP BY status ORDER BY status";
+        
+
+        $sql = "SELECT (SELECT count(*) FROM os WHERE status = 'Orçamento') as orcamento, 
+                    (SELECT count(*) FROM os WHERE status = 'Aberto') as aberto,
+                    (SELECT count(*) FROM os WHERE status = 'Faturado') as faturado,
+                    (SELECT count(*) FROM os WHERE status = 'Em Andamento') as andamento,
+                    (SELECT count(*) FROM os WHERE status = 'Finalizado') as finalizado,
+                    (SELECT count(*) FROM os WHERE status = 'Cancelado') as cancelado";
         return $this->db->query($sql)->result();
     }
 
