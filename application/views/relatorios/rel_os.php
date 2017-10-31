@@ -40,12 +40,12 @@
                             <div class="row well well-lg">
                                 <div class="col-md-6 col-xs-12">
                                    	<label for="">Cliente:</label>
-                                   	<input type="text"  id="cliente" class="form-control" />
-                                	<input type="hidden" name="cliente" id="clienteHide" />
+                                   	<input type="text"  id="clienteosrel" class="form-control" />
+                                	<input type="hidden" name="clienteosrel" id="clienteHide" />
                                 </div>
                                 <div class="col-md-6 col-xs-12">
                                     <label for="">Responsável:</label>
-                                    <input type="text" id="tecnico" class="form-control" />
+                                    <input type="text" id="tecnicoosrel" class="form-control" />
                                 	<input type="hidden" name="responsavel" id="responsavelHide" />
                                 </div>
                             </div>

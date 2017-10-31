@@ -32,9 +32,9 @@
                                         <div class="tab-pane active" id="tab1">
                 
                                             <div class="span12" id="divCadastrarOs">
-                                                <?php if($custom_error == true){ ?>
-                                                <div class="span12 alert alert-danger" id="divInfo" style="padding: 1%;">Dados incompletos, verifique os campos com asterisco ou se selecionou corretamente cliente e responsável.</div>
-                                                <?php } ?>
+                                                <?php if($custom_error == true){
+                                                	echo $custom_error;
+                                                } ?>
                                                 <form action="<?php echo current_url(); ?>" method="post" id="formOs">
                 
                                                     <div class="row">
@@ -99,8 +99,8 @@
                                                     </div>
                                                     <div class="span12" style="padding: 1%; margin-left: 0">
                                                         <div class="span6 offset3" style="text-align: center">
-                                                            <button class="btn btn-success" id="btnContinuar"><i class="icon-share-alt icon-white"></i> Continuar</button>
                                                             <a href="<?php echo base_url() ?>os" class="btn btn-default"><i class="icon-arrow-left"></i> Voltar</a>
+                                                            <button class="btn btn-success" id="btnContinuar"><i class="icon-share-alt icon-white"></i> Continuar</button>
                                                         </div>
                                                     </div>
                                                 </form>

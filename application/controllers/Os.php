@@ -143,7 +143,7 @@ class Os extends CI_Controller {
 
             } else {
                 
-                $dados['custom_error'] = '<div class="form_error"><p>An Error Occured.</p></div>';
+                $dados['custom_error'] = 'erro';
             }
         }
          

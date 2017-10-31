@@ -1101,7 +1101,7 @@ $(".datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' });
 <script type="text/javascript">
     $(document).ready(function(){
         
-        $("#cliente").autocomplete({
+        $("#clienteosrel").autocomplete({
             source: "<?php echo base_url(); ?>os/autoCompleteCliente",
             minLength: 2,
             select: function( event, ui ) {
@@ -1112,7 +1112,7 @@ $(".datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' });
             }
       });
 
-      $("#tecnico").autocomplete({
+      $("#tecnicoosrel").autocomplete({
             source: "<?php echo base_url(); ?>os/autoCompleteUsuario",
             minLength: 2,
             select: function( event, ui ) {
