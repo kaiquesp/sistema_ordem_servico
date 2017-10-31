@@ -13,9 +13,15 @@ class Usuarios_model extends CI_Model {
     }
 	
 	public function check_dados($mail,$usuario) {
-		$this->db->select('email','login');
-		$this->db->where('email', $mail);
-        $this->db->where('login', $usuario);
+		$this->db->where('login', $user);
+        $this->db->where('situacao', 1);
+        $this->db->limit(1);
+        return $this->db->get('usuarios')->row();
+    }
+
+    public function check_credentials($email) {
+        $this->db->where('email', $email);
+        $this->db->where('login', $login);
         return $this->db->get('usuarios')->row();
     }
 

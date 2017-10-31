@@ -63,16 +63,30 @@ class Usuarios extends CI_Controller {
             $dadosusuario['situacao'] = $this->input->post('situacao');
             $dadosusuario['permissoes_id'] = $this->input->post('permissoes_id');
             $dadosusuario['dataCadastro'] = date('Y-m-d');	
-            $dadosusuario['foto'] = '01avatar.png';				
-            
-            $this->load->model('usuarios_model');
-            $resultadousuario = $this->usuarios_model->add($dadosusuario);
+            $dadosusuario['foto'] = '01avatar.png';		
 
-            if($resultadousuario){
-                $dados['custom_error'] = 'Usuário cadastrado com sucesso';
-            }else{
-                $dados['custom_error'] = 'Erro ao cadastrar Úsuário';
-            }
+            $this->db->select('email');
+            $this->db->where('email', $dadosusuario['email']);
+            $retorno = $this->db->get('usuarios')->num_rows();
+
+            $this->db->select('login');
+            $this->db->where('login', $dadosusuario['login']);
+            $retorno1 = $this->db->get('usuarios')->num_rows();
+
+            if($retorno || $retorno1 > 0 ){
+                $dados['custom_error'] = 'Email ou login já está cadastrado, por favor informe outro!';
+            } else { 
+                $this->load->model('usuarios_model');
+                $resultadousuario = $this->usuarios_model->add($dadosusuario);
+
+                if($resultadousuario){
+                    $dados['custom_error'] = 'Usuário cadastrado com sucesso';
+                }else{
+                    $dados['custom_error'] = 'Erro ao cadastrar Úsuário';
+                }
+            }		
+            
+            
         }    
 			
         
