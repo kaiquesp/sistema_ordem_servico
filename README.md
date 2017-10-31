@@ -18,7 +18,7 @@ Sistema Ordem de serviço é um sistema gratuito para controle de ordens de serv
 * [jquery/jquery-ui](https://github.com/jquery/jquery-ui) 
 
 ### Requerimento
-* PHP >= 5.4.0 < 7.1
+* PHP >= 5.4.0 < 5.6
 * Extensão Mcrypt
 * MySQL
 
