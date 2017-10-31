@@ -9,7 +9,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'aProduto')){ ?>
-            <a href="<?php echo base_url();?>os/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Ordem Serviço</a>
+            <a href="<?php echo base_url();?>os/adicionar" class="btn btn-success"><i class="fa fa-plus"></i> Adicionar Ordem Serviço</a>
         <?php } ?>
         <?php if ($this->session->flashdata('error') == TRUE): ?>
           <div class="alert alert-success alert-dismissible fade in" role="alert">
@@ -86,7 +86,7 @@
                         }
                       }
                       if($this->permission->checkPermission($this->session->userdata('permissao'),'dOs')){
-                          echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-excluir'.$r->idOs.'"><i class="fa fa-trash"></i></button>'; 
+                          echo '<button type="button" class="btn btn-danger" title="Excluir OS" data-toggle="modal" data-target="#modal-excluir'.$r->idOs.'"><i class="fa fa-trash"></i></button>'; 
             
                     ?>
                        <div class="modal fade" id="modal-excluir<?php echo $r->idOs; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

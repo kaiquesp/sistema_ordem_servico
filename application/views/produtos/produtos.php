@@ -9,7 +9,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'aProduto')){ ?>
-            <a href="<?php echo base_url();?>produtos/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Produto</a>
+            <a href="<?php echo base_url();?>produtos/adicionar" class="btn btn-success"><i class="fa fa-plus"></i> Adicionar Produto</a>
         <?php } ?>
         <?php if ($this->session->flashdata('error') == TRUE): ?>
           <div class="alert alert-success alert-dismissible fade in" role="alert">
@@ -54,7 +54,7 @@
                         echo '<a style="margin-right: 1%" href="'.base_url().'index.php/produtos/editar/'.$r->idProdutos.'" class="btn btn-info" title="Editar Produto"><i class="fa fa-edit"></i></a>'; 
                     }
                     if($this->permission->checkPermission($this->session->userdata('permissao'),'dProduto')){
-                        echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal'.$r->idProdutos.'"><i class="fa fa-trash"></i></button>'; 
+                        echo '<button type="button" class="btn btn-danger" title="Excluir Produto" data-toggle="modal" data-target="#myModal'.$r->idProdutos.'"><i class="fa fa-trash"></i></button>'; 
 
                     ?>
                        <div class="modal fade" id="myModal<?php echo $r->idProdutos; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

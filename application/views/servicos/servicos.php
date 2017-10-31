@@ -9,7 +9,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'aProduto')){ ?>
-            <a href="<?php echo base_url();?>servicos/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Serviço</a>
+            <a href="<?php echo base_url();?>servicos/adicionar" class="btn btn-success"><i class="fa fa-plus"></i> Adicionar Serviço</a>
         <?php } ?>
         <?php if ($this->session->flashdata('error') == TRUE): ?>
           <div class="alert alert-success alert-dismissible fade in" role="alert">
@@ -49,10 +49,10 @@
                     <td>
                     <?php
                     if($this->permission->checkPermission($this->session->userdata('permissao'),'eServico')){
-                        echo '<a style="margin-right: 1%" href="'.base_url().'servicos/editar/'.$r->idServicos.'" class="btn btn-info" title="Editar Produto"><i class="fa fa-edit"></i></a>'; 
+                        echo '<a style="margin-right: 1%" href="'.base_url().'servicos/editar/'.$r->idServicos.'" class="btn btn-info" title="Editar Serviço"><i class="fa fa-edit"></i></a>'; 
                     }
                     if($this->permission->checkPermission($this->session->userdata('permissao'),'dServico')){
-                        echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal'.$r->idServicos.'"><i class="fa fa-trash"></i></button>'; 
+                        echo '<button type="button" class="btn btn-danger" title="Excluir Serviço" data-toggle="modal" data-target="#myModal'.$r->idServicos.'"><i class="fa fa-trash"></i></button>'; 
 
                     ?>
                        <div class="modal fade" id="myModal<?php echo $r->idServicos; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

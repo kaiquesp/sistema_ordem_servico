@@ -51,8 +51,8 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
-              <button type="submit" class="btn btn-success">Cadastrar Serviço</button>
-              <a href="<?php echo base_url("servicos"); ?>" class="btn btn-danger">Voltar</a>
+              <a href="<?php echo base_url("servicos"); ?>" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
+              <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Cadastrar Serviço</button>
             </div>
           </div>
         </form>

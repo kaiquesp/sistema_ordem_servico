@@ -4,11 +4,12 @@
             <h2>Ordem de Serviço</h2>
             <ul class="nav navbar-right panel_toolbox">
               <div class="buttons">
+                <a title="Voltar" class="btn btn-default btn-xs" href="<?php echo site_url()?>os"><i class="fa fa-arrow-left"></i> Voltar</a>
                 <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'eOs')){
-                    echo '<a title="Icon Title" class="btn btn-info btn-xs" href="'.base_url().'os/editar/'.$result->idOs.'"><i class="icon-pencil icon-white"></i> Editar</a>'; 
+                    echo '<a title="Editar OS" class="btn btn-info btn-xs" href="'.base_url().'os/editar/'.$result->idOs.'"><i class="fa fa-edit"></i> Editar</a>'; 
                 } ?>
 
-                <a target="_blank" title="Imprimir" class="btn btn-dark btn-xs" href="<?php echo site_url()?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="icon-print icon-white"></i> Imprimir</a>
+                <a target="_blank" title="Imprimir" class="btn btn-dark btn-xs" href="<?php echo site_url()?>/os/imprimir/<?php echo $result->idOs; ?>"><i class="fa fa-print"></i> Imprimir</a>
             </div>
         </ul>
         <div class="clearfix"></div>

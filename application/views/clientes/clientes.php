@@ -51,13 +51,13 @@
                     
                     <td>
                       <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vProduto')){
-                        echo '<a style="margin-right: 1%" href="'.base_url().'clientes/visualizar/'.$r->idClientes.'" class="btn btn-default" title="Visualizar Produto"><i class="fa fa-eye"></i></a>  '; 
+                        echo '<a style="margin-right: 1%" href="'.base_url().'clientes/visualizar/'.$r->idClientes.'" class="btn btn-default" title="Visualizar Cliente"><i class="fa fa-eye"></i></a>  '; 
                       }
                       if($this->permission->checkPermission($this->session->userdata('permissao'),'eProduto')){
-                        echo '<a style="margin-right: 1%" href="'.base_url().'clientes/editar/'.$r->idClientes.'" class="btn btn-info" title="Editar Produto"><i class="fa fa-edit"></i></a>'; 
+                        echo '<a style="margin-right: 1%" href="'.base_url().'clientes/editar/'.$r->idClientes.'" class="btn btn-info" title="Editar Cliente"><i class="fa fa-edit"></i></a>'; 
                       }
                       if($this->permission->checkPermission($this->session->userdata('permissao'),'dProduto')){
-                        echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal'.$r->idClientes.'"><i class="fa fa-trash"></i></button>'; 
+                        echo '<button type="button" class="btn btn-danger" title="Excluir Cliente" data-toggle="modal" data-target="#myModal'.$r->idClientes.'"><i class="fa fa-trash"></i></button>'; 
 
                         ?>
                         <div class="modal fade" id="myModal<?php echo $r->idClientes; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

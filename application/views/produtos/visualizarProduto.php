@@ -32,6 +32,9 @@
                         </tr>
                   </tbody>
             </table>
+            <div align="center">
+                <a href="<?php echo base_url("produtos"); ?>" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
+            </div>
         </div>
   </div>
 </div>

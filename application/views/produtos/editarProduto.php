@@ -89,8 +89,8 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
-              <button type="submit" class="btn btn-success">Editar Produto</button>
-              <a href="<?php echo base_url("produtos"); ?>" class="btn btn-danger">Voltar</a>
+              <a href="<?php echo base_url("produtos"); ?>" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
+              <button type="submit" class="btn btn-success"><i class="fa fa-edit"></i> Editar Produto</button>
             </div>
           </div>
         </form>
