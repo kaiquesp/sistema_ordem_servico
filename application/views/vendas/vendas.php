@@ -51,8 +51,10 @@
                      if($this->permission->checkPermission($this->session->userdata('permissao'),'vProduto')){
                         echo '<a style="margin-right: 1%" href="'.base_url().'vendas/visualizar/'.$r->idVendas.'" class="btn btn-default" title="Visualizar Venda"><i class="fa fa-eye"></i></a>  '; 
                     }
-                    if($this->permission->checkPermission($this->session->userdata('permissao'),'eProduto')){
+                    if($r->faturado == '0'){
+                      if($this->permission->checkPermission($this->session->userdata('permissao'),'eProduto')){
                         echo '<a style="margin-right: 1%" href="'.base_url().'vendas/editar/'.$r->idVendas.'" class="btn btn-info" title="Editar Venda"><i class="fa fa-edit"></i></a>'; 
+                      }
                     }
                     if($this->permission->checkPermission($this->session->userdata('permissao'),'dProduto')){
                         echo '<button type="button" title="Excluir Venda" class="btn btn-danger" data-toggle="modal" data-target="#myModal'.$r->idVendas.'"><i class="fa fa-trash"></i></button>'; 

@@ -182,7 +182,7 @@ class Vendas extends CI_Controller {
         $dados['produtos'] = $this->vendas_model->getProdutos($this->uri->segment(3));
         $dados['emitente'] = $this->mapos_model->getEmitente();
         
-        $this->load->view('vendas/imprimirVenda', $this->data);
+        $this->load->view('vendas/imprimirVenda', $dados);
         
     }
 	
