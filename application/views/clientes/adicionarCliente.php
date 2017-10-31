@@ -76,7 +76,7 @@
           <label class="control-label col-md-2 col-sm-2 col-xs-12" for="telefonecomercial">Telefone Comercial <span class="required">*</span>
           </label>
           <div class="col-md-10 col-sm-12 col-xs-12">
-            <input id="telefonecomercial" name="telefonecomercial" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Informe o Telefone Comercial" type="text" data-inputmask="'mask' : '(99) 9999-9999'">
+            <input id="telefone" name="telefone" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Informe o Telefone Comercial" type="text" data-inputmask="'mask' : '(99) 9999-9999'">
           </div>
         </div>
         <div class="item form-group">

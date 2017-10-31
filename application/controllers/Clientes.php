@@ -51,7 +51,7 @@ class Clientes extends CI_Controller {
                     'celular'               => $this->input->post('celular'),
                     'email'                 => $this->input->post('email'),
                     'cep'                   => $this->input->post('cep'),
-                    'rua'                   => $this->input->post('rua'),
+                    'rua'                   => $this->input->post('endereco'),
                     'numero'                => $this->input->post('numero'),
                     'complemento'           => $this->input->post('complemento'),
                     'bairro'                => $this->input->post('bairro'),
