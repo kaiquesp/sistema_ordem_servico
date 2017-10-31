@@ -1,5 +1,5 @@
 ##### LOCAWEB - NAO REMOVER #####
-AddHandler php7-script .php
+AddHandler php54-script .php
 suPHP_ConfigPath /home/oficina18/
 ##### LOCAWEB - NAO REMOVER #####
 

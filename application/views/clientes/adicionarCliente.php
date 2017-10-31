@@ -171,7 +171,8 @@
         <div class="ln_solid"></div>
         <div class="form-group">
           <div class="col-md-6 col-md-offset-2">
-            <button id="send" type="submit" class="btn btn-success">Cadastrar Cliente</button>
+            <a href="<?php echo base_url('clientes'); ?>" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
+            <button id="send" type="submit" class="btn btn-success"><i class="fa fa-plus"></i> Cadastrar Cliente</button>
           </div>
         </div>
       </form>
