@@ -52,8 +52,8 @@
                                                             <div class="form-group row">
                                                            <div class="span12" style="padding: 1%; margin-left: 0">
                                                             <div class="span6 offset3" style="text-align: center">
-                                                                <button class="btn btn-success" id="btnContinuar"><i class="icon-share-alt icon-white"></i> Continuar</button>
-                                                                <a href="<?php echo base_url() ?>index.php/vendas" class="btn"><i class="icon-arrow-left"></i> Voltar</a>
+                                                                <a href="<?php echo base_url() ?>index.php/vendas" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
+                                                                <button class="btn btn-success" id="btnContinuar"><i class="fa fa-plus"></i> Continuar</button>
                                                             </div>
                                                         </div>
                                                     </form>

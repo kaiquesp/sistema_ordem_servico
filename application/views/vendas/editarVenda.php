@@ -45,11 +45,13 @@
                   <div class="span12" style="padding: 1%; margin-left: 0">
                     <div class="span8 offset2" style="text-align: center">
                       <?php if($result->faturado == 0){ ?>
+                      <a href="<?php echo base_url() ?>vendas" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
                       <a href="#modal-faturar" id="btn-faturar" role="button" data-toggle="modal" class="btn btn-success"><i class="fa fa-file"></i> Faturar</a>
                       <button class="btn btn-primary" id="btnContinuar"><i class="fa fa-check"></i> Alterar</button>
                       <?php } ?>
-                      <a href="<?php echo base_url() ?>vendas/visualizar/<?php echo $result->idVendas; ?>" class="btn btn-dark"><i class="fa fa-eye"></i> Visualizar Venda</a> <a href="<?php echo base_url() ?>vendas" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a> </div>
+                      <a href="<?php echo base_url() ?>vendas/visualizar/<?php echo $result->idVendas; ?>" class="btn btn-dark"><i class="fa fa-eye"></i> Visualizar Venda</a>  
                     </div>
+                  </div>
                   </form>
                   <div class="span12 well" style="padding: 1%; margin-left: 0">
                     <form id="formProdutosVendas" action="" method="post">

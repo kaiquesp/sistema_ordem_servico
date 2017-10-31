@@ -5,10 +5,10 @@
             <ul class="nav navbar-right panel_toolbox">
               <div class="buttons">
                  <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'eVenda')){
-                        echo '<a title="Icon Title" class="btn btn-xs btn-info" href="'.base_url().'vendas/editar/'.$result->idVendas.'"><i class="icon-pencil icon-white"></i> Editar</a>'; 
+                        echo '<a title="Icon Title" class="btn btn-xs btn-info" href="'.base_url().'vendas/editar/'.$result->idVendas.'"><i class="fa fa-edit"></i> Editar</a>'; 
                     } ?>
 
-                <a target="_blank" title="Imprimir" class="btn btn-dark btn-xs" href="<?php echo site_url()?>/os/imprimir/<?php echo $result->idVendas; ?>"><i class="icon-print icon-white"></i> Imprimir</a>
+                <a target="_blank" title="Imprimir" class="btn btn-dark btn-xs" href="<?php echo site_url()?>/os/imprimir/<?php echo $result->idVendas; ?>"><i class="fa fa-print"></i> Imprimir</a>
             </div>
         </ul>
         <div class="clearfix"></div>

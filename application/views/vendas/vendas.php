@@ -9,7 +9,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'aVenda')){ ?>
-            <a href="<?php echo base_url();?>vendas/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Produto</a>
+            <a href="<?php echo base_url();?>vendas/adicionar" class="btn btn-success"><i class="fa fa-plus"></i> Adicionar Venda</a>
         <?php } ?>
         <?php if ($this->session->flashdata('error') == TRUE): ?>
           <div class="alert alert-success alert-dismissible fade in" role="alert">
@@ -49,13 +49,13 @@
                     echo '<td>'.$faturado.'</td>';
                     echo '<td>';
                      if($this->permission->checkPermission($this->session->userdata('permissao'),'vProduto')){
-                        echo '<a style="margin-right: 1%" href="'.base_url().'vendas/visualizar/'.$r->idVendas.'" class="btn btn-default" title="Visualizar Produto"><i class="fa fa-eye"></i></a>  '; 
+                        echo '<a style="margin-right: 1%" href="'.base_url().'vendas/visualizar/'.$r->idVendas.'" class="btn btn-default" title="Visualizar Venda"><i class="fa fa-eye"></i></a>  '; 
                     }
                     if($this->permission->checkPermission($this->session->userdata('permissao'),'eProduto')){
-                        echo '<a style="margin-right: 1%" href="'.base_url().'vendas/editar/'.$r->idVendas.'" class="btn btn-info" title="Editar Produto"><i class="fa fa-edit"></i></a>'; 
+                        echo '<a style="margin-right: 1%" href="'.base_url().'vendas/editar/'.$r->idVendas.'" class="btn btn-info" title="Editar Venda"><i class="fa fa-edit"></i></a>'; 
                     }
                     if($this->permission->checkPermission($this->session->userdata('permissao'),'dProduto')){
-                        echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal'.$r->idVendas.'"><i class="fa fa-trash"></i></button>'; 
+                        echo '<button type="button" title="Excluir Venda" class="btn btn-danger" data-toggle="modal" data-target="#myModal'.$r->idVendas.'"><i class="fa fa-trash"></i></button>'; 
 
                     ?>
                        <div class="modal fade" id="myModal<?php echo $r->idVendas; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
