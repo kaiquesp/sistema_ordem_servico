@@ -196,6 +196,19 @@ class Os extends CI_Controller {
            $this->session->set_flashdata('error','Você não tem permissão para editar O.S.');
            redirect(base_url());
         }
+        
+        $verifica = $this->os_model->getById($this->uri->segment(3));
+
+        if($verifica->status == 'Faturado'){
+            $this->session->set_flashdata('error','Não é possível editar uma ordem de serviço Faturada');
+            redirect('os');
+        }elseif($verifica->status == 'Finalizado'){
+            $this->session->set_flashdata('error','Não é possível editar uma ordem de serviço Finalizada');
+            redirect('os');
+        }elseif($verifica->status == 'Cancelado'){
+            $this->session->set_flashdata('error','Não é possível editar uma ordem de serviço Cancelada');
+            redirect('os');
+        }
 
         $this->load->library('form_validation');
         $dados['custom_error'] = '';

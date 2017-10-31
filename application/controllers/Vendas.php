@@ -101,6 +101,14 @@ class Vendas extends CI_Controller {
           redirect(base_url());
         }
 
+        $verifica = $this->vendas_model->getById($this->uri->segment(3));
+
+
+        if($verifica->faturado == '1'){
+            $this->session->set_flashdata('error','Não é possível editar uma venda já faturada');
+            redirect('vendas');
+        }
+
         $this->load->library('form_validation');
         $dados['custom_error'] = '';
 

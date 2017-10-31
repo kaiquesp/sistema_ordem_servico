@@ -12,7 +12,7 @@
             <a href="<?php echo base_url();?>os/adicionar" class="btn btn-success"><i class="fa fa-plus"></i> Adicionar Ordem Serviço</a>
         <?php } ?>
         <?php if ($this->session->flashdata('error') == TRUE): ?>
-          <div class="alert alert-success alert-dismissible fade in" role="alert">
+          <div class="alert alert-danger alert-dismissible fade in" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
             </button>
             <p><?php echo $this->session->flashdata('error'); ?></p>
