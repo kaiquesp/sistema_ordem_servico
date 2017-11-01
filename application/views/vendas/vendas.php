@@ -27,7 +27,7 @@
         <?php endif; ?>
         <div class="x_content">
           <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-            <thead>
+            <thead class="topo-table">
               <tr>
                 <th>#</th>
                 <th>Data da Venda</th>
@@ -41,12 +41,25 @@
               if(isset($results)){
                 foreach ($results as $r){
                     $dataVenda = date(('d/m/Y'),strtotime($r->dataVenda));
-                    if($r->faturado == 1){$faturado = 'Sim';} else{ $faturado = 'Não';}           
+
+                    if($r->faturado == 1){$faturado = 'Sim';} else{ $faturado = 'Não';}   
+                    switch ($r->faturado) {
+                    case '0':
+                      $cor = '#8A9B0F';
+                      break;
+                    case '1':
+                      $cor = '#E97F02';
+                      break;
+                  }        
                     echo '<tr>';
                     echo '<td>'.$r->idVendas.'</td>';
                     echo '<td>'.$dataVenda.'</td>';
                     echo '<td><a href="'.base_url().'index.php/clientes/visualizar/'.$r->idClientes.'">'.$r->nomeCliente.'</a></td>';
-                    echo '<td>'.$faturado.'</td>';
+                    if($faturado == 'Sim'){ ?>
+                      <td><span class="badge" style="background-color: <?php echo $cor; ?>; border-color: <?php echo $cor; ?>;"><?php echo $faturado; ?></span></td>
+                    <?php }else{ ?>
+                      <td><span class="badge" style="background-color: <?php echo $cor; ?>; border-color: <?php echo $cor; ?>;"><?php echo $faturado; ?></span></td>
+                   <?php } 
                     echo '<td>';
                      if($this->permission->checkPermission($this->session->userdata('permissao'),'vProduto')){
                         echo '<a style="margin-right: 1%" href="'.base_url().'vendas/visualizar/'.$r->idVendas.'" class="btn btn-default" title="Visualizar Venda"><i class="fa fa-eye"></i></a>  '; 

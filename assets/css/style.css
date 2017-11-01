@@ -64,3 +64,7 @@ input:checked + .lbl {
 }
 
 
+.topo-table{
+  background: rgba(52,73,94,.94);
+  color: #ECF0F1;
+}

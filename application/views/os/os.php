@@ -27,7 +27,7 @@
         <?php endif; ?>
         <div class="x_content">
           <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-            <thead>
+            <thead class="topo-table">
               <tr>
                 <th>#</th>
                 <th>Cliente</th>
@@ -67,12 +67,19 @@
         							$cor = '#E0E4CC';
         							break;
         					}
+
                   ?>
                   <tr>
                     <td><?php echo $r->idOs; ?></td>
                     <td><?php echo $r->nomeCliente; ?></td>
                     <td><?php echo $dataInicial ?></td>
-                    <td><?php echo $dataFinal ?></td>
+                    <?php 
+                      if($dataFinal <= date('d/m/Y')){?>
+                        <td><span class="badge" style="background-color: #43AC6E; border-color: #43AC6E;"><?php echo $dataFinal; ?></span> </td>
+                      <?php }else{?>
+                        <td><span class="badge" style="background-color: #ed5564; border-color: #ed5564;"><?php echo $dataFinal; ?></span> </td>
+                     <?php }
+                    ?>
                     <td><span class="badge" style="background-color: <?php echo $cor; ?>; border-color: <?php echo $cor; ?>;"><?php echo $r->status; ?></span> </td>
                     <td>
                     <?php
