@@ -15,11 +15,11 @@
           <div class="row tile_count">
             <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-users"></i> Cliente</span>
-              <div class="count"><?php echo $this->db->count_all('clientes');?></div>
+              <div class="count green"><?php echo $this->db->count_all('clientes');?></div>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-barcode"></i> Produtos</span>
-              <div class="count"><?php echo $this->db->count_all('produtos');?></div>
+              <div class="count green"><?php echo $this->db->count_all('produtos');?></div>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-tags"></i> Ordem de Serviços</span>
@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-wrench"></i> Serviços</span>
-              <div class="count"><?php echo $this->db->count_all('servicos');?></div>
+              <div class="count green"><?php echo $this->db->count_all('servicos');?></div>
             </div>
           </div>
           <!-- /top tiles -->
@@ -39,7 +39,7 @@
 					<h5>Produtos com estoque mínimo</h5>
                     <div class="x_content table-responsive no-padding">
                       <table id="" class="table table-striped table-bordered dt-responsive nowra table-hover" cellspacing="0" width="100%">
-                        <thead>
+                        <thead class="topo-table">
                           <tr>
                             <th>#</th>
                             <th>Produto</th>
@@ -83,7 +83,7 @@
 					<h5>Ordens de serviços em aberto</h5>
                     <div class="x_content table-responsive no-padding">
                       <table id="" class="table table-striped table-bordered dt-responsive nowrap table-hover" cellspacing="0" width="100%">
-                        <thead>
+                        <thead class="topo-table">
                           <tr>
                             <th>#</th>
                             <th>Data Inicial</th>

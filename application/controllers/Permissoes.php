@@ -44,11 +44,11 @@ class Permissoes extends CI_Controller {
     function adicionar() {
 
         $this->load->library('form_validation');
-        $this->data['custom_error'] = '';
+        $dados['custom_error'] = '';
 
         $this->form_validation->set_rules('nome', 'Nome', 'trim|required');
         if ($this->form_validation->run() == false) {
-            $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
+            $dados['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
             
             $nomePermissao = $this->input->post('nome');
@@ -119,12 +119,12 @@ class Permissoes extends CI_Controller {
                 $this->session->set_flashdata('success', 'Permissão adicionada com sucesso!');
                 redirect(base_url() . 'index.php/permissoes/adicionar/');
             } else {
-                $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
+                $dados['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';
             }
         }
 
-        $this->data['view'] = 'permissoes/adicionarPermissao';
-        $this->load->view('tema/topo', $this->data);
+        $dados['tela'] = 'permissoes/adicionarPermissao';
+        $this->load->view('view_home', $dados);
 
     }
 
