@@ -176,9 +176,9 @@
                                 <?php if($result->faturado == 0){ ?>
                                 <a href="#modal-faturar" id="btn-faturar" role="button" data-toggle="modal" class="btn btn-success"><i class="icon-file"></i><i class="fa  fa-file-text"></i> Faturar</a>
                                 <?php } ?>
+                                <a href="<?php echo base_url() ?>os" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Voltar</a>
                                 <button class="btn btn-primary" id="btnContinuar"><i class="fa fa-check"></i> Alterar</button>
                                 <a href="<?php echo base_url() ?>os/visualizar/<?php echo $result->idOs; ?>" class="btn btn-dark"><i class="fa fa-eye"></i> Visualizar OS</a>
-                                <a href="<?php echo base_url() ?>os" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Voltar</a>
                             </div>
                         </div>
                     </div>

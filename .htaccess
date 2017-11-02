@@ -9,6 +9,8 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?/$1 [L]
 
+ErrorDocument 404 /erro404.html
+
 RewriteEngine On 
 RewriteCond %{SERVER_PORT} 80 
 RewriteRule ^(.*)$ https://japacar.tecnologia.ws/$1 [R,L]

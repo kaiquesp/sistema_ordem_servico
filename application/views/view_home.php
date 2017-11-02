@@ -518,8 +518,8 @@ if ($this->session->userdata('logado')){
          $(document).ready(function(){
 
           $("#marcarTodos").change(function () {
-           $('.js-switch input[type="checkbox"]').prop('checked', $(this).prop("checked"));
-         });   
+              $("input:checkbox").prop('checked', $(this).prop("checked"));
+          });  
 
 
           $("#formPermissao").validate({

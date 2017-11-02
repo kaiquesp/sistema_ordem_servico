@@ -41,31 +41,29 @@ $foto = $session['foto'];
       <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vLancamento')){ ?>
           <li><a><i class="fa fa-money"></i> Financeiro <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')){ ?>
                 <li><a href="<?php echo base_url("financeiro/lancamentos"); ?>"><i class="fa fa-arrows-v"></i> Lancamentos</a></li>
-              <?php } ?>
             </ul>
           </li>
       <?php } ?>  
-      <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')  || $this->permission->checkPermission($this->session->userdata('permissao'),'cEmitente') || $this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao') || $this->permission->checkPermission($this->session->userdata('permissao'),'cBackup')){ ?>
+      <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'rCliente') || $this->permission->checkPermission($this->session->userdata('permissao'),'rProduto') || $this->permission->checkPermission($this->session->userdata('permissao'),'rServico') || $this->permission->checkPermission($this->session->userdata('permissao'),'rOs') || $this->permission->checkPermission($this->session->userdata('permissao'),'rFinanceiro') || $this->permission->checkPermission($this->session->userdata('permissao'),'rVenda')){ ?>
       <li><a><i class="fa fa-list-alt"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')){ ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'rCliente')){ ?>
             <li><a href="<?php echo base_url("relatorios/clientes"); ?>"><i class="fa fa-users"></i> Clientes</a></li>
           <?php } ?>
-          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao')){ ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'rProduto')){ ?>
             <li><a href="<?php echo base_url("relatorios/produtos"); ?>"><i class="fa fa-barcode"></i> Produtos</a></li>
           <?php } ?>
-          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')){ ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'rServico')){ ?>
             <li><a href="<?php echo base_url("relatorios/servicos"); ?>"><i class="fa fa-wrench"></i> Serviços</a></li>
           <?php } ?>
-          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao')){ ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'rOs')){ ?>
             <li><a href="<?php echo base_url("relatorios/os"); ?>"><i class="fa fa-tags"></i> Ordens de Serviço</a></li>
           <?php } ?>
-          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')){ ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'rVenda')){ ?>
             <li><a href="<?php echo base_url("relatorios/vendas"); ?>"><i class="fa fa-shopping-cart"></i> Vendas</a></li>
           <?php } ?>
-          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao')){ ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'rFinanceiro')){ ?>
             <li><a href="<?php echo base_url("relatorios/financeiro"); ?>"><i class="fa fa-money"></i> Financeiro</a></li>
           <?php } ?>
         </ul>
@@ -77,7 +75,7 @@ $foto = $session['foto'];
           <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cUsuario')){ ?>
             <li><a href="<?php echo base_url("usuarios"); ?>"><i class="fa fa-user"></i> Usuários</a></li>
           <?php } ?>
-          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao')){ ?>
+          <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cEmitente')){ ?>
             <li><a href="<?php echo base_url("home/emitente"); ?>"><i class="fa fa-male"></i> Emitente</a></li>
           <?php } ?>
           <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'cPermissao')){ ?>

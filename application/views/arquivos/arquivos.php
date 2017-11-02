@@ -8,8 +8,8 @@
     <div class="clearfix"></div>
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
-        <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'aVenda')){ ?>
-            <a href="<?php echo base_url();?>arquivos/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Arquivo</a>
+        <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'aArquivo')){ ?>
+            <a href="<?php echo base_url();?>arquivos/adicionar" class="btn btn-success"><i class="fa fa-plus"></i> Adicionar Arquivo</a>
         <?php } ?>
         <?php if ($this->session->flashdata('error') == TRUE): ?>
           <div class="alert alert-success alert-dismissible fade in" role="alert">
@@ -73,7 +73,7 @@
                             </div>
                             <div class="modal-body">
                               <input type="hidden" id="idDocumento" name="id" value="<?php echo $r->idDocumentos; ?>" />
-                              <h5 style="text-align: center">Deseja realmente excluir o arquivo <?php echo $r->documento; ?></h5>
+                              <h5 style="text-align: center">Deseja realmente excluir o arquivo <strong><?php echo $r->documento; ?></strong></h5>
                             </div>
                             <div class="modal-footer">
                               <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>

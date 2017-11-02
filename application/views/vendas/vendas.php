@@ -61,15 +61,15 @@
                       <td><span class="badge" style="background-color: <?php echo $cor; ?>; border-color: <?php echo $cor; ?>;"><?php echo $faturado; ?></span></td>
                    <?php } 
                     echo '<td>';
-                     if($this->permission->checkPermission($this->session->userdata('permissao'),'vProduto')){
+                     if($this->permission->checkPermission($this->session->userdata('permissao'),'vVenda')){
                         echo '<a style="margin-right: 1%" href="'.base_url().'vendas/visualizar/'.$r->idVendas.'" class="btn btn-default" title="Visualizar Venda"><i class="fa fa-eye"></i></a>  '; 
                     }
                     if($r->faturado == '0'){
-                      if($this->permission->checkPermission($this->session->userdata('permissao'),'eProduto')){
+                      if($this->permission->checkPermission($this->session->userdata('permissao'),'eVenda')){
                         echo '<a style="margin-right: 1%" href="'.base_url().'vendas/editar/'.$r->idVendas.'" class="btn btn-info" title="Editar Venda"><i class="fa fa-edit"></i></a>'; 
                       }
                     }
-                    if($this->permission->checkPermission($this->session->userdata('permissao'),'dProduto')){
+                    if($this->permission->checkPermission($this->session->userdata('permissao'),'dVenda')){
                         echo '<button type="button" title="Excluir Venda" class="btn btn-danger" data-toggle="modal" data-target="#myModal'.$r->idVendas.'"><i class="fa fa-trash"></i></button>'; 
 
                     ?>

@@ -26,6 +26,10 @@ class Os extends CI_Controller {
 	}
 
 	function gerenciar(){
+        if(!$this->permission->checkPermission($this->session->userdata('permissao'),'vOs')){
+           $this->session->set_flashdata('error','Você não tem permissão para visualizar Ordem de serviços.');
+           redirect(base_url());
+        }   
         
         $this->load->library('pagination');
         
