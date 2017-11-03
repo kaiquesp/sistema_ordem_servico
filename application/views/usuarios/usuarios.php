@@ -24,6 +24,7 @@
                     <thead class="topo-table">
                       <tr>
                         <th>#</th>
+                        <th>Foto</th>
                         <th>Nome</th>
                         <th>Login</th>
                         <th>Telefone</th>
@@ -38,6 +39,7 @@
                           ?>
                           <tr>
                             <td><?php echo $usuarios->idUsuarios; ?></td>
+                            <td><img src="<?php echo site_url().'assets/foto/'.$usuarios->foto;?>" alt="foto" class="img-responsive" width="50px" heigth="50px;" /></td>
                             <td><?php echo $usuarios->nome; ?></td>
                             <td><?php echo $usuarios->login; ?></td>
                             <td><?php echo $usuarios->telefone; ?></td>

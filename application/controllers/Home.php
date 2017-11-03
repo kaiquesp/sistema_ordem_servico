@@ -41,7 +41,7 @@ class Home extends CI_Controller {
      
     }
 
-    public function alterarSenha() {
+    public function alterarDados() {
         if( (!session_id()) || (!$this->session->userdata('logado'))){
 			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
@@ -55,11 +55,11 @@ class Home extends CI_Controller {
         $result = $this->mapos_model->alterarSenha($senha,$oldSenha,$this->session->userdata('id'));
         if($result){
             $this->session->set_flashdata('success','Senha Alterada com sucesso!');
-            redirect(base_url() . 'index.php/minhaConta');
+            redirect(base_url() . '/perfil');
         }
         else{
             $this->session->set_flashdata('error','Ocorreu um erro ao tentar alterar a senha!');
-            redirect(base_url() . 'index.php/minhaConta');
+            redirect(base_url() . 'perfil');
             
         }
     }
@@ -120,7 +120,7 @@ class Home extends CI_Controller {
                 $password_stored =  $this->encryption->decrypt($user->senha);
 
                 if($password == $password_stored){
-                    $session_data = array('nome' => $user->nome, 'email' => $user->email, 'id' => $user->idUsuarios,'permissao' => $user->permissoes_id, 'foto' => $user->foto, 'logado' => TRUE);
+                    $session_data = array('nome' => $user->nome, 'email' => $user->email, 'login' => $user->login, 'telefone' => $user->telefone, 'celular' => $user->celular, 'id' => $user->idUsuarios,'permissao' => $user->permissoes_id, 'foto' => $user->foto, 'logado' => TRUE);
                     $this->session->set_userdata($session_data);
                     $json = array('result' => true);
                     echo json_encode($json);

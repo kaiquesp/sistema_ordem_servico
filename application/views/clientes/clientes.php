@@ -39,7 +39,6 @@
             </thead>
             <tbody>
               <?php 
-              if(isset($results)){
                 foreach ($results as $r){
                   ?>
                   <tr>
@@ -74,7 +73,7 @@
                                     <h5 style="text-align: center">Deseja realmente excluir o cliente <strong><?php echo $r->nomeCliente; ?></strong> ?</h5>
                                   </div>
                                   <div class="modal-footer">
-                                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                                    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</button>
                                     <button class="btn btn-danger">Excluir</button>
                                   </div>
                                 </form>
@@ -86,14 +85,7 @@
                         <?php }?>
                       </td>
                     </tr>
-                    <?php 
-                  }
-                }else{
-                  echo "<tr>" ;
-                  echo "<td colspan='6'>Nenhum Produto Cadastrado</td>";
-                  echo "<tr>";
-                }
-                ?>
+                    <?php } ?>
               </tbody>
             </table>
           </div>
