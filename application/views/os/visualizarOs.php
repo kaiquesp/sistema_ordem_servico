@@ -33,7 +33,8 @@
                         </td>
                         <td style="width: 18%; text-align: center">#Protocolo: 
                             <span ><?php echo $result->idOs?></span></br> </br> 
-                            <span>Emissão: <?php echo date('d/m/Y')?></span>
+                            <span>Emissão: <?php echo date('d/m/Y')?></span><br /><br />
+                            <span>Status: <?php echo $result->status; ?></span>
                         </td>
                     </tr>
 

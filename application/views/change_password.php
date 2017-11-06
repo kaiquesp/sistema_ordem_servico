@@ -70,7 +70,8 @@
         <?php endif; ?>
           <form  class="form-vertical" id="" method="post" action="reset_pass_enviar_link">
             <div>
-              <input type="email" id="email" name="email" class="form-control" placeholder="informe o email cadastrado" required="" />
+              <label>informe a nova senha:</label>
+              <input type="password" id="senha" name="senha" class="form-control" placeholder="***********" required="" />
             </div>
             <div>              
               <button class="btn btn-primario submit form-control" id="btn-acessar" type="submit">Recuperar Senha</button>

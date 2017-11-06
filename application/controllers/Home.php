@@ -13,7 +13,8 @@ class Home extends CI_Controller {
         parent::__construct();
         $this->load->model('mapos_model','',TRUE);
         $this->load->helper('string');
-        
+        $this->load->library('email');
+        $this->email->initialize();
     }
 
     public function index() {
@@ -394,7 +395,63 @@ class Home extends CI_Controller {
 
     }
 
+    public function reset_pass(){
+        $this->load->view('view_reset_pass');
+    }
 
+    public function reset_pass_enviar_link(){
+
+        $email = $this->input->post('email');
+        $this->load->model('Mapos_model');
+        $email = $this->Mapos_model->check_email($email);
+
+        $dados['nome'] = $email->nome;
+        $dados['email'] = $email->email;
+        $dados['login'] = $email->login;
+        $dados['ip'] =  $_SERVER["REMOTE_ADDR"];
+        $dados['random'] = md5(uniqid(rand(), true));
+        $dados['date'] = date('Y-m-d H:m:s');
+
+        if($email){
+            $this->email->from("contato@japacar.tecnologia.ws", 'Sistema JapaCar');
+            $this->email->subject("Vamos alterar a senha?");
+            $this->email->reply_to("contato@japacar.tecnologia.ws");
+            $this->email->to($email->email); 
+            $this->email->message($this->load->view('email_template/email_recupera_senha', $dados, TRUE));
+            $this->email->send();
+
+            $codigo = $this->Mapos_model->gera_codigo($dados);
+
+            $this->session->set_flashdata('success','<p>Uma mensagem foi enviada para o e-mail principal da conta.</p>
+                                            <p>Clique no link informado para redefinir a senha de acesso.</p>
+
+                                            <p>Caso o e-mail não esteja em sua caixa de entrada, verifique as pastas de Spam, Lixo, Social e outras.</p>');
+            redirect(base_url().'home/reset_pass');
+        }else{
+            echo "não";
+        }
+
+
+        
+    }
+
+    public function change_password(){
+         $codigo = $this->uri->segment(3);
+
+        $verifica = $this->mapos_model->verifica_codigo($codigo);
+
+        if($verifica){
+            $this->session->set_flashdata('success','<p>Token existe</p>');
+        }else{
+            $this->session->set_flashdata('error','<p>Token não existe, ou já está expirado.</p>');
+            redirect(base_url().'home/reset_pass');
+        }
+        $this->load->view('change_password');
+    }
+
+    public function verifica_codigo(){
+       
+    }
 
     
 }
