@@ -2,8 +2,8 @@
 class Mapos_model extends CI_Model {
 
     /**
-     * author: Ramon Silva 
-     * email: silva018-mg@yahoo.com.br
+     * author: Kaique Alves 
+     * email: kaiqueexp@gmail.com
      * 
      */
     
@@ -210,5 +210,28 @@ class Mapos_model extends CI_Model {
         $this->db->where('situacao', 1);
         $this->db->limit(1);
         return $this->db->get('usuarios')->row();
+    }
+
+    public function check_email($email) {
+        $this->db->where('email', $email);
+        $this->db->limit(1);
+        return $this->db->get('usuarios')->row();
+    }
+
+    public function gera_codigo($dados = NULL) {
+        if ($dados !== NULL) {
+            extract ( $dados );
+            $this->db->insert ( 'codigos', array (
+                'codigo'    => $dados['random'],
+                'data'      => $dados['date'],
+                'ip'        => $dados['ip'],
+        ));
+        }    
+    }
+
+    public function verifica_codigo($codigo){
+        $this->db->where('codigo', $codigo);
+        $this->db->limit(1);
+        return $this->db->get('codigos')->row();
     }
 }

@@ -70,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div id="progress-acessar" class='hide progress progress-striped active page-progress-bar'><div class='progress-bar' style='width: 100%'></div></div>
               
               <button class="btn btn-primario submit form-control" id="btn-acessar" type="submit">Entrar</button>
-              <a class="reset_pass" href="#">Esqueceu a senha?</a>
+              <a class="reset_pass" href="home/reset_pass">Esqueceu a senha?</a>
             </div>
 
             <div class="clearfix"></div>

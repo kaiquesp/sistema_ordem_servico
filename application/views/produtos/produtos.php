@@ -44,7 +44,13 @@
                   <tr>
                     <td><?php echo $r->idProdutos; ?></td>
                     <td><?php echo $r->descricao; ?></td>
-                    <td><?php echo $r->estoque; ?></td>
+                    <?php 
+                      if($r->estoque <= $r->estoqueMinimo){
+                        echo '<td><span class="badge" style="background-color: #ed5564; border-color: #ed5564;">'.$r->estoque.'</span></td>';
+                      }else{
+                        echo '<td><span class="badge" style="background-color: #43AC6E; border-color: #43AC6E;">'.$r->estoque.'</span></td>';
+                      }
+                    ?>
                     <td><?php echo number_format($r->precoVenda,2,',','.') ?></td>
                     <td>
                     <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vProduto')){

@@ -15,9 +15,7 @@
           </div>
         <?php endif; ?>
       <div class="x_content">
-
-            <input class="input-tab" id="tab1" type="radio" name="tabs" checked>
-            <label class="lbl" for="tab1"><i class="fa fa-list-alt"></i> Adicionar Ordem de Serviço</label>
+            <label for="tab1"><i class="fa fa-list-alt"></i> Adicionar Ordem de Serviço</label>
             
             <!-- Detalhes -->
             <section id="content1" class="sessao">
@@ -79,28 +77,28 @@
                 
                                                         <div class="col-md-6">
                                                             <label for="descricaoProduto">Descrição Produto/Serviço</label>
-                                                            <textarea class="form-control" name="descricaoProduto" id="descricaoProduto" rows="5"></textarea>
+                                                            <textarea class="form-control textarea" name="descricaoProduto" id="descricaoProduto" rows="5"></textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="defeito">Defeito</label>
-                                                            <textarea class="form-control" name="defeito" id="defeito" cols="30" rows="5"></textarea>
+                                                            <textarea class="form-control textarea" name="defeito" id="defeito" cols="30" rows="5"></textarea>
                                                         </div>
                 
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <label for="observacoes">Observações</label>
-                                                            <textarea class="form-control" name="observacoes" id="observacoes" cols="30" rows="5"></textarea>
+                                                            <textarea class="form-control textarea" name="observacoes" id="observacoes" cols="30" rows="5"></textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="laudoTecnico">Laudo Técnico</label>
-                                                            <textarea class="form-control" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5"></textarea>
+                                                            <textarea class="form-control textarea" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="span12" style="padding: 1%; margin-left: 0">
                                                         <div class="span6 offset3" style="text-align: center">
-                                                            <a href="<?php echo base_url() ?>os" class="btn btn-default"><i class="icon-arrow-left"></i> Voltar</a>
-                                                            <button class="btn btn-success" id="btnContinuar"><i class="icon-share-alt icon-white"></i> Continuar</button>
+                                                            <a href="<?php echo base_url() ?>os" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
+                                                            <button class="btn btn-success" id="btnContinuar"><i class="fa fa-share" fa></i> Continuar</button>
                                                         </div>
                                                     </div>
                                                 </form>

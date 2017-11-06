@@ -12,6 +12,7 @@ class Home extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('mapos_model','',TRUE);
+        $this->load->helper('string');
         
     }
 
@@ -131,7 +132,7 @@ class Home extends CI_Controller {
                 }
             }
             else{
-                $json = array('result' => false, 'message' => 'Usuário não encontrado, verifique se suas credenciais estão corretass.');
+                $json = array('result' => false, 'message' => 'Usuário não encontrado, verifique se suas credenciais estão corretas.');
                 echo json_encode($json);
             }
         }
@@ -392,6 +393,8 @@ class Home extends CI_Controller {
         }
 
     }
+
+
 
     
 }

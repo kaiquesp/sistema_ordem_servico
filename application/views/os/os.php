@@ -43,6 +43,10 @@
                 foreach ($results as $r){
         					$dataInicial = date(('d/m/Y'),strtotime($r->dataInicial));
         					$dataFinal = date(('d/m/Y'),strtotime($r->dataFinal));
+
+                  $datefinal = strtotime($r->dataFinal);
+                  $data = date('Y-m-d');
+                  $dateatual = strtotime($data);
         		
         					switch ($r->status) {
         						case 'Aberto':
@@ -74,7 +78,7 @@
                     <td><?php echo $r->nomeCliente; ?></td>
                     <td><?php echo $dataInicial ?></td>
                     <?php 
-                      if($dataFinal <= date('d/m/Y')){?>
+                      if($dateatual <= $datefinal){?>
                         <td><span class="badge" style="background-color: #43AC6E; border-color: #43AC6E;"><?php echo $dataFinal; ?></span> </td>
                       <?php }else{?>
                         <td><span class="badge" style="background-color: #ed5564; border-color: #ed5564;"><?php echo $dataFinal; ?></span> </td>

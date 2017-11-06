@@ -41,6 +41,8 @@
 $route['default_controller'] = "home";
 $route['404_override'] = 'errors/error_404';
 $route['500_override'] = 'errors/error_500';
+$route['reset_pass'] = 'reset_pass';
+$route['change_password'] = $this->uri->segment(3);
 
 
 

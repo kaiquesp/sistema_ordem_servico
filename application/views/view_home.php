@@ -306,10 +306,10 @@ if ($this->session->userdata('logado')){
               max: 40,
               sort: 'ascending',
               data: [{
-              value: <?php echo ($estatisticas_financeiro->total_receita_pendente - $estatisticas_financeiro->total_despesa_pendente); ?>,
+              value: <?php echo number_format($estatisticas_financeiro->total_receita_pendente - $estatisticas_financeiro->total_despesa_pendente, 2, '.', ''); ?>,
               name: 'Total a Entrar'
               }, {
-              value: <?php echo ($estatisticas_financeiro->total_receita - $estatisticas_financeiro->total_despesa); ?>,
+              value: <?php echo number_format($estatisticas_financeiro->total_receita - $estatisticas_financeiro->total_despesa, 2, '.', ''); ?>,
               name: 'Total em caixa'
               }]
             }]
