@@ -140,12 +140,12 @@ class Mapos_model extends CI_Model {
     function getOsEstatisticas(){
         
 
-        $sql = "SELECT (SELECT count(*) FROM os WHERE status = 'Orçamento') as orcamento, 
-                    (SELECT count(*) FROM os WHERE status = 'Aberto') as aberto,
-                    (SELECT count(*) FROM os WHERE status = 'Faturado') as faturado,
-                    (SELECT count(*) FROM os WHERE status = 'Em Andamento') as andamento,
-                    (SELECT count(*) FROM os WHERE status = 'Finalizado') as finalizado,
-                    (SELECT count(*) FROM os WHERE status = 'Cancelado') as cancelado";
+        $sql = "SELECT (SELECT count(*) FROM os WHERE status = 'Orçamento' AND MONTH(dataInicial) = MONTH(CURDATE())) as orcamento, 
+                    (SELECT count(*) FROM os WHERE status = 'Aberto' AND MONTH(dataInicial) = MONTH(CURDATE())) as aberto,
+                    (SELECT count(*) FROM os WHERE status = 'Faturado' AND MONTH(dataInicial) = MONTH(CURDATE())) as faturado,
+                    (SELECT count(*) FROM os WHERE status = 'Em Andamento' AND MONTH(dataInicial) = MONTH(CURDATE())) as andamento,
+                    (SELECT count(*) FROM os WHERE status = 'Finalizado' AND MONTH(dataInicial) = MONTH(CURDATE())) as finalizado,
+                    (SELECT count(*) FROM os WHERE status = 'Cancelado' AND MONTH(dataInicial) = MONTH(CURDATE())) as cancelado";
         return $this->db->query($sql)->result();
     }
 
@@ -153,7 +153,7 @@ class Mapos_model extends CI_Model {
         $sql = "SELECT SUM(CASE WHEN baixado = 1 AND tipo = 'receita' THEN valor END) as total_receita, 
                        SUM(CASE WHEN baixado = 1 AND tipo = 'despesa' THEN valor END) as total_despesa,
                        SUM(CASE WHEN baixado = 0 AND tipo = 'receita' THEN valor END) as total_receita_pendente,
-                       SUM(CASE WHEN baixado = 0 AND tipo = 'despesa' THEN valor END) as total_despesa_pendente FROM lancamentos";
+                       SUM(CASE WHEN baixado = 0 AND tipo = 'despesa' THEN valor END) as total_despesa_pendente FROM lancamentos WHERE MONTH(data_vencimento) = MONTH(CURDATE())";
         return $this->db->query($sql)->row();
     }
 
