@@ -1,7 +1,3 @@
-<?php 
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,9 +34,9 @@
   <script src="<?php echo base_url();?>assets/js/jquery.validate.js"></script>
 
   <!-- PNotify -->
-  <script src="<?php site_url(); ?>../assets/js/pnotify/pnotify.js"></script>
-  <script src="<?php site_url(); ?>../assets/js/pnotify/pnotify.buttons.js"></script>
-  <script src="<?php site_url(); ?>../assets/js/pnotify/pnotify.nonblock.js"></script>
+  <script src="<?php site_url(); ?>../../assets/js/pnotify/pnotify.js"></script>
+  <script src="<?php site_url(); ?>../../assets/js/pnotify/pnotify.buttons.js"></script>
+  <script src="<?php site_url(); ?>../../assets/js/pnotify/pnotify.nonblock.js"></script>
 </head>
 
 <body class="login">
@@ -68,13 +64,19 @@
             <p><?php echo $this->session->flashdata('success'); ?></p>
           </div>
         <?php endif; ?>
-          <form  class="form-vertical" id="" method="post" action="reset_pass_enviar_link">
+          <form  class="form-vertical" id="" method="post" action="<?php echo current_url(); ?>">
             <div>
-              <label>informe a nova senha:</label>
+              <h1>Crie uma nova senha</h1>
+              <label>Por segurança, você deve criar uma senha com no mínimo 8 caracteres. Utilize letras e números ou caracteres especiais.</label>
               <input type="password" id="senha" name="senha" class="form-control" placeholder="***********" required="" />
             </div>
-            <div>              
-              <button class="btn btn-primario submit form-control" id="btn-acessar" type="submit">Recuperar Senha</button>
+            <div class="row">
+              <div class="col-md-6 col-xs-6 col-sm-6">
+                <a href="<?php echo base_url(); ?>" class="btn btn-default form-control" id="btn-acessar"> Voltar</a>
+              </div>
+              <div class="col-md-6 col-xs-6 col-sm-6">
+                <button class="btn btn-primario submit form-control" id="btn-acessar" type="submit"> Recuperar Senha</button>
+              </div>
             </div>
 
             <div class="clearfix"></div>

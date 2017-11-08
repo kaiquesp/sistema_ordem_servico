@@ -69,16 +69,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php endif; ?>
           <form  class="form-vertical" id="" method="post" action="reset_pass_enviar_link">
             <div>
+              <i class="fa fa-lock fa-4x"></i>
+              <h1>Esqueci minha senha</h1>
+              <label>Informe o seu email. O link para redefinição de senha será enviado para o e-mail cadastrado.</label>
               <input type="email" id="email" name="email" class="form-control" placeholder="informe o email cadastrado" required="" />
             </div>
             <div>
               <div id="progress-acessar" class='hide progress progress-striped active page-progress-bar'><div class='progress-bar' style='width: 100%'></div></div>
               
               <div class="row">
-                <div class="col-md-6 col-xs-3 col-sm-6">
+                <div class="col-md-6 col-xs-6 col-sm-6">
                   <a href="<?php echo base_url(); ?>" class="btn btn-default form-control" id="btn-acessar"><i class="fa fa-arrow-left"></i> Voltar</a>
                 </div>
-                <div class="col-md-6 col-xs-3 col-sm-6">
+                <div class="col-md-6 col-xs-6 col-sm-6">
                   <button class="btn btn-primario submit form-control" id="btn-acessar" type="submit"><i class="fa fa-envelope"></i> Recuperar Senha</button>
                 </div>
               </div>

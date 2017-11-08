@@ -15,11 +15,14 @@ class Home extends CI_Controller {
         $this->load->helper('string');
         $this->load->library('email');
         $this->email->initialize();
+
+        $this->load->library('encryption');
+        $this->encryption->initialize(array('driver' => 'mcrypt'));
     }
 
     public function index() {
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
+            $this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -33,7 +36,7 @@ class Home extends CI_Controller {
 
     public function minhaConta() {
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
+            $this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -45,7 +48,7 @@ class Home extends CI_Controller {
 
     public function alterarDados() {
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
+            $this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -68,7 +71,7 @@ class Home extends CI_Controller {
 
     public function pesquisar() {
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
+            $this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
         
@@ -144,7 +147,7 @@ class Home extends CI_Controller {
     public function backup(){
 
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
+            $this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -175,7 +178,7 @@ class Home extends CI_Controller {
     public function emitente(){   
 
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
+            $this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -193,7 +196,7 @@ class Home extends CI_Controller {
     function do_upload(){
 
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
+            $this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -235,7 +238,7 @@ class Home extends CI_Controller {
     public function cadastrarEmitente() {
 
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
+            $this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -299,7 +302,7 @@ class Home extends CI_Controller {
     public function editarEmitente() {
 
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
+            $this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -362,7 +365,7 @@ class Home extends CI_Controller {
     public function editarLogo(){
         
         if( (!session_id()) || (!$this->session->userdata('logado'))){
-			$this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
+            $this->session->set_flashdata('error','Sua sessao expirou, faça o login novamente!');
             redirect('login');
         }
 
@@ -405,11 +408,14 @@ class Home extends CI_Controller {
         $this->load->model('Mapos_model');
         $email = $this->Mapos_model->check_email($email);
 
+        $str = "AaBbCcDdEeFfGghHiIjJkKlLMmNnOoPpQqRrSsTtUuVvxXWwYyZz1234567890";
+        $codigo = str_shuffle($str);
+
         $dados['nome'] = $email->nome;
         $dados['email'] = $email->email;
         $dados['login'] = $email->login;
         $dados['ip'] =  $_SERVER["REMOTE_ADDR"];
-        $dados['random'] = md5(uniqid(rand(), true));
+        $dados['random'] = $codigo;
         $dados['date'] = date('Y-m-d H:m:s');
 
         if($email){
@@ -428,7 +434,8 @@ class Home extends CI_Controller {
                                             <p>Caso o e-mail não esteja em sua caixa de entrada, verifique as pastas de Spam, Lixo, Social e outras.</p>');
             redirect(base_url().'home/reset_pass');
         }else{
-            echo "não";
+            $this->session->set_flashdata('error','<p>E-mail não existe em nosso banco de dados.</p>');
+            redirect(base_url().'home/reset_pass');
         }
 
 
@@ -436,22 +443,35 @@ class Home extends CI_Controller {
     }
 
     public function change_password(){
-         $codigo = $this->uri->segment(3);
+        $codigo = $this->uri->segment(3);
 
         $verifica = $this->mapos_model->verifica_codigo($codigo);
 
+        $email = $verifica->email;
+
         if($verifica){
-            $this->session->set_flashdata('success','<p>Token existe</p>');
+
+            if($this->input->post('senha')){
+                $senha = $this->encryption->encrypt($this->input->post('senha'));
+                $codigos = $codigo;
+
+                $resultadoAlteraSenha = $this->mapos_model->redefinir_senha($senha,$codigos, $email);
+
+                if($resultadoAlteraSenha){
+                    $this->mapos_model->excluir_codigo($codigos);
+                    $this->session->set_flashdata('success','<p>Senha alterada com sucesso.</p>');
+                    redirect(base_url().'login');
+                }else{
+                    $this->session->set_flashdata('error','<p>Falha ao alterar a senha.</p>');
+                    redirect(base_url());
+                }
+            }
+
+            
         }else{
             $this->session->set_flashdata('error','<p>Token não existe, ou já está expirado.</p>');
-            redirect(base_url().'home/reset_pass');
         }
-        $this->load->view('change_password');
+           $this->load->view('change_password');
     }
 
-    public function verifica_codigo(){
-       
-    }
-
-    
 }

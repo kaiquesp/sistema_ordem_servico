@@ -223,6 +223,7 @@ class Mapos_model extends CI_Model {
             extract ( $dados );
             $this->db->insert ( 'codigos', array (
                 'codigo'    => $dados['random'],
+                'email'     => $dados['email'],
                 'data'      => $dados['date'],
                 'ip'        => $dados['ip'],
         ));
@@ -233,5 +234,17 @@ class Mapos_model extends CI_Model {
         $this->db->where('codigo', $codigo);
         $this->db->limit(1);
         return $this->db->get('codigos')->row();
+    }
+
+    public function redefinir_senha($senha, $codigos, $email){
+        $this->db->set('senha', $senha);
+        $this->db->where('email', $email);
+        return $this->db->update('usuarios');    
+        
+    }
+
+    public function excluir_codigo($codigos){
+        $this->db->where('codigo', $codigos);
+        return $this->db->delete('codigos');
     }
 }

@@ -53,12 +53,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
       <div class="animate form login_form">
         <section class="login_content">
-          <?php if($this->session->flashdata('error') != null){?>
-          <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <?php echo $this->session->flashdata('error');?>
+          <?php if ($this->session->flashdata('error') == TRUE): ?>
+          <div class="alert alert-danger alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+            </button>
+            <p><?php echo $this->session->flashdata('error'); ?></p>
           </div>
-          <?php }?>
+        <?php endif; ?>
+        <?php if ($this->session->flashdata('success') == TRUE): ?>
+          <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+            </button>
+            <p><?php echo $this->session->flashdata('success'); ?></p>
+          </div>
+        <?php endif; ?>
           <form  class="form-vertical" id="formLogin" method="post" action="">
             <div>
               <input type="text" id="user" name="user" class="form-control" placeholder="Username" required="" />
