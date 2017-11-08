@@ -2,21 +2,21 @@
     <div class="x_panel">
       <div class="x_content">
 
-
-        <div class="" role="tabpanel" data-example-id="togglable-tabs">
-          <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Dados do Cliente</a>
+        <div class="tabbable-panel">
+        <div class="tabbable-line">
+          <ul class="nav nav-tabs ">
+            <li class="active">
+              <a href="#tab_default_1" data-toggle="tab">
+              Dados do Cliente </a>
             </li>
-            <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">OS</a>
+            <li>
+              <a href="#tab_default_2" data-toggle="tab">
+              Ordem de Serviço </a>
             </li>
           </ul>
-          <div id="myTabContent" class="tab-content">
-            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_content">
-
-                    <!-- start accordion -->
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab_default_1">
+              <!-- start accordion -->
                     <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
                       <div class="panel">
                         <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -107,13 +107,8 @@
                       </div>
                     </div>
                     <!-- end of accordion -->
-
-
-                  </div>
-                </div>
-              </div>
             </div>
-            <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+            <div class="tab-pane" id="tab_default_2">
                 <?php if (!$results) { ?>
                 
                     <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
@@ -179,6 +174,15 @@
             </div>
           </div>
         </div>
+      </div>
+        <div class="row">
+          <div class="col-md-12" style="padding: 1%; margin-left: 0">
+              <div class="span6 offset3" style="text-align: center">
+                  
+                  <a href="<?php echo base_url() ?>clientes" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Voltar</a>
+              </div>
+          </div>
+      </div>
 
       </div>
     </div>
