@@ -40,13 +40,13 @@
                             <div class="row well well-lg">
                                 <div class="col-md-6 col-xs-12">
                                    	<label for="">Cliente:</label>
-                                   	<input type="text"  id="cliente" class="form-control" />
-                                	<input type="hidden" name="cliente" id="clienteHide" />
+                                   	<input type="text"  id="clientevendas" class="form-control" />
+                                	<input type="hidden" name="cliente" id="clienteidvendas" />
                                 </div>
                                 <div class="col-md-6 col-xs-12">
                                     <label for="">Vendedor:</label>
                                     <input type="text" id="tecnico" class="form-control" />
-                                	<input type="hidden" name="responsavel" id="responsavelHide" />
+                                	<input type="hidden" name="responsavel" id="responsavelidvendas" />
                                 </div>
                             </div>
                             <div class="col-md-offset-5 col-xs-offset-3 col-sm-offset-3">

@@ -1125,5 +1125,33 @@ $(".datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' });
 
     });
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        $("#clientevendas").autocomplete({
+            source: "<?php echo base_url(); ?>os/autoCompleteCliente",
+            minLength: 2,
+            select: function( event, ui ) {
+
+                 $("#clienteidvendas").val(ui.item.id);
+
+
+            }
+      });
+
+      $("#tecnicoosrel").autocomplete({
+            source: "<?php echo base_url(); ?>os/autoCompleteUsuario",
+            minLength: 2,
+            select: function( event, ui ) {
+
+                 $("#responsavelidvendas").val(ui.item.id);
+
+
+            }
+      });
+
+    });
+</script>
 </body>
 </html>
