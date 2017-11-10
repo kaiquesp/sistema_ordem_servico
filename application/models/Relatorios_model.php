@@ -140,7 +140,7 @@ class Relatorios_model extends CI_Model {
         if($status != null){
             $whereStatus = "AND status = ".$this->db->escape($status);
         }
-        $query = "SELECT os.*,clientes.nomeCliente FROM os LEFT JOIN clientes ON os.clientes_id = clientes.idClientes WHERE idOs != 0 $whereData $whereCliente $whereResponsavel $whereStatus";
+        $query = "SELECT os.*,clientes.nomeCliente, usuarios.nome FROM os LEFT JOIN clientes ON os.clientes_id = clientes.idClientes LEFT JOIN usuarios ON os.usuarios_id = usuarios.idUsuarios WHERE idOs != 0 $whereData $whereCliente $whereResponsavel $whereStatus";
         return $this->db->query($query)->result();
     }
 

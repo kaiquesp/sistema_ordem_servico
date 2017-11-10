@@ -41,7 +41,7 @@
                                 <div class="col-md-6 col-xs-12">
                                    	<label for="">Cliente:</label>
                                    	<input type="text"  id="clienteosrel" class="form-control" />
-                                	<input type="hidden" name="clienteosrel" id="clienteHide" />
+                                	<input type="hidden" name="cliente" id="clienteHide" />
                                 </div>
                                 <div class="col-md-6 col-xs-12">
                                     <label for="">Responsável:</label>

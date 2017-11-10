@@ -31,6 +31,7 @@
                               <th style="font-size: 1.2em; padding: 5px;">Cliente</th>
                               <th style="font-size: 1.2em; padding: 5px;">Status</th>
                               <th style="font-size: 1.2em; padding: 5px;">Data</th>
+                              <th style="font-size: 1.2em; padding: 5px;">Responsável</th>
                               <th style="font-size: 1.2em; padding: 5px;">Descrição</th>
                           </tr>
                       </thead>
@@ -42,6 +43,7 @@
                               echo '<td>' . $c->nomeCliente . '</td>';
                               echo '<td>' . $c->status . '</td>';
                               echo '<td>' . date('d/m/Y',  strtotime($c->dataInicial)) . '</td>';
+                              echo '<td>' . $c->nome. '</td>';
                               echo '<td>' . $c->descricaoProduto. '</td>';
                               echo '</tr>';
                           }
