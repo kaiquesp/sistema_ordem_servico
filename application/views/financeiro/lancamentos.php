@@ -160,16 +160,16 @@ $periodo = $this->input->get('periodo');
         }else{ ?>
           <tfoot>
           <tr>
-            <th colspan="5" style="text-align: right; color: green"> <strong>Total Receitas:</strong></th>
-            <th colspan="2" style="text-align: left; color: green"><strong>R$ <?php echo number_format($totalReceita,2,',','.') ?></strong></th>
+            <th colspan="1" style="text-align: right; color: green"> <strong>Total Receitas:</strong></th>
+            <th colspan="7" style="text-align: left; color: green"><strong>R$ <?php echo number_format($totalReceita,2,',','.') ?></strong></th>
           </tr>
           <tr>
-            <th colspan="5" style="text-align: right; color: red"> <strong>Total Despesas:</strong></th>
-            <th colspan="2" style="text-align: left; color: red"><strong>R$ <?php echo number_format($totalDespesa,2,',','.') ?></strong></th>
+            <th colspan="1" style="text-align: right; color: red"> <strong>Total Despesas:</strong></th>
+            <th colspan="7" style="text-align: left; color: red"><strong>R$ <?php echo number_format($totalDespesa,2,',','.') ?></strong></th>
           </tr>
           <tr>
-            <th colspan="5" style="text-align: right"> <strong>Saldo:</strong></th>
-            <th colspan="2" style="text-align: left;"><strong>R$ <?php echo number_format($totalReceita - $totalDespesa,2,',','.') ?></strong></th>
+            <th colspan="1" style="text-align: right"> <strong>Saldo:</strong></th>
+            <th colspan="7" style="text-align: left;"><strong>R$ <?php echo number_format($totalReceita - $totalDespesa,2,',','.') ?></strong></th>
           </tr>
         </tfoot>
         <?php } ?>
