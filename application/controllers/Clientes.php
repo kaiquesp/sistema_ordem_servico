@@ -42,6 +42,7 @@ class Clientes extends CI_Controller {
 
             if ($this->input->post ()) {
                 $data = array(
+                    'tipoCliente'           => $this->input->post('tipoCliente'),
                     'nomeCliente'           => $this->input->post('nomeCliente'),
                     'nomefantasia'          => $this->input->post('nomefantasia'),
                     'razaosocial'           => $this->input->post('razaosocial'),
@@ -57,6 +58,9 @@ class Clientes extends CI_Controller {
                     'bairro'                => $this->input->post('bairro'),
                     'cidade'                => $this->input->post('cidade'),
                     'estado'                => $this->input->post('estado'),
+                    'veiculo'               => $this->input->post('veiculo'),
+                    'placa'                 => $this->input->post('placa'),
+                    'km'                    => $this->input->post('km'),
                     'dataCadastro'          => date('Y-m-d')
                 );
 
@@ -82,6 +86,7 @@ class Clientes extends CI_Controller {
         
             if($this->input->post()){
             $data = array(
+                'tipoCliente'           => $this->input->post('tipoCliente'),
                 'nomeCliente'           => $this->input->post('nomeCliente'),
                 'nomefantasia'          => $this->input->post('nomefantasia'),
                 'razaosocial'           => $this->input->post('razaosocial'),
@@ -96,6 +101,9 @@ class Clientes extends CI_Controller {
                 'complemento'           => $this->input->post('complemento'),
                 'bairro'                => $this->input->post('bairro'),
                 'cidade'                => $this->input->post('cidade'),
+                'veiculo'               => $this->input->post('veiculo'),
+                'placa'                 => $this->input->post('placa'),
+                'km'                    => $this->input->post('km'),                
                 'estado'                => $this->input->post('estado')
             );
             if ($this->clientes_model->edit('clientes', $data, 'idClientes', $this->input->post('idClientes')) == TRUE) {

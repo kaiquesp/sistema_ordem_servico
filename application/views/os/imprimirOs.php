@@ -6,13 +6,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap-responsive.min.css" />
+<!-- <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap-responsive.min.css" /> -->
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/matrix-style.css" />
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/matrix-media.css" />
 <link href="<?php echo base_url();?>assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-<script type="text/javascript"  src="<?php echo base_url();?>assets/js/jquery-1.10.2.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
 
 </head>
 <body>
@@ -36,7 +36,7 @@
                             <tr>
                                 <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?>" class="img-responsive"></td>
                                 <td> <span style="font-size: 20px; "> <?php echo $emitente[0]->nome; ?></span> </br><span><?php echo $emitente[0]->cnpj; ?> </br> <?php echo $emitente[0]->rua.', '.$emitente[0]->numero.' - '.$emitente[0]->bairro.' - '.$emitente[0]->cidade.' - '.$emitente[0]->uf; ?> </span> </br> <span> E-mail: <?php echo $emitente[0]->email.' - Fone: '.$emitente[0]->telefone; ?></span></td>
-                                <td style="width: 18%; text-align: center">#Protocolo: <span ><?php echo $result->idOs?></span></br> </br> <span>Emissão: <?php echo date('d/m/Y')?></span><br /><br /><span>Status: <?php echo $result->status; ?></span></td>
+                                <td style="width: 18%; text-align: center">#Protocolo: <span ><?php echo $result->idOs?></span></br> </br> <span>Emissão: <?php echo date('d/m/Y')?></span><br /><br /><span>Status: <?php echo $result->status; ?></span><br /><span>Veículo: <?php echo $result->veiculo; ?></span><br /><span>Placa: <?php echo $result->placa; ?></span><br /><span>Kilometragem: <?php echo $result->km; ?></span><br /></td>
                             </tr>
 
                             <?php } ?>
@@ -70,9 +70,7 @@
                     <?php if($result->descricaoProduto != null){?>
                     <hr style="margin-top: 0">
                     <h5>Descrição</h5>
-                    <p>
-                        <?php echo $result->descricaoProduto?>
-                        
+                    <p><?php echo html_entity_decode($result->descricaoProduto);?>                   
                     </p>
                     <?php }?>
 
@@ -80,21 +78,21 @@
                     <hr style="margin-top: 0">
                     <h5>Defeito</h5>
                     <p>
-                        <?php echo $result->defeito?>
+                        <?php echo html_entity_decode($result->defeito);?>
                     </p>
                     <?php }?>
                     <?php if($result->laudoTecnico != null){?>
                     <hr style="margin-top: 0">
                     <h5>Laudo Técnico</h5>
                     <p>
-                        <?php echo $result->laudoTecnico?>
+                        <?php echo html_entity_decode($result->laudoTecnico); ?>
                     </p>
                     <?php }?>
                     <?php if($result->observacoes != null){?>
                     <hr style="margin-top: 0">
                     <h5>Observações</h5>
                     <p>
-                        <?php echo $result->observacoes?>
+                        <?php echo html_entity_decode($result->observacoes); ?>
                     </p>
                     <?php }?>
 
@@ -184,7 +182,7 @@
 
 
 
-<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script> 
+<script src="<?php echo base_url();?>assets/js/bootstrap/bootstrap.min.js"></script> 
 <script src="<?php echo base_url();?>assets/js/matrix.js"></script> 
 
 <script>

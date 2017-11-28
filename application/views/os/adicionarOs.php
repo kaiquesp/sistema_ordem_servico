@@ -77,7 +77,7 @@
                 
                                                         <div class="col-md-6">
                                                             <label for="descricaoProduto">Descrição Produto/Serviço</label>
-                                                            <textarea class="form-control textarea" name="descricaoProduto" id="descricaoProduto" rows="5"></textarea>
+                                                            <textarea class="textarea" name="descricaoProduto" placeholder="Digite o texto aqui" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="defeito">Defeito</label>

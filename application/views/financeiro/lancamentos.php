@@ -110,14 +110,12 @@ $periodo = $this->input->get('periodo');
                 echo '<td>'.$vencimento.'</td>';   
                 echo '<td>'.$status.'</td>';
                 echo '<td> R$ '.number_format($r->valor, 2, ',', '.').'</td>';
-
                 echo '<td>';
                 if($this->permission->checkPermission($this->session->userdata('permissao'),'eLancamento')){
                   echo '<a href="#modalEditar" style="margin-right: 1%" data-toggle="modal" role="button" idLancamento="'.$r->idLancamentos.'" descricao="'.$r->descricao.'" valor="'.$r->valor.'" vencimento="'.date('d/m/Y',strtotime($r->data_vencimento)).'" pagamento="'.date('d/m/Y', strtotime($r->data_pagamento)).'" baixado="'.$r->baixado.'" cliente="'.$r->cliente_fornecedor.'" formaPgto="'.$r->forma_pgto.'" tipo="'.$r->tipo.'" class="btn btn-info tip-top editar" title="Editar Lançamento"><i class="fa fa-edit"></i></a>'; 
                 }
                 if($this->permission->checkPermission($this->session->userdata('permissao'),'dLancamento')){
                   echo '<button type="button" idAcao="'.$r->idLancamentos.'" class="btn btn-danger" data-toggle="modal" data-target="#modalExcluir'.$r->idLancamentos.'"><i class="fa fa-trash"></i></button>'; 
-
                   ?>
                   <!-- Modal Excluir lançamento-->
                   <div class="modal fade" id="modalExcluir<?php echo $r->idLancamentos; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -144,8 +142,6 @@ $periodo = $this->input->get('periodo');
                   </div>
 
                   <?php } 
-
-
                   echo '</td>';
                   echo '</tr>';
                 }
@@ -156,20 +152,34 @@ $periodo = $this->input->get('periodo');
         </tbody>
 
         <?php if(!$results){
-
         }else{ ?>
           <tfoot>
           <tr>
             <th colspan="1" style="text-align: right; color: green"> <strong>Total Receitas:</strong></th>
-            <th colspan="7" style="text-align: left; color: green"><strong>R$ <?php echo number_format($totalReceita,2,',','.') ?></strong></th>
+            <th colspan="1" style="text-align: left; color: green"><strong>R$ <?php echo number_format($totalReceita,2,',','.') ?></strong></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
           <tr>
             <th colspan="1" style="text-align: right; color: red"> <strong>Total Despesas:</strong></th>
-            <th colspan="7" style="text-align: left; color: red"><strong>R$ <?php echo number_format($totalDespesa,2,',','.') ?></strong></th>
+            <th colspan="1" style="text-align: left; color: red"><strong>R$ <?php echo number_format($totalDespesa,2,',','.') ?></strong></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
           <tr>
             <th colspan="1" style="text-align: right"> <strong>Saldo:</strong></th>
-            <th colspan="7" style="text-align: left;"><strong>R$ <?php echo number_format($totalReceita - $totalDespesa,2,',','.') ?></strong></th>
+            <th colspan="1" style="text-align: left;"><strong>R$ <?php echo number_format($totalReceita - $totalDespesa,2,',','.') ?></strong></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
         </tfoot>
         <?php } ?>
@@ -403,4 +413,3 @@ $periodo = $this->input->get('periodo');
 </div>
 </div>
 </div>
-

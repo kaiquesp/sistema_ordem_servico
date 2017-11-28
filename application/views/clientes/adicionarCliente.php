@@ -31,8 +31,8 @@
             </label>
             <div class="col-md-10 col-sm-12 col-xs-12">
              <p>
-               <input type="radio" name="optionsRadiosInline" id="radio4" onClick="habilitacao()" checked>Pessoa Física
-               <input type="radio" name="optionsRadiosInline"  id="radio5" onClick="habilitacao()">Pessoa Jurídica 
+               <input type="radio" name="tipoCliente" id="radio4" onClick="habilitacao()" value="Pessoa Física" checked>Pessoa Física
+               <input type="radio" name="tipoCliente"  id="radio5" onClick="habilitacao()" value="Pessoa Jurídica">Pessoa Jurídica 
              </p>
       
            </div>
@@ -166,6 +166,23 @@
               <option value="SE">Sergipe</option>
               <option value="TO">Tocantins</option>
             </select>
+          </div>
+        </div>
+        <div class="item form-group">
+          <label class="control-label col-md-2 col-sm-2 col-xs-12" for="veiculo">Veículo <span class="required">*</span>
+          </label>
+          <div class="col-md-2 col-sm-12 col-xs-12">
+            <input id="veiculo" name="veiculo" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ex. Sandero" required="required" type="text">
+          </div>
+          <label class="control-label col-md-2 col-sm-2 col-xs-12" for="placa">Placa do carro <span class="required">*</span>
+          </label>
+          <div class="col-md-2 col-sm-12 col-xs-12">
+            <input id="placa" name="placa" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ex. ABC-1234" required="required" type="text" data-inputmask="'mask' : '***-****'">
+          </div>
+          <label class="control-label col-md-2 col-sm-2 col-xs-12" for="km">Kilometragem <span class="required">*</span>
+          </label>
+          <div class="col-md-2 col-sm-12 col-xs-12">
+            <input id="km" name="km" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ex. 999" required="required" type="text">
           </div>
         </div>
         <div class="ln_solid"></div>

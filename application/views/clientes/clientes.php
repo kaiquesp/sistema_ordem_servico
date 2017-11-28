@@ -40,26 +40,28 @@
             <tbody>
               <?php 
                 foreach ($results as $r){
-                  ?>
-                  <tr>
-                    <td><?php echo $r->idClientes; ?></td>
-                    <td><?php echo $r->nomeCliente; ?></td>
-                    <td><?php echo $r->cpf; ?></td>
-                    <td><?php echo $r->cnpj; ?></td>
-                    <td><?php echo $r->telefone; ?></td>
+                  
+                  echo '<tr>';
+                    echo '<td>'.$r->idClientes.'</td>';
+                    echo '<td>'.$r->nomeCliente.'</td>';
+                    echo '<td>'.$r->cpf.'</td>';
+                    echo '<td>'.$r->cnpj.'</td>';
+                    echo '<td>'.$r->telefone.'</td>';
                     
-                    <td>
-                      <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vProduto')){
+                    echo '<td>';
+                       if($this->permission->checkPermission($this->session->userdata('permissao'),'vProduto')){
                         echo '<a style="margin-right: 1%" href="'.base_url().'clientes/visualizar/'.$r->idClientes.'" class="btn btn-default" title="Visualizar Cliente"><i class="fa fa-eye"></i></a>  '; 
                       }
                       if($this->permission->checkPermission($this->session->userdata('permissao'),'eProduto')){
                         echo '<a style="margin-right: 1%" href="'.base_url().'clientes/editar/'.$r->idClientes.'" class="btn btn-info" title="Editar Cliente"><i class="fa fa-edit"></i></a>'; 
                       }
                       if($this->permission->checkPermission($this->session->userdata('permissao'),'dProduto')){
-                        echo '<button type="button" class="btn btn-danger" title="Excluir Cliente" data-toggle="modal" data-target="#myModal'.$r->idClientes.'"><i class="fa fa-trash"></i></button>'; 
+                         echo '<button type="button" idAcao="'.$r->idClientes.'" class="btn btn-danger" data-toggle="modal" data-target="#modalExcluirCliente'.$r->idClientes.'"><i class="fa fa-trash"></i></button>';
 
                         ?>
-                        <div class="modal fade" id="myModal<?php echo $r->idClientes; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+                        <!-- Modal Excluir lançamento-->
+                        <div class="modal fade" id="modalExcluirCliente<?php echo $r->idClientes; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -69,8 +71,8 @@
                               <div class="modal-body">
                                 <form action="<?php echo base_url() ?>clientes/excluir" method="post" >
                                   <div class="modal-body">
-                                    <input type="hidden" id="idProduto" name="id" value="<?php echo $r->idClientes; ?>" />
-                                    <h5 style="text-align: center">Deseja realmente excluir o cliente <strong><?php echo $r->nomeCliente; ?></strong> ?</h5>
+                                    <input type="hidden" id="idClientes" name="id" value="<?php echo $r->idClientes; ?>" />
+                                    <h5 style="text-align: center">Deseja realmente excluir o lançamento <strong><?php echo $r->nomeCliente; ?></strong> ?</h5>
                                   </div>
                                   <div class="modal-footer">
                                     <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</button>
@@ -82,10 +84,10 @@
                           </div>
                         </div>
                         <!-- Fim Modal -->
-                        <?php }?>
-                      </td>
-                    </tr>
-                    <?php } ?>
+                        <?php }
+                      echo '</td>';
+                    echo '</tr>';
+                     } ?>
               </tbody>
             </table>
           </div>

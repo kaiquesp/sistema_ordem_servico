@@ -27,6 +27,17 @@
             <form action="<?php site_url(); ?>clientes/editar" id="formCliente" method="post" class="form-horizontal form-label-left" >
           </p>
           <div class="item form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="tipocliente">Tipo de Cliente <span class="required">*</span>
+            </label>
+            <div class="col-md-10 col-sm-12 col-xs-12">
+             <p>
+               <input type="radio" name="tipoCliente" id="radio4" onClick="habilitacao()" value="Pessoa Física" <?php if(isset($result->tipoCliente)){ if($result->tipoCliente == "Pessoa Física"){echo 'checked';}}?>>Pessoa Física
+               <input type="radio" name="tipoCliente"  id="radio5" onClick="habilitacao()" value="Pessoa Jurídica" <?php if(isset($result->tipoCliente)){ if($result->tipoCliente == "Pessoa Jurídica"){echo 'checked';}}?>>Pessoa Jurídica 
+             </p>
+      
+           </div>
+         </div>
+          <div class="item form-group">
             <?php echo form_hidden('idClientes',$result->idClientes) ?>
 
             <label class="control-label col-md-2 col-sm-2 col-xs-12" for="nomecompleto">Nome Completo <span class="required">*</span>
@@ -158,6 +169,23 @@
               <option value="SE">SE</option>
               <option value="TO">TO</option>
             </select>
+          </div>
+        </div>
+        <div class="item form-group">
+          <label class="control-label col-md-2 col-sm-2 col-xs-12" for="veiculo">Veículo <span class="required">*</span>
+          </label>
+          <div class="col-md-2 col-sm-12 col-xs-12">
+            <input id="veiculo" name="veiculo" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ex. Sandero" required="required" type="text" value="<?php echo $result->veiculo; ?>">
+          </div>
+          <label class="control-label col-md-2 col-sm-2 col-xs-12" for="placa">Placa do carro <span class="required">*</span>
+          </label>
+          <div class="col-md-2 col-sm-12 col-xs-12">
+            <input id="placa" name="placa" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ex. ABC-1234" required="required" type="text" data-inputmask="'mask' : '***-****'" value="<?php echo $result->placa; ?>">
+          </div>
+          <label class="control-label col-md-2 col-sm-2 col-xs-12" for="km">Kilometragem <span class="required">*</span>
+          </label>
+          <div class="col-md-2 col-sm-12 col-xs-12">
+            <input id="km" name="km" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ex. 999" required="required" type="text" value="<?php echo $result->km; ?>">
           </div>
         </div>
         <div class="ln_solid"></div>
