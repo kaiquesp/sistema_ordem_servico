@@ -79,10 +79,10 @@ $periodo = $this->input->get('periodo');
 
         </div>
 
-        <div class="widget-content nopadding">
+        <div class="x_content table-responsive no-padding">
 
 
-          <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+          <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowra table-hover" cellspacing="0" width="100%">
             <thead class="topo-table">
               <tr style="backgroud-color: #2D335B">
                 <th>#</th>
@@ -153,35 +153,21 @@ $periodo = $this->input->get('periodo');
 
         <?php if(!$results){
         }else{ ?>
-          <tfoot>
           <tr>
             <th colspan="1" style="text-align: right; color: green"> <strong>Total Receitas:</strong></th>
-            <th colspan="1" style="text-align: left; color: green"><strong>R$ <?php echo number_format($totalReceita,2,',','.') ?></strong></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th colspan="7" style="text-align: left; color: green"><strong>R$ <?php echo number_format($totalReceita,2,',','.') ?></strong></th>
+
           </tr>
           <tr>
             <th colspan="1" style="text-align: right; color: red"> <strong>Total Despesas:</strong></th>
-            <th colspan="1" style="text-align: left; color: red"><strong>R$ <?php echo number_format($totalDespesa,2,',','.') ?></strong></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th colspan="7" style="text-align: left; color: red"><strong>R$ <?php echo number_format($totalDespesa,2,',','.') ?></strong></th>
+
           </tr>
           <tr>
             <th colspan="1" style="text-align: right"> <strong>Saldo:</strong></th>
-            <th colspan="1" style="text-align: left;"><strong>R$ <?php echo number_format($totalReceita - $totalDespesa,2,',','.') ?></strong></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th colspan="7" style="text-align: left;"><strong>R$ <?php echo number_format($totalReceita - $totalDespesa,2,',','.') ?></strong></th>
+
           </tr>
-        </tfoot>
         <?php } ?>
       </table>
     </div>

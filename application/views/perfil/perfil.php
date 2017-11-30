@@ -21,27 +21,30 @@ $foto = $session['foto'];
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
+        <?php if ($this->session->flashdata('error') == TRUE): ?>
+          <div class="alert alert-error alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+            </button>
+            <p><?php echo $this->session->flashdata('error'); ?></p>
+          </div>
+        <?php endif; ?>
+        <?php if ($this->session->flashdata('success') == TRUE): ?>
+          <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+            </button>
+            <p><?php echo $this->session->flashdata('success'); ?></p>
+          </div>
+        <?php endif; ?>
         <div class="x_content">
-          <?php if ($this->session->flashdata('error') == TRUE): ?>
-                <div class="alert alert-danger alert-dismissible fade in" role="alert">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                  </button>
-                  <p><?php echo $this->session->flashdata('error'); ?></p>
-                </div>
-              <?php endif; ?>
-              <?php if ($this->session->flashdata('success') == TRUE): ?>
-                <div class="alert alert-success alert-dismissible fade in" role="alert">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                  </button>
-                  <p><?php echo $this->session->flashdata('success'); ?></p>
-                </div>
-              <?php endif; ?>
           <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
             <div class="profile_img">
               <div id="crop-avatar">
                 <!-- Current avatar -->
                 <img src="<?php echo site_url().'assets/foto/'.$foto;?>" alt="foto" class="img-circle profile_img avatar-view">
               </div>
+            </div><br />
+            <div class="span6 offset3" style="text-align: center">
+                <button class="btn btn-success" align="center" data-toggle="modal" data-target="#modalfoto"><i class="fa fa-edit m-right-xs"></i>Alterar Foto</button>
             </div>
             <h3><?php echo $nome; ?></h3>
 
@@ -99,99 +102,127 @@ $foto = $session['foto'];
                  </form>
               </div>
             </div>
+
+            <!-- Modal Alterar Foto-->
+            <div class="modal fade" id="modalfoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <form action="adicionarFoto" id="formArquivo" enctype="multipart/form-data" method="post" class="form-horizontal" >
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h2 class="modal-title text-center" id="exampleModalLabel">Alterar Foto do Perfil</h2>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="<?php echo site_url().'assets/foto/'.$foto;?>" alt="foto" class="img-circle profile_img avatar-view">
+                      <div class="form-group">
+                          <label for="preco" class="control-label"><span class="required">Arquivo*</span></label>
+                          <div class="controls">
+                              <input class="form-control" id="arquivo" type="file" name="userfile" /> <strong>(txt | pdf | gif | png | jpg | jpeg)</strong><br />
+                              <input id="usuarioId" class="span12" type="hidden" name="usuarioId" value="<?php echo $id ?>"  />
+                              <strong>Atenção: A foto será atualizada após realizar um novo login</strong>
+                          </div>
+                      </div>                     
+                     
+                        
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                      <button type="submit" class="btn btn-primary">Alterar</button>
+                    </div>
+                  </div>
+                 </form>
+              </div>
+            </div>
           </div>
           <div class="col-md-9 col-sm-9 col-xs-12">
 
-            <div class="" role="tabpanel" data-example-id="togglable-tabs">
-              <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Recent Activity</a>
-                </li>
-              </ul>
-              <div id="myTabContent" class="tab-content">
-                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+            <div class="container">
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+                  <!-- Content Header (Page header) -->
+                  <section class="content-header">
+                    <h1>
+                      Atividades recentes
+                    </h1>
+                  </section>
 
-                  <!-- start recent activity -->
-                  <ul class="messages">
-                    <li>
-                      <img src="images/img.jpg" class="avatar" alt="Avatar">
-                      <div class="message_date">
-                        <h3 class="date text-info">24</h3>
-                        <p class="month">May</p>
-                      </div>
-                      <div class="message_wrapper">
-                        <h4 class="heading">Desmond Davison</h4>
-                        <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                        <br />
-                        <p class="url">
-                          <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-                          <a href="#"><i class="fa fa-paperclip"></i> User Acceptance Test.doc </a>
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      <img src="images/img.jpg" class="avatar" alt="Avatar">
-                      <div class="message_date">
-                        <h3 class="date text-error">21</h3>
-                        <p class="month">May</p>
-                      </div>
-                      <div class="message_wrapper">
-                        <h4 class="heading">Brian Michaels</h4>
-                        <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                        <br />
-                        <p class="url">
-                          <span class="fs1" aria-hidden="true" data-icon=""></span>
-                          <a href="#" data-original-title="">Download</a>
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      <img src="images/img.jpg" class="avatar" alt="Avatar">
-                      <div class="message_date">
-                        <h3 class="date text-info">24</h3>
-                        <p class="month">May</p>
-                      </div>
-                      <div class="message_wrapper">
-                        <h4 class="heading">Desmond Davison</h4>
-                        <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                        <br />
-                        <p class="url">
-                          <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-                          <a href="#"><i class="fa fa-paperclip"></i> User Acceptance Test.doc </a>
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      <img src="images/img.jpg" class="avatar" alt="Avatar">
-                      <div class="message_date">
-                        <h3 class="date text-error">21</h3>
-                        <p class="month">May</p>
-                      </div>
-                      <div class="message_wrapper">
-                        <h4 class="heading">Brian Michaels</h4>
-                        <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                        <br />
-                        <p class="url">
-                          <span class="fs1" aria-hidden="true" data-icon=""></span>
-                          <a href="#" data-original-title="">Download</a>
-                        </p>
-                      </div>
-                    </li>
+                  <!-- Main content -->
+                  <section class="content">
 
-                  </ul>
-                  <!-- end recent activity -->
+                    <!-- row -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <!-- The time line -->
+                        
+                        <ul class="timeline">
+                          <?php 
+                          if(!empty($result)){
+                            foreach ($result as $r){
+                            echo '<!-- timeline time label -->';
+                            echo '<li class="time-label">';
+                                  echo "<span class='$r->cor'>";
+                                    echo date(('d/m/Y'),strtotime($r->data));
+                                  echo '</span>';
+                            echo '</li>';
+                            echo '<!-- /.timeline-label -->';
+                            echo '<!-- timeline item -->';
+                            echo '<li>';
+                              echo "<i class='".$r->icone." bg-blue'></i>";
 
+                              echo '<div class="timeline-item">';
+                                echo '<span class="time"><i class="fa fa-clock-o"></i>' .$r->hora.'</span>';
+
+                                echo "<h3 class='timeline-header $r->cor'>".$r->titulo."</h3>";
+
+                                echo '<div class="timeline-body">';
+                                  echo $r->conteudo;
+                                echo '</div>';
+                              echo '</div>';
+                            echo '</li>';
+                            echo '<!-- END timeline item -->';
+                            } 
+                          }else{
+                            echo '<!-- timeline time label -->';
+                            echo '<li class="time-label">';
+                                  echo "<span class=''>";
+                                   
+                                  echo '</span>';
+                            echo '</li>';
+                            echo '<!-- /.timeline-label -->';
+                            echo '<!-- timeline item -->';
+                            echo '<li>';
+                              echo "<i class=bg-blue'></i>";
+
+                              echo '<div class="timeline-item">';
+
+                                echo "<h3 class='timeline-header bg-red'>Atenção</h3>";
+
+                                echo '<div class="timeline-body">';
+                                  echo 'Não há atividades recentes';
+                                echo '</div>';
+                              echo '</div>';
+                            echo '</li>';
+                            echo '<!-- END timeline item -->';
+                          }
+                        ?>
+                        </ul>
+                        
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                  </section>
+                  <!-- /.content -->
                 </div>
-                <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
-                  <p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui
-                    photo booth letterpress, commodo enim craft beer mlkshk </p>
-                </div>
-              </div>
-            </div>
+                <!-- /.content-wrapper -->
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
         
 

@@ -23,6 +23,7 @@
           </div>
         <?php endif; ?>
         <div class="x_content">
+            <img src="<?php echo site_url().'assets/foto/'.$foto;?>" alt="foto" class="img-circle profile_img avatar-view">
             <form action="<?php echo current_url(); ?>" id="formArquivo" enctype="multipart/form-data" method="post" class="form-horizontal" >
                     
                 <div class="form-group">

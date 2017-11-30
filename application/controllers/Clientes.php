@@ -15,6 +15,7 @@ class Clientes extends CI_Controller {
             }
             $this->load->helper(array('codegen_helper'));
             $this->load->model('clientes_model','',TRUE);
+            $this->load->model('mapos_model', '', TRUE);
             $dados['menuClientes'] = 'clientes';
             $this->load->helper('form');
 	}	
@@ -40,7 +41,7 @@ class Clientes extends CI_Controller {
            redirect(base_url());
         }
 
-            if ($this->input->post ()) {
+            if ($this->input->post()) {
                 $data = array(
                     'tipoCliente'           => $this->input->post('tipoCliente'),
                     'nomeCliente'           => $this->input->post('nomeCliente'),
@@ -64,9 +65,24 @@ class Clientes extends CI_Controller {
                     'dataCadastro'          => date('Y-m-d')
                 );
 
+                $session = $this->session->userdata();
+                $id = $session['id'];
+
+                $timeline = array(
+                    'titulo'                => 'Criação de novo cliente',
+                    'conteudo'                => 'Cadastro do cliente ' .$this->input->post('nomeCliente'),
+                    'cor'                   => 'bg-blue',
+                    'data'                  => date('Y-m-d'),
+                    'icone'                 => 'fa fa-users',
+                    'usuario'               => $id
+                );
+
 
                 if ($this->clientes_model->add('clientes', $data) == TRUE) {
                     $this->session->set_flashdata('success','Cliente adicionado com sucesso!');
+
+                    $this->mapos_model->addtimeline($timeline);
+
                     redirect(base_url() . 'clientes/adicionar/');
                 } else {
                     $dados['custom_error'] = '<div class="form_error"><p>Ocorreu um erro.</p></div>';

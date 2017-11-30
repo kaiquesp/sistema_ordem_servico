@@ -81,18 +81,18 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="defeito">Defeito</label>
-                                                            <textarea class="form-control textarea" name="defeito" id="defeito" cols="30" rows="5"></textarea>
+                                                            <textarea class="form-control textarea" name="defeito" id="defeito" cols="30" rows="5" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                                         </div>
                 
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <label for="observacoes">Observações</label>
-                                                            <textarea class="form-control textarea" name="observacoes" id="observacoes" cols="30" rows="5"></textarea>
+                                                            <textarea class="form-control textarea" name="observacoes" id="observacoes" cols="30" rows="5" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="laudoTecnico">Laudo Técnico</label>
-                                                            <textarea class="form-control textarea" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5"></textarea>
+                                                            <textarea class="form-control textarea" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="span12" style="padding: 1%; margin-left: 0">

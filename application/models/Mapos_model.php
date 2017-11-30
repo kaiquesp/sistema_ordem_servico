@@ -56,6 +56,13 @@ class Mapos_model extends CI_Model {
         
     }
 
+    public function alterarFoto($nome){
+
+        $this->db->set('foto', $nome); 
+        $this->db->where('id', $id);
+        return $this->db->update('usuarios'); 
+    }
+
     function pesquisar($termo){
          $data = array();
          // buscando clientes
@@ -247,4 +254,29 @@ class Mapos_model extends CI_Model {
         $this->db->where('codigo', $codigos);
         return $this->db->delete('codigos');
     }
+
+    function addtimeline($timeline){
+        $this->db->insert('timeline', $timeline);         
+        if ($this->db->affected_rows() == '1')
+        {
+            return TRUE;
+        }
+        
+        return FALSE;       
+    }
+
+    function getBytimeline($id){
+        
+        $this->db->select('*');
+        $this->db->from('timeline');
+        $this->db->where('usuario', $id);
+        $this->db->order_by('idTimeline','desc');
+        $this->db->limit(10);
+        
+        $query = $this->db->get();
+        
+        $result =  $query->result();
+        return $result;
+    }
+
 }

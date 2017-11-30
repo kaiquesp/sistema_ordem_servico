@@ -98,4 +98,16 @@ class Usuarios_model extends CI_Model {
 	function count($table){
 		return $this->db->count_all($table);
 	}
+
+        function editFoto($table,$data,$id){
+        $this->db->where('idUsuarios', $id);
+        $this->db->update($table, $data);
+
+        if ($this->db->affected_rows() >= 0)
+        {
+            return TRUE;
+        }
+        
+        return FALSE;       
+    }
 }

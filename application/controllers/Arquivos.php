@@ -61,7 +61,7 @@ class Arquivos extends CI_Controller {
         	$file = $arquivo['file_name'];
         	$path = $arquivo['full_path'];
         	$url = base_url().'assets/arquivos/'.date('d-m-Y').'/'.$file;
-        	$tamanho = $arquivo['file_size'];
+            $tamanho = explode(',', '.', $arquivo['file_size']);
         	$tipo = $arquivo['file_ext'];
 
         	$data = $this->input->post('data');
@@ -81,7 +81,7 @@ class Arquivos extends CI_Controller {
                 'path' => $path,
                 'url' => $url,
                 'cadastro' => $data,
-                'tamanho' => $tamanho,
+                'tamanho' => $tamanho1,
                 'tipo' => $tipo
             );
 
